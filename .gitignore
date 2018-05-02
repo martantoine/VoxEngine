@@ -10,6 +10,12 @@
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
+# Visual Studio
+VoxEngine-core/VoxEngine-core.vcxproj
+VoxEngine-core/VoxEngine-core.vcxproj.filters
+VoxEngine-core/VoxEngine-core.vcxproj.user
+
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
