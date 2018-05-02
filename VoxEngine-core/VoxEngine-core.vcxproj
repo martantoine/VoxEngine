@@ -69,7 +69,14 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>F:\Documents\VoxEngine\Dependencies\include;$(IncludePath)</IncludePath>
+    <LibraryPath>F:\Documents\VoxEngine\Dependencies\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>F:\Documents\VoxEngine\Dependencies\include;$(IncludePath)</IncludePath>
+    <LibraryPath>F:\Documents\VoxEngine\Dependencies\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -77,6 +84,9 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;glew32s.lib;assimp-vc140-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -98,6 +108,7 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;glew32s.lib;assimp-vc140-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -115,6 +126,57 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Entities\Components\EntityComponent.cpp" />
+    <ClCompile Include="src\Entities\Components\Lights\PointLight.cpp" />
+    <ClCompile Include="src\Entities\Components\Miscs\Camera.cpp" />
+    <ClCompile Include="src\Entities\Components\Renderable\Models\Mesh.cpp" />
+    <ClCompile Include="src\Entities\Components\Renderable\Models\Model.cpp" />
+    <ClCompile Include="src\Entities\Components\Renderable\Renderable.cpp" />
+    <ClCompile Include="src\Entities\Components\Renderable\Shapes\Circle.cpp" />
+    <ClCompile Include="src\Entities\Components\Renderable\Shapes\Cube.cpp" />
+    <ClCompile Include="src\Entities\Components\Renderable\Shapes\Rectangle.cpp" />
+    <ClCompile Include="src\Entities\Components\Renderable\Shapes\Shapes.cpp" />
+    <ClCompile Include="src\Entities\Components\Renderable\Shapes\Triangle.cpp" />
+    <ClCompile Include="src\Entities\Entity.cpp" />
+    <ClCompile Include="src\Graphics\Buffers\EBO.cpp" />
+    <ClCompile Include="src\Graphics\Buffers\Texture.cpp" />
+    <ClCompile Include="src\Graphics\Buffers\VAO.cpp" />
+    <ClCompile Include="src\Graphics\Buffers\VBO.cpp" />
+    <ClCompile Include="src\Graphics\Renderers\SimpleRenderer2D.cpp" />
+    <ClCompile Include="src\Graphics\Renderers\SimpleRenderer3D.cpp" />
+    <ClCompile Include="src\Graphics\Shaders\Shader.cpp" />
+    <ClCompile Include="src\Graphics\Window.cpp" />
+    <ClCompile Include="src\main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Entities\Components\EntityComponent.h" />
+    <ClInclude Include="src\Entities\Components\Lights\PointLight.h" />
+    <ClInclude Include="src\Entities\Components\Miscs\Camera.h" />
+    <ClInclude Include="src\Entities\Components\Renderable\Models\Mesh.h" />
+    <ClInclude Include="src\Entities\Components\Renderable\Models\Model.h" />
+    <ClInclude Include="src\Entities\Components\Renderable\Renderable.h" />
+    <ClInclude Include="src\Entities\Components\Renderable\Shapes\Circle.h" />
+    <ClInclude Include="src\Entities\Components\Renderable\Shapes\Cube.h" />
+    <ClInclude Include="src\Entities\Components\Renderable\Shapes\Rectangle.h" />
+    <ClInclude Include="src\Entities\Components\Renderable\Shapes\Shapes.h" />
+    <ClInclude Include="src\Entities\Components\Renderable\Shapes\Triangle.h" />
+    <ClInclude Include="src\Entities\Entities.h" />
+    <ClInclude Include="src\Entities\Entity.h" />
+    <ClInclude Include="src\Graphics\Buffers\Buffers.h" />
+    <ClInclude Include="src\Graphics\Buffers\EBO.h" />
+    <ClInclude Include="src\Graphics\Buffers\Image.h" />
+    <ClInclude Include="src\Graphics\Buffers\Texture.h" />
+    <ClInclude Include="src\Graphics\Buffers\VAO.h" />
+    <ClInclude Include="src\Graphics\Buffers\VBO.h" />
+    <ClInclude Include="src\Graphics\Buffers\Vertex.h" />
+    <ClInclude Include="src\Graphics\Renderers\SimpleRenderer2D.h" />
+    <ClInclude Include="src\Graphics\Renderers\SimpleRenderer3D.h" />
+    <ClInclude Include="src\Graphics\Shaders\Shader.h" />
+    <ClInclude Include="src\Graphics\Window.h" />
+    <ClInclude Include="src\Materials\Material.h" />
+    <ClInclude Include="src\Utils\Debugging.h" />
+    <ClInclude Include="src\Utils\FileReader.h" />
+    <ClInclude Include="src\Utils\ImageLoader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
