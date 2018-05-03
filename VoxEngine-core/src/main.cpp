@@ -26,7 +26,7 @@ int main()
 
 	//Lighting
 	Entity e_Light;
-	PointLight c_Light(vec3(0.0f, 1.0f, 0.0f));
+	PointLight c_Light(vec3(0.0f, 0.0f, 5.0f));
 	c_Light.SetParameters(vec3(0.2f, 0.07f, 0.07f), vec3(0.5f, 0.5f, 0.5f), vec3(1.0f, 1.0f, 1.0f));
 	e_Light.AddComponent("light 1", c_Light);
 	
@@ -78,10 +78,10 @@ int main()
 	LightingShader.SetUniformTexture("material.diffuse", 0);
 	LightingShader.SetUniformTexture("material.specular", 0);
 	LightingShader.SetUniform1("material.shininess", material.shininess);
-	LightingShader.SetUniform3("light.position", glm::vec3(0.0f, 0.0f, 0.0f));
-	LightingShader.SetUniform3("light.ambient", glm::vec3(1.0f, 1.0f, 1.0f));
-	LightingShader.SetUniform3("light.diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
-	LightingShader.SetUniform3("light.specular", glm::vec3(1.0f, 1.0f, 1.0f));
+	LightingShader.SetUniform3("light.position", glm::vec4(1.0f, 1.0f, 1.0f, 1.0f) * c_Light.GetPosition());
+	LightingShader.SetUniform3("light.ambient", c_Light.GetAmbient());
+	LightingShader.SetUniform3("light.diffuse", c_Light.GetDiffuse());
+	LightingShader.SetUniform3("light.specular", c_Light.GetSpecular());
 	LightingShader.SetUniform3("viewPosition", cam.GetPosition());
 
 

@@ -147,6 +147,7 @@
     <ClInclude Include="src\Entities\Components\EntityComponent.h" />
     <ClInclude Include="src\Entities\Components\Lights\PointLight.h" />
     <ClInclude Include="src\Entities\Components\Miscs\Camera.h" />
+    <ClInclude Include="src\Entities\Components\Renderable\Models\Mesh.h" />
     <ClInclude Include="src\Entities\Components\Renderable\Models\Model.h" />
     <ClInclude Include="src\Entities\Components\Renderable\Renderable.h" />
     <ClInclude Include="src\Entities\Entities.h" />

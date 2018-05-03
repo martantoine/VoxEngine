@@ -122,6 +122,9 @@
     <ClInclude Include="src\Utils\ImageLoader.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="src\Entities\Components\Renderable\Models\Mesh.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\TODO.txt" />

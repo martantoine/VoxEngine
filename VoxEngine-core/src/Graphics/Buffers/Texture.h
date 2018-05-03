@@ -3,8 +3,10 @@
 #include <GL\glew.h>
 #include "../Buffers/Image.h"
 
-namespace VoxEngine {
-	namespace Graphics {
+namespace VoxEngine
+{
+	namespace Graphics
+	{
 
 		class Texture
 		{

@@ -1,8 +1,10 @@
 #pragma once
+
 #include <GLM\vec2.hpp>
 #include <GLM\vec3.hpp>
 
-namespace VoxEngine {
+namespace VoxEngine
+{
 
 	enum vertexDataVar {VERTEX, COLOR, TEXTURE, NORMAL};
 
@@ -13,4 +15,5 @@ namespace VoxEngine {
 		glm::vec3 color;
 		glm::vec2 texCoord;
 	};
+
 }

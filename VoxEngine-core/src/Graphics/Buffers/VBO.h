@@ -5,21 +5,25 @@
 #include <vector>
 #include "Vertex.h"
 
-namespace VoxEngine {
-	namespace Graphics {
+namespace VoxEngine
+{
+	namespace Graphics
+	{
 
 		class VBO
 		{
 		public:
+			//Constructors
 			VBO() {}
 			VBO(glm::vec3* data, int count, GLuint componentCount);
 			VBO(std::vector<glm::vec3> data, int count, GLuint componentCount);
 
-			inline GLuint GetComponentCount() { return m_ComponentCount; }
-
+			//Miscs
 			void Bind() const;
 			void Unbind() const;
+			GLuint GetComponentCount();
 
+			//Destructors
 			void Destroy();
 			~VBO();
 

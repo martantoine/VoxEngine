@@ -19,7 +19,7 @@ namespace VoxEngine
 			Renderable(glm::vec3 position, float angle, glm::vec3 axis);
 
 			//Geometry initialize
-			virtual void Init() = 0;
+			virtual void Init(const char* modelPath) = 0;
 
 			//Materials
 			void AddMaterial(Graphics::Material& material);

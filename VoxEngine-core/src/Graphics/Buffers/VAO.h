@@ -5,18 +5,26 @@
 #include "VBO.h"
 #include "Vertex.h"
 
-namespace VoxEngine {
-	namespace Graphics {
+namespace VoxEngine
+{
+	namespace Graphics
+	{
 		
 		class VAO
 		{
 		public:
+			//Constructors
 			VAO();
+
+			//Initializer
 			void AddVBO(VBO* vbo, GLuint index, vertexDataVar var);
-			void ClearVBO() { m_VBOs.clear(); }
+			
+			//Miscs
 			void Bind() const;
 			void Unbind() const;
+			void ClearVBO();
 
+			//Destructors
 			void Destroy();
 			~VAO();
 

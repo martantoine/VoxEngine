@@ -1,36 +1,24 @@
 #pragma once
 
-#include <GL\glew.h>
 #include <vector>
-#include "../../../../Graphics/Buffers/Buffers.h"
-#include "../../../../Materials/Material.h"
-#include "../Renderable.h"
+#include "../../../../Graphics/Buffers/Vertex.h"
 
 namespace VoxEngine
 {
 	namespace VEEntity
 	{
 
-		class Mesh : public Renderable
+		struct Mesh
 		{
-		public:
-			//Constructors
 			Mesh() {}
-			Mesh(std::vector<VertexData> vertices, std::vector<GLuint> indices);
-			
-			//Mesh's functions
-			void SetupMesh();
+			Mesh(std::vector<VertexData> vertices, std::vector<unsigned int> indices)
+			{
+				m_Vertices = vertices;
+				m_Indices = indices;
+			}
 
-			//Variables
 			std::vector<VertexData> m_Vertices;
-			std::vector<GLuint> m_Indices;
-
-		private:
-			Graphics::VAO* m_VAO;
-			Graphics::EBO* m_EBO;
-			Graphics::Material* m_Material;
-
-			bool m_Textured;
+			std::vector<unsigned int> m_Indices;
 		};
 
 	}

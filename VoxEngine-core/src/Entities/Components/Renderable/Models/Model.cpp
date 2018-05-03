@@ -4,46 +4,63 @@ namespace VoxEngine
 {
 	namespace VEEntity
 	{
+
 		//--------------------------------------------------------------------------------//
 		//**********************************Constructors**********************************//
 		//--------------------------------------------------------------------------------//		
 		Model::Model(const char* modelPath)
 		{
+			///Miscs var
 			m_EntityComponentType = EntityComponentType::GRAPHIC;
 			m_Textured = false;
-			m_Path = modelPath;
 
+			///Transformations var
 			m_lScale = glm::mat4(1.0f);
 			m_lRotation = glm::mat4(1.0f);
 			m_lTranslation = glm::mat4(1.0f);
 			
-			Init();
+			///Load the model
+			Init(modelPath);
 		}
 
 		Model::Model(const char* modelPath, glm::vec3 position)
 		{
+			///Miscs var
 			m_EntityComponentType = EntityComponentType::GRAPHIC;
 			m_Textured = false;
-			m_Path = modelPath;
 
+			///Transformations var
 			m_lScale = glm::mat4(1.0f);
 			m_lRotation = glm::mat4(1.0f);
 			m_lTranslation = glm::translate(glm::mat4(1.0f), position);
 
-			Init();
+			///Load the model
+			Init(modelPath);
 		}
 
 		Model::Model(const char* modelPath, glm::vec3 position, float angle, glm::vec3 axis)
 		{
+			///Miscs var
 			m_EntityComponentType = EntityComponentType::GRAPHIC;
 			m_Textured = false;
-			m_Path = modelPath;
 
+			///Transformations var
 			m_lScale = glm::mat4(1.0f);
 			m_lRotation = glm::rotate(glm::mat4(1.0f), glm::radians(angle), axis);
 			m_lTranslation = glm::translate(glm::mat4(1.0f), position);
 
-			Init();
+			///Load the model
+			Init(modelPath);
+		}
+
+
+
+		//-------------------------------------------------------------------------------//
+		//************************************Miscs**************************************//
+		//-------------------------------------------------------------------------------//
+		GLuint Model::GetMeshesNumber()
+		{
+			return m_Meshes.size();
 		}
 
 
@@ -51,27 +68,26 @@ namespace VoxEngine
 		//-------------------------------------------------------------------------------//
 		//*****************************Geometry initialize*******************************//
 		//-------------------------------------------------------------------------------//
-		void Model::Init()
+		void Model::Init(const char* modelPath)
 		{
 			///Loading scene
 			Assimp::Importer import;
-			const aiScene *scene = import.ReadFile(m_Path, aiProcess_Triangulate | aiProcess_FlipUVs);
+			const aiScene *scene = import.ReadFile(modelPath, aiProcess_Triangulate | aiProcess_FlipUVs);
 
 			if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
 			{
 				std::cout << "ERROR::ASSIMP::" << import.GetErrorString() << std::endl;
 				return;
 			}
-			m_Directory = m_Path.substr(0, m_Path.find_last_of('/'));
-
+			
 			processNode(scene->mRootNode, scene);
 
 
-			const unsigned int meshesNbr = m_Meshes.size();
+			const GLuint meshesNbr = m_Meshes.size();
 			m_VAO = new Graphics::VAO[meshesNbr];
 			m_EBO = new Graphics::EBO[meshesNbr];
 
-			for (unsigned int i(0); i < meshesNbr; i++)
+			for (GLuint i(0); i < meshesNbr; i++)
 			{
 				Graphics::VBO* vbo = new Graphics::VBO(&m_Meshes[i].m_Vertices[0].vertice, m_Meshes[i].m_Vertices.size(), 4);
 
@@ -103,37 +119,40 @@ namespace VoxEngine
 		{
 			std::vector<VertexData> vertices;
 
+			//VertexData processing
 			for (unsigned int i = 0; i < mesh->mNumVertices; i++)
 			{
 				VertexData vertex;
 				glm::vec3 vector;
+
+				///Position
 				vector.x = mesh->mVertices[i].x;
 				vector.y = mesh->mVertices[i].y;
 				vector.z = mesh->mVertices[i].z;
 				vertex.vertice = vector;
+				///Normal
 				vector.x = mesh->mNormals[i].x;
 				vector.y = mesh->mNormals[i].y;
 				vector.z = mesh->mNormals[i].z;
-				vertex.color = glm::vec3(1.0f, 1.0f, 1.0f);
 				vertex.normal = vector;
+				///Color
+				vertex.color = glm::vec3(1.0f, 1.0f, 1.0f);
+				///Texture coords
 				vertex.texCoord = glm::vec2(0.0f, 0.0f);
+
 				vertices.push_back(vertex);
 			}
 			
+			//Indices processing
 			std::vector<GLuint> indices;
-			for (unsigned int i = 0; i < mesh->mNumFaces; i++)
+			for (GLuint i(0); i < mesh->mNumFaces; i++)
 			{
 				aiFace face = mesh->mFaces[i];
-				for (unsigned int j = 0; j < face.mNumIndices; j++)
+				for (GLuint j(0); j < face.mNumIndices; j++)
 					indices.push_back(face.mIndices[j]);
 			}
 
 			return Mesh(vertices, indices);
-		}
-
-		unsigned int Model::GetMeshesNumber()
-		{
-			return m_Meshes.size();
 		}
 
 	}

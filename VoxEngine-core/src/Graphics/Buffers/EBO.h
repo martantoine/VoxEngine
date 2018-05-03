@@ -13,15 +13,15 @@ namespace VoxEngine {
 			EBO();
 			EBO(GLuint* data, int count);
 
-			//Ininitalizers
+			//Initializer
 			void CreateEBO(GLuint* data, int count);
 
 			//Miscs
-			GLuint GetCount() const;
 			void Bind() const;
 			void Unbind() const;
+			GLuint GetCount() const;
 
-
+			//Destructors
 			void Destroy();
 			~EBO();
 

@@ -40,7 +40,7 @@ namespace VoxEngine {
 			glfwSetCursorPosCallback(m_Window, mouse_cursorpos_callback);
 			glfwSetMouseButtonCallback(m_Window, mouse_button_callback);
 			glfwSetScrollCallback(m_Window, mouse_scroll_callback);
-			//glfwSwapInterval(1);
+			glfwSwapInterval(1);
 			glewInit();
 			glEnable(GL_DEPTH_TEST);
 			glClearColor(0.0f, 0.0f, 0.1f, 1.0f);
