@@ -4,34 +4,56 @@ namespace VoxEngine
 {
 	namespace VEEntity
 	{
+		//--------------------------------------------------------------------------------//
+		//**********************************Constructors**********************************//
+		//--------------------------------------------------------------------------------//
+		Renderable::Renderable()
+		{
+			m_EntityComponentType = EntityComponentType::GRAPHIC;
+			m_lScale = glm::mat4(1.0f);
+			m_lRotation = glm::mat4(1.0f);
+			m_lTranslation = glm::mat4(1.0f);
+			m_Textured = false;
+		}
+
+		Renderable::Renderable(glm::vec3 position)
+		{
+			m_EntityComponentType = EntityComponentType::GRAPHIC;
+			m_lScale = glm::mat4(1.0f);
+			m_lRotation = glm::mat4(1.0f);
+			m_lTranslation = glm::translate(glm::mat4(1.0f), position);
+			m_Textured = false;
+		}
+
+		Renderable::Renderable(glm::vec3 position, float angle, glm::vec3 axis)
+		{
+			m_EntityComponentType = EntityComponentType::GRAPHIC;
+			m_lScale = glm::mat4(1.0f);
+			m_lRotation = glm::rotate(glm::mat4(1.0f), glm::radians(angle), axis);
+			m_lTranslation = glm::translate(glm::mat4(1.0f), position);
+			m_Textured = false;
+		}
+
+
+
 		//-------------------------------------------------------------------------------//
-		//**************************EntityComponent's functions**************************//
+		//***********************************Materials***********************************//
 		//-------------------------------------------------------------------------------//
-		///Colors
-		void Renderable::SetColor(glm::vec3 color)
+		void Renderable::AddMaterial(Graphics::Material& material)
 		{
-			m_Color = color;
+			m_Material = &material;
 		}
 
-		glm::vec3 Renderable::GetColor() const
-		{
-			return m_Color;
-		}
-
-
-		///Materials
-		void Renderable::AddMaterial(Graphics::Material* material)
-		{
-			m_Material = material;
-		}
-
-		Graphics::Material Renderable::GetMaterial()
+		Graphics::Material& Renderable::GetMaterial() const
 		{
 			return *m_Material;
 		}
 
 
-		///Buffers
+
+		//-------------------------------------------------------------------------------//
+		//***********************************Buffers***********************************//
+		//-------------------------------------------------------------------------------//
 		Graphics::VAO* Renderable::GetVAO() const
 		{
 			return m_VAO;
@@ -42,7 +64,7 @@ namespace VoxEngine
 			return m_EBO;
 		}
 
-		bool Renderable::isTextured()
+		bool Renderable::isTextured() const
 		{
 			return m_Textured;
 		}

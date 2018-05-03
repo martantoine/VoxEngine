@@ -22,34 +22,33 @@ namespace VoxEngine
 			while (!m_EntityQueue.empty())
 			{
 				VEEntity::Entity* entity = m_EntityQueue.front();
-				std::vector<std::string> listName = entity->GetEntityComponentsList(VEEntity::EntityComponentType::Graphic);
-
-				VEEntity::Model* model;
+				std::vector<std::string> listName = entity->GetEntityComponentsList(VEEntity::EntityComponentType::GRAPHIC);
 
 				for (int i(0); i < listName.size(); i++)
 				{
-					model = &entity->GetComponent<VEEntity::Model>(listName[i]);
+					VEEntity::Renderable* renderable = entity->GetComponent(listName[i]);
 
-					/*for (int i(0); i < model->GetMeshesNumber(); 0)
+					for (int i(0); i < renderable->GetMeshesNumber(); i++)
 					{
-						VEEntity::Mesh* mesh = &model->m_Meshes[0];
-
-						m_Shader->SetUniformMat4("model", glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f)));
+						m_Shader->SetUniformMat4("model", glm::mat4(1.0f));
 
 						glBindTexture(GL_TEXTURE0, -1);
 						glBindTexture(GL_TEXTURE1, -1);
 
-						mesh->GetVAO()->Bind();
-						mesh->GetEBO()->Bind();
+						VAO* tmpVAO = renderable->GetVAO();
+						EBO* tmpEBO = renderable->GetEBO();
 
-						glDrawElements(GL_TRIANGLES, mesh->GetEBO()->GetCount(), GL_UNSIGNED_INT, nullptr);
+						tmpVAO[i].Bind();
+						tmpEBO[i].Bind();
 
-						mesh->GetEBO()->Unbind();
-						mesh->GetVAO()->Unbind();
+						glDrawElements(GL_TRIANGLES, tmpEBO[i].GetCount(), GL_UNSIGNED_INT, nullptr);
+
+						tmpEBO[i].Unbind();
+						tmpVAO[i].Unbind();
 
 						glBindTexture(GL_TEXTURE0, 0);
 						glBindTexture(GL_TEXTURE1, 0);
-					}*/
+					}
 				}
 
 				m_EntityQueue.pop_front();

@@ -7,6 +7,7 @@
 #include "../Shaders/Shader.h"
 #include "../../Entities/Entity.h"
 #include "../../Entities/Components/Renderable/Renderable.h"
+#include <iostream>
 
 namespace VoxEngine
 {

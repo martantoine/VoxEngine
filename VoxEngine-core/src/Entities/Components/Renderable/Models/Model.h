@@ -6,34 +6,47 @@
 #include <vector>
 #include <iostream>
 #include <string>
-#include "Mesh.h"
-#include "../../EntityComponent.h"
+#include "../Renderable.h"
 
 namespace VoxEngine
 {
 	namespace VEEntity
 	{
 
-		class Model : public EntityComponent
+		struct Mesh
+		{
+			Mesh() {}
+			Mesh(std::vector<VertexData> vertices, std::vector<GLuint> indices)
+			{
+				m_Vertices = vertices;
+				m_Indices = indices;
+			}
+
+			std::vector<VertexData> m_Vertices;
+			std::vector<GLuint> m_Indices;
+		};
+
+		class Model : public Renderable
 		{
 		public:
 			//Constructors
-			Model();
-			Model(const char* path);
+			Model(const char* modelPath);
+			Model(const char* modelPath, glm::vec3 position);
+			Model(const char* modelPath, glm::vec3 position, float angle, glm::vec3 axis);
 
-			//EntityComponent's functions
-			void LoadModel(const char* path);
+			//Geometry initialize
+			void Init();
+			
+		private:
+			//Geometry initialize
 			void processNode(aiNode *node, const aiScene *scene);
 			Mesh processMesh(aiMesh *mesh, const aiScene *scene);
+
 			unsigned int GetMeshesNumber();
 
-			std::vector<Mesh> m_Meshes;
 		private:
 			std::string m_Path, m_Directory;
-			glm::vec3 m_Color;
-			glm::mat4 m_lTranslation, m_lRotation, m_lScale;
-			bool m_Textured;
-			EntityComponentType m_EntityComponentType;
+			std::vector<Mesh> m_Meshes;
 		};
 
 	}

@@ -1,8 +1,9 @@
 #pragma once
 
+#include <GLM\glm.hpp>
 #include "../../../Graphics/Buffers/Buffers.h"
-#include "../EntityComponent.h"
 #include "../../../Materials/Material.h"
+#include "../EntityComponent.h"
 
 namespace VoxEngine
 {
@@ -12,36 +13,35 @@ namespace VoxEngine
 		class Renderable : public EntityComponent
 		{
 		public:
-			//EntityComponent's functions
-			///Miscs
-			void Init() {}
+			//Constructors
+			Renderable();
+			Renderable(glm::vec3 position);
+			Renderable(glm::vec3 position, float angle, glm::vec3 axis);
 
-			///Materials
-			void AddMaterial(Graphics::Material* material);
-			Graphics::Material GetMaterial();
+			//Geometry initialize
+			virtual void Init() = 0;
 
-			///Colors
-			void SetColor(glm::vec3 color);
-			glm::vec3 GetColor() const;
+			//Materials
+			void AddMaterial(Graphics::Material& material);
+			Graphics::Material& GetMaterial() const;
 
-			///Buffers
+			//Buffers
 			Graphics::VAO* GetVAO() const;
 			Graphics::EBO* GetEBO() const;
-			Graphics::Texture* GetTexture() const;
-			void AddTexture(Graphics::Texture& texture, glm::vec2 position, glm::vec2 size);
-			bool isTextured();
+
+			Graphics::Texture* GetTexture() const {}
+			bool isTextured() const;
+
+			//Miscs
+			virtual unsigned int GetMeshesNumber() { return 0; }
 
 		protected:
 			Graphics::VAO* m_VAO;
 			Graphics::EBO* m_EBO;
 			VertexData* m_Vertices;
-			glm::vec3* m_Normal;
-			GLushort* m_Indices;
+
 			Graphics::Material* m_Material;
-
-			glm::vec3 m_Color;
 			bool m_Textured;
-
 		};
 
 	}

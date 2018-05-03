@@ -11,7 +11,7 @@ namespace VoxEngine
 		//--------------------------------------------------------------------------------//
 		PointLight::PointLight()
 		{
-			m_EntityComponentType = EntityComponentType::Lighting;
+			m_EntityComponentType = EntityComponentType::LIGHT;
 
 			m_lTranslation = glm::mat4(1.0f);
 			m_lRotation = glm::mat4(1.0f);
@@ -20,12 +20,14 @@ namespace VoxEngine
 
 		PointLight::PointLight(glm::vec3 position)
 		{
-			m_EntityComponentType = EntityComponentType::Lighting;
+			m_EntityComponentType = EntityComponentType::LIGHT;
 
 			m_lTranslation = glm::translate(glm::mat4(1.0f), position);
 			m_lRotation = glm::mat4(1.0f);
 			m_lScale = glm::mat4(1.0f);
 		}
+
+
 
 		//-------------------------------------------------------------------------------//
 		//**************************EntityComponent's functions**************************//

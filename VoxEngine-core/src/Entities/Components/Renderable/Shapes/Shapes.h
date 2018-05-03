@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../../../Graphics/Buffers/Buffers.h"
-#include "../EntityComponent.h"
+#include "../../../../Graphics/Buffers/Buffers.h"
+#include "../../EntityComponent.h"
 
 namespace VoxEngine
 {

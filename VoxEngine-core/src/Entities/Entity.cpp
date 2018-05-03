@@ -19,27 +19,27 @@ namespace VoxEngine
 		//-------------------------------------------------------------------------------//
 		//*************************************Miscs*************************************//
 		//-------------------------------------------------------------------------------//
-		void Entity::AddComponent(std::string name, EntityComponent component)
+		void Entity::AddComponent(std::string name, EntityComponent& component)
 		{
-			m_EntityComponents[name] = &component;
+			m_EntityComponents[name] = component;
 		}
 
-		void Entity::AddComponent(std::string name, Renderable component)
+		void Entity::AddComponent(std::string name, Renderable& component)
 		{
-			m_GraphicComponents[name] = component;
+			m_RenderableComponents[name] = &component;
 		}
-		
-		void Entity::AddComponent(std::string name, Model component)
+
+		Renderable* Entity::GetComponent(std::string name)
 		{
-			m_ModelComponents[name] = component;
+			return m_RenderableComponents[name];
 		}
 
 		std::vector<std::string> Entity::GetEntityComponentsList(EntityComponentType type)
 		{
 			std::vector<std::string> list;
 
-			for (auto& component : m_ModelComponents)
-				//if (component.second.GetType() == EntityComponentType::Graphic)
+			if(type == EntityComponentType::GRAPHIC)
+				for (auto& component : m_RenderableComponents)
 					list.push_back(component.first);
 
 			return list;

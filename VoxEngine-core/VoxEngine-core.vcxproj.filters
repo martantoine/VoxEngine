@@ -21,25 +21,7 @@
     <ClCompile Include="src\Entities\Components\Miscs\Camera.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="src\Entities\Components\Renderable\Models\Mesh.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="src\Entities\Components\Renderable\Models\Model.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Entities\Components\Renderable\Shapes\Circle.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Entities\Components\Renderable\Shapes\Cube.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Entities\Components\Renderable\Shapes\Rectangle.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Entities\Components\Renderable\Shapes\Shapes.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Entities\Components\Renderable\Shapes\Triangle.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="src\Entities\Components\Renderable\Renderable.cpp">
@@ -63,9 +45,6 @@
     <ClCompile Include="src\Graphics\Buffers\VBO.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="src\Graphics\Renderers\SimpleRenderer2D.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="src\Graphics\Renderers\SimpleRenderer3D.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
@@ -86,25 +65,7 @@
     <ClInclude Include="src\Entities\Components\Miscs\Camera.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="src\Entities\Components\Renderable\Models\Mesh.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="src\Entities\Components\Renderable\Models\Model.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Entities\Components\Renderable\Shapes\Circle.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Entities\Components\Renderable\Shapes\Cube.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Entities\Components\Renderable\Shapes\Rectangle.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Entities\Components\Renderable\Shapes\Shapes.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Entities\Components\Renderable\Shapes\Triangle.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="src\Entities\Components\Renderable\Renderable.h">
@@ -140,9 +101,6 @@
     <ClInclude Include="src\Graphics\Buffers\Vertex.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="src\Graphics\Renderers\SimpleRenderer2D.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="src\Graphics\Renderers\SimpleRenderer3D.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
@@ -164,5 +122,8 @@
     <ClInclude Include="src\Utils\ImageLoader.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="src\TODO.txt" />
   </ItemGroup>
 </Project>

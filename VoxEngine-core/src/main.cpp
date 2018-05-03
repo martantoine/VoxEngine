@@ -42,8 +42,8 @@ int main()
 	//Objects
 	///Model
 	Entity e_model;
-	Model model("VS_MARTIN_An_Subsetup1_Maxillar.stl");
-	e_model.AddComponent("haut", model);
+	Model model("monkey.obj");
+	e_model.AddComponent("monkey", model);
 
 
 	//Camera
@@ -76,12 +76,12 @@ int main()
 	///Fragment uniforms assign
 	//LightingShader.SetUniform3("material.diffuse", material.diffuse);
 	LightingShader.SetUniformTexture("material.diffuse", 0);
-	LightingShader.SetUniformTexture("material.specular", 1);
+	LightingShader.SetUniformTexture("material.specular", 0);
 	LightingShader.SetUniform1("material.shininess", material.shininess);
-	LightingShader.SetUniform3("light.position", c_Light.GetPosition());
-	LightingShader.SetUniform3("light.ambient", c_Light.GetAmbient());
-	LightingShader.SetUniform3("light.diffuse", c_Light.GetDiffuse());
-	LightingShader.SetUniform3("light.specular", c_Light.GetSpecular());
+	LightingShader.SetUniform3("light.position", glm::vec3(0.0f, 0.0f, 0.0f));
+	LightingShader.SetUniform3("light.ambient", glm::vec3(1.0f, 1.0f, 1.0f));
+	LightingShader.SetUniform3("light.diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
+	LightingShader.SetUniform3("light.specular", glm::vec3(1.0f, 1.0f, 1.0f));
 	LightingShader.SetUniform3("viewPosition", cam.GetPosition());
 
 

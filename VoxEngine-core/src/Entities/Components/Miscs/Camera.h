@@ -27,7 +27,7 @@ namespace VoxEngine
 			void SetFOV(float fov);
 			void SetProjection(float fov, float ratio);
 
-			///Transforming the camera
+			//Transforming the camera
 			void SetMousePos(glm::vec2 mousePosition);
 			void Move();
 			void Move(glm::vec3 axis);

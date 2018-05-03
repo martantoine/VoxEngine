@@ -4,6 +4,7 @@ namespace VoxEngine
 {
 	namespace VEEntity
 	{
+
 		//--------------------------------------------------------------------------------//
 		//**********************************Constructors**********************************//
 		//--------------------------------------------------------------------------------//
@@ -12,6 +13,7 @@ namespace VoxEngine
 		{
 			m_lTranslation = glm::mat4(1.0f);
 			InitVariables();
+			SetProjection(90.0f, 1.0f);
 			UpdateView();
 		}
 
@@ -20,6 +22,7 @@ namespace VoxEngine
 		{
 			m_lTranslation = glm::translate(glm::mat4(1.0f), position);
 			InitVariables();
+			SetProjection(90.0f, 1.0f);
 			UpdateView();
 		}
 
@@ -28,6 +31,7 @@ namespace VoxEngine
 		{
 			m_lTranslation = glm::mat4(1.0f);
 			InitVariables();
+			SetProjection(90.0f, 1.0f);
 			UpdateView();
 		}
 
@@ -36,6 +40,7 @@ namespace VoxEngine
 		{
 			m_lTranslation = glm::translate(glm::mat4(1.0f), position);
 			InitVariables();
+			SetProjection(90.0f, 1.0f);
 			UpdateView();
 		}
 
@@ -44,15 +49,18 @@ namespace VoxEngine
 		{
 			m_lTranslation = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 			InitVariables();
+			SetProjection(90.0f, 1.0f);
 			UpdateView();
 		}
+
+
 
 		//-------------------------------------------------------------------------------//
 		//**************************EntityComponent's functions**************************//
 		//-------------------------------------------------------------------------------//
 		void Camera::InitVariables()
 		{
-			m_EntityComponentType = EntityComponentType::Misc;
+			m_EntityComponentType = EntityComponentType::MISC;
 
 			MovingSpeed = 0.0002f;
 			RotationgSpeed = 0.005f;

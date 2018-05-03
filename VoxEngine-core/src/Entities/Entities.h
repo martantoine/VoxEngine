@@ -8,4 +8,3 @@
 #include "Components\Renderable\Shapes\Rectangle.h"
 #include "Components\Renderable\Shapes\Cube.h"
 #include "Components\Renderable\Models\Model.h"
-#include "Components\Renderable\Models\Mesh.h"

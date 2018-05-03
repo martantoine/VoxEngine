@@ -6,42 +6,54 @@ namespace VoxEngine
 	{
 		//--------------------------------------------------------------------------------//
 		//**********************************Constructors**********************************//
-		//--------------------------------------------------------------------------------//
-		Model::Model()
+		//--------------------------------------------------------------------------------//		
+		Model::Model(const char* modelPath)
 		{
-			m_EntityComponentType = EntityComponentType::Graphic;
-
-			m_Color = glm::vec3(0.4f, 0.4f, 0.4f);
+			m_EntityComponentType = EntityComponentType::GRAPHIC;
 			m_Textured = false;
-
-			m_lScale = glm::mat4(1.0f);
-			m_lRotation = glm::mat4(1.0f);
-			m_lTranslation = glm::mat4(1.0f);
-		}
-		
-		Model::Model(const char* path)
-		{
-			m_Path = path;
-			m_EntityComponentType = EntityComponentType::Graphic;
-
-			m_Color = glm::vec3(0.9f, 0.4f, 0.4f);
-			m_Textured = false;
+			m_Path = modelPath;
 
 			m_lScale = glm::mat4(1.0f);
 			m_lRotation = glm::mat4(1.0f);
 			m_lTranslation = glm::mat4(1.0f);
 			
-			LoadModel(path);
+			Init();
+		}
+
+		Model::Model(const char* modelPath, glm::vec3 position)
+		{
+			m_EntityComponentType = EntityComponentType::GRAPHIC;
+			m_Textured = false;
+			m_Path = modelPath;
+
+			m_lScale = glm::mat4(1.0f);
+			m_lRotation = glm::mat4(1.0f);
+			m_lTranslation = glm::translate(glm::mat4(1.0f), position);
+
+			Init();
+		}
+
+		Model::Model(const char* modelPath, glm::vec3 position, float angle, glm::vec3 axis)
+		{
+			m_EntityComponentType = EntityComponentType::GRAPHIC;
+			m_Textured = false;
+			m_Path = modelPath;
+
+			m_lScale = glm::mat4(1.0f);
+			m_lRotation = glm::rotate(glm::mat4(1.0f), glm::radians(angle), axis);
+			m_lTranslation = glm::translate(glm::mat4(1.0f), position);
+
+			Init();
 		}
 
 
 
 		//-------------------------------------------------------------------------------//
-		//**************************EntityComponent's function***************************//
+		//*****************************Geometry initialize*******************************//
 		//-------------------------------------------------------------------------------//
-		void Model::LoadModel(const char* path)
+		void Model::Init()
 		{
-			m_Path = path;
+			///Loading scene
 			Assimp::Importer import;
 			const aiScene *scene = import.ReadFile(m_Path, aiProcess_Triangulate | aiProcess_FlipUVs);
 
@@ -53,27 +65,43 @@ namespace VoxEngine
 			m_Directory = m_Path.substr(0, m_Path.find_last_of('/'));
 
 			processNode(scene->mRootNode, scene);
+
+
+			const unsigned int meshesNbr = m_Meshes.size();
+			m_VAO = new Graphics::VAO[meshesNbr];
+			m_EBO = new Graphics::EBO[meshesNbr];
+
+			for (unsigned int i(0); i < meshesNbr; i++)
+			{
+				Graphics::VBO* vbo = new Graphics::VBO(&m_Meshes[i].m_Vertices[0].vertice, m_Meshes[i].m_Vertices.size(), 4);
+
+				m_VAO[i].ClearVBO();
+				m_VAO[i].AddVBO(vbo, 0, VERTEX);
+				m_VAO[i].AddVBO(vbo, 1, NORMAL);
+				m_VAO[i].AddVBO(vbo, 2, COLOR);
+				if (m_Textured)
+					m_VAO[i].AddVBO(vbo, 3, TEXTURE);
+
+				m_EBO[i].CreateEBO(m_Meshes[i].m_Indices.data(), m_Meshes[i].m_Indices.size());
+			}
 		}
 
 		void Model::processNode(aiNode *node, const aiScene *scene)
 		{
-			// process all the node's meshes (if any)
+			///Process all the node's meshes
 			for (unsigned int i = 0; i < node->mNumMeshes; i++)
 			{
 				aiMesh *mesh = scene->mMeshes[node->mMeshes[i]];
 				m_Meshes.push_back(processMesh(mesh, scene));
 			}
-			// then do the same for each of its children
+			///Do the same for each of its children
 			for (unsigned int i = 0; i < node->mNumChildren; i++)
-			{
 				processNode(node->mChildren[i], scene);
-			}
 		}
 
 		Mesh Model::processMesh(aiMesh *mesh, const aiScene *scene)
 		{
 			std::vector<VertexData> vertices;
-			std::vector<GLuint> indices;
 
 			for (unsigned int i = 0; i < mesh->mNumVertices; i++)
 			{
@@ -92,6 +120,7 @@ namespace VoxEngine
 				vertices.push_back(vertex);
 			}
 			
+			std::vector<GLuint> indices;
 			for (unsigned int i = 0; i < mesh->mNumFaces; i++)
 			{
 				aiFace face = mesh->mFaces[i];

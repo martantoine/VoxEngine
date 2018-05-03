@@ -9,11 +9,15 @@ namespace VoxEngine {
 		class EBO
 		{
 		public:
-			EBO(GLushort* data, int count);
-			EBO(std::vector<GLuint> data, int count);
+			//Constructors
+			EBO();
+			EBO(GLuint* data, int count);
 
-			inline GLuint GetCount() const { return m_Count; }
+			//Ininitalizers
+			void CreateEBO(GLuint* data, int count);
 
+			//Miscs
+			GLuint GetCount() const;
 			void Bind() const;
 			void Unbind() const;
 

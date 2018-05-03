@@ -1,41 +1,42 @@
 #pragma once
 
-#include <GLM\gtc\matrix_transform.hpp>
-#include <GLM\mat4x4.hpp>
-#include <GLM\vec3.hpp>
 #include <GLM\glm.hpp>
-#include <iostream>
+#include <GLM\vec3.hpp>
+#include <GLM\mat4x4.hpp>
+#include <GLM\gtc\matrix_transform.hpp>
 
 namespace VoxEngine
 {
 	namespace VEEntity
 	{
 
-		enum EntityComponentType { Graphic, Lighting, Misc };
+		enum EntityComponentType { GRAPHIC, LIGHT, MISC };
 
 		class EntityComponent
 		{
 		public:
-			//Constructor
-			///EntityComponent constructors only set the transformations
+			//Constructors
 			EntityComponent();
 			EntityComponent(glm::vec3 position);
 			EntityComponent(glm::vec3 position, float angle, glm::vec3 axis);
-			
+
 			//Miscs
-			EntityComponentType GetType();
+			EntityComponentType GetType() const;
 
 			//Transformations
-			glm::vec3 GetPosition() const;
+			glm::mat4 GetTransformation() const;
+			///Translation
+			glm::mat4 GetPosition() const;
 			void SetPosition(glm::vec3 position);
 			void Move(glm::vec3 offset);
-			glm::vec3 GetRotation() const;
+			///Rotation
+			glm::mat4 GetRotation() const;
 			void SetRotation(float angle, glm::vec3 axis);
 			void Rotate(float angle, glm::vec3 axis);
-			glm::vec3 GetScale() const;
+			///Homothety
+			glm::mat4 GetScale() const;
 			void SetScale(glm::vec3 scale);
 			void Scale(glm::vec3 scale);
-			glm::mat4 GetTransformation() const;
 
 		protected:
 			glm::mat4 m_lTranslation, m_lRotation, m_lScale;

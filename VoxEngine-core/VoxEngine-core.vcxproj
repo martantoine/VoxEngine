@@ -83,6 +83,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <PreprocessorDefinitions>GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;GLM_ENABLE_EXPERIMENTAL;_USE_MATH_DEFINES;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>opengl32.lib;glfw3.lib;glew32s.lib;assimp-vc140-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -104,6 +105,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <PreprocessorDefinitions>GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;GLM_ENABLE_EXPERIMENTAL;_USE_MATH_DEFINES;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -129,20 +131,13 @@
     <ClCompile Include="src\Entities\Components\EntityComponent.cpp" />
     <ClCompile Include="src\Entities\Components\Lights\PointLight.cpp" />
     <ClCompile Include="src\Entities\Components\Miscs\Camera.cpp" />
-    <ClCompile Include="src\Entities\Components\Renderable\Models\Mesh.cpp" />
     <ClCompile Include="src\Entities\Components\Renderable\Models\Model.cpp" />
     <ClCompile Include="src\Entities\Components\Renderable\Renderable.cpp" />
-    <ClCompile Include="src\Entities\Components\Renderable\Shapes\Circle.cpp" />
-    <ClCompile Include="src\Entities\Components\Renderable\Shapes\Cube.cpp" />
-    <ClCompile Include="src\Entities\Components\Renderable\Shapes\Rectangle.cpp" />
-    <ClCompile Include="src\Entities\Components\Renderable\Shapes\Shapes.cpp" />
-    <ClCompile Include="src\Entities\Components\Renderable\Shapes\Triangle.cpp" />
     <ClCompile Include="src\Entities\Entity.cpp" />
     <ClCompile Include="src\Graphics\Buffers\EBO.cpp" />
     <ClCompile Include="src\Graphics\Buffers\Texture.cpp" />
     <ClCompile Include="src\Graphics\Buffers\VAO.cpp" />
     <ClCompile Include="src\Graphics\Buffers\VBO.cpp" />
-    <ClCompile Include="src\Graphics\Renderers\SimpleRenderer2D.cpp" />
     <ClCompile Include="src\Graphics\Renderers\SimpleRenderer3D.cpp" />
     <ClCompile Include="src\Graphics\Shaders\Shader.cpp" />
     <ClCompile Include="src\Graphics\Window.cpp" />
@@ -152,14 +147,8 @@
     <ClInclude Include="src\Entities\Components\EntityComponent.h" />
     <ClInclude Include="src\Entities\Components\Lights\PointLight.h" />
     <ClInclude Include="src\Entities\Components\Miscs\Camera.h" />
-    <ClInclude Include="src\Entities\Components\Renderable\Models\Mesh.h" />
     <ClInclude Include="src\Entities\Components\Renderable\Models\Model.h" />
     <ClInclude Include="src\Entities\Components\Renderable\Renderable.h" />
-    <ClInclude Include="src\Entities\Components\Renderable\Shapes\Circle.h" />
-    <ClInclude Include="src\Entities\Components\Renderable\Shapes\Cube.h" />
-    <ClInclude Include="src\Entities\Components\Renderable\Shapes\Rectangle.h" />
-    <ClInclude Include="src\Entities\Components\Renderable\Shapes\Shapes.h" />
-    <ClInclude Include="src\Entities\Components\Renderable\Shapes\Triangle.h" />
     <ClInclude Include="src\Entities\Entities.h" />
     <ClInclude Include="src\Entities\Entity.h" />
     <ClInclude Include="src\Graphics\Buffers\Buffers.h" />
@@ -169,7 +158,6 @@
     <ClInclude Include="src\Graphics\Buffers\VAO.h" />
     <ClInclude Include="src\Graphics\Buffers\VBO.h" />
     <ClInclude Include="src\Graphics\Buffers\Vertex.h" />
-    <ClInclude Include="src\Graphics\Renderers\SimpleRenderer2D.h" />
     <ClInclude Include="src\Graphics\Renderers\SimpleRenderer3D.h" />
     <ClInclude Include="src\Graphics\Shaders\Shader.h" />
     <ClInclude Include="src\Graphics\Window.h" />
@@ -177,6 +165,9 @@
     <ClInclude Include="src\Utils\Debugging.h" />
     <ClInclude Include="src\Utils\FileReader.h" />
     <ClInclude Include="src\Utils\ImageLoader.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="src\TODO.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
