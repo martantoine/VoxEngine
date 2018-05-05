@@ -1,11 +1,6 @@
 #version 330 core
 
-struct Material
-{
-	sampler2D diffuse;
-	sampler2D specular;
-	float shininess;
-};
+
 
 struct Light
 {
@@ -16,7 +11,9 @@ struct Light
 };
 
 //INPUT
-uniform Material material;
+uniform sampler2D texture_diffuse1;
+uniform sampler2D texture_specular1;
+
 uniform Light light;
 uniform vec3 viewPosition;
 in DATA
@@ -37,21 +34,22 @@ void main()
 	vec3 lightDir = normalize(light.position - fs_in.position);
 
 	//Ambient lighting
-	vec3 AmbientLighting = light.ambient * vec3(texture(material.diffuse, fs_in.textureCoord));
+	vec3 AmbientLighting = light.ambient * vec3(texture(texture_diffuse1, fs_in.textureCoord));
 
 	//Diffuse lighting
 	float diffuseStrenght = max(dot(normal, lightDir), 0.0);
-	vec3 DiffuseLighting = diffuseStrenght * vec3(texture(material.diffuse, fs_in.textureCoord));
+	vec3 DiffuseLighting = diffuseStrenght * vec3(texture(texture_diffuse1, fs_in.textureCoord));
 
 	//Specular lighting
-	vec3 viewDir = normalize(viewPosition - fs_in.position);
-	vec3 reflectDir = reflect(-lightDir, normal);
-	float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
-	vec3 SpecularLighting = spec * light.specular * vec3(texture(material.specular, fs_in.textureCoord));
+	//vec3 viewDir = normalize(viewPosition - fs_in.position);
+	//vec3 reflectDir = reflect(-lightDir, normal);
+	//float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
+	//vec3 SpecularLighting = spec * light.specular * vec3(texture(texture_specular1, fs_in.textureCoord));
 
 	//Result
-	if(material.diffuse)
-		Result = vec4(SpecularLighting + AmbientLighting + DiffuseLighting, 1.0) * fs_in.color * vec4(texture(material.diffuse, fs_in.textureCoord));
-	else
-		Result = vec4(SpecularLighting + AmbientLighting + DiffuseLighting, 1.0) * (fs_in.color + vec4(texture(material.diffuse, fs_in.textureCoord)));
+		//Result = vec4(SpecularLighting + AmbientLighting + DiffuseLighting, 1.0f) * fs_in.color * vec4(texture(texture_diffuse1, fs_in.textureCoord));
+	//else
+		//Result = vec4(SpecularLighting + AmbientLighting + DiffuseLighting, 1.0f) * (fs_in.color + vec4(texture(texture_diffuse1, fs_in.textureCoord)));
+
+	Result = texture(texture_diffuse1, fs_in.textureCoord);
 }

@@ -129,4 +129,8 @@
   <ItemGroup>
     <Text Include="src\TODO.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="src\Graphics\Shaders\BasicLighting.vert" />
+    <None Include="src\Graphics\Shaders\BasicLighting.frag" />
+  </ItemGroup>
 </Project>

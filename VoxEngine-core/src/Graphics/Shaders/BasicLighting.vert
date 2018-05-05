@@ -20,8 +20,9 @@ out DATA
 void main()
 {
 	gl_Position = projection * view * model * vec4(position, 1.0f);
+
 	vs_out.position = vec3(model * vec4(position, 1.0));
-	vs_out.normal = mat3(transpose((model))) * normal;
-	vs_out.color = vec4(color, 1.0);
+	vs_out.normal = mat3(inverse(transpose(model))) * normal;
+	vs_out.color = vec4(color, 1.0f);
 	vs_out.textureCoord = textureCoord;
 }

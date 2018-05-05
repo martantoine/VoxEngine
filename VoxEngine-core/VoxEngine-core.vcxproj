@@ -170,6 +170,10 @@
   <ItemGroup>
     <Text Include="src\TODO.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="src\Graphics\Shaders\BasicLighting.frag" />
+    <None Include="src\Graphics\Shaders\BasicLighting.vert" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

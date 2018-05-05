@@ -28,26 +28,31 @@ namespace VoxEngine
 				{
 					VEEntity::Renderable* renderable = entity->GetComponent(listName[i]);
 
-					for (int i(0); i < renderable->GetMeshesNumber(); i++)
+					for (int j(0); j < renderable->GetMeshesNumber(); j++)
 					{
-						m_Shader->SetUniformMat4("model", glm::mat4(1.0f));
+						m_Shader->SetUniformMat4("model", entity->GetTransformation() * renderable->GetTransformation());
 
-						glBindTexture(GL_TEXTURE0, -1);
-						glBindTexture(GL_TEXTURE1, -1);
+						for (int x(0); x < renderable->GetMesh(j).m_Textures.size(); x++)
+						{
+							glActiveTexture(GL_TEXTURE0 + x);
+							std::string a = renderable->GetMesh(j).m_Textures[x].GetType().c_str();
+							a += '1';
+							const char* b = a.c_str();
+							renderable->GetTexture(j, x).Bind();
+							m_Shader->SetUniformTexture(b, renderable->GetMesh(j).m_Textures[x].GetID());
+						}
 
 						VAO* tmpVAO = renderable->GetVAO();
 						EBO* tmpEBO = renderable->GetEBO();
 
-						tmpVAO[i].Bind();
-						tmpEBO[i].Bind();
+						tmpVAO[j].Bind();	
+						tmpEBO[j].Bind();
 
-						glDrawElements(GL_TRIANGLES, tmpEBO[i].GetCount(), GL_UNSIGNED_INT, nullptr);
+						glDrawElements(GL_TRIANGLES, tmpEBO[j].GetCount(), GL_UNSIGNED_INT, nullptr);
 
-						tmpEBO[i].Unbind();
-						tmpVAO[i].Unbind();
-
-						glBindTexture(GL_TEXTURE0, 0);
-						glBindTexture(GL_TEXTURE1, 0);
+						tmpEBO[j].Unbind();
+						tmpVAO[j].Unbind();
+						glActiveTexture(GL_TEXTURE0);
 					}
 				}
 

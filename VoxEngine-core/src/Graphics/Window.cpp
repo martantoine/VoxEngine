@@ -1,7 +1,9 @@
 #include "Window.h"
 
-namespace VoxEngine {
-	namespace Graphics {
+namespace VoxEngine
+{
+	namespace Graphics
+	{
 
 		void window_size_callback(GLFWwindow* window, int width, int height);
 		void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
@@ -45,7 +47,10 @@ namespace VoxEngine {
 			glEnable(GL_DEPTH_TEST);
 			glClearColor(0.0f, 0.0f, 0.1f, 1.0f);
 			glfwSetCursorPos(m_Window, 0.0f, 0.0f);
-		
+
+			glCullFace(GL_BACK);
+			glEnable(GL_CULL_FACE);
+
 			m_LastTime = glfwGetTime();
 			m_Frame = 0;
 		}

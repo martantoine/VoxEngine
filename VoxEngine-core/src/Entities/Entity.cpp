@@ -14,6 +14,20 @@ namespace VoxEngine
 			m_gTranslation = glm::mat4(1.0f);
 		}
 
+		Entity::Entity(glm::vec3 position)
+		{
+			m_gScale = glm::mat4(1.0f);
+			m_gRotation = glm::mat4(1.0f);
+			m_gTranslation = glm::translate(glm::mat4(1.0f), position);
+		}
+
+		Entity::Entity(glm::vec3 position, float angle, glm::vec3 axis)
+		{
+			m_gScale = glm::mat4(1.0f);
+			m_gRotation = glm::rotate(glm::mat4(1.0f), glm::radians(angle), axis);
+			m_gTranslation = glm::translate(glm::mat4(1.0f), position);
+		}
+
 
 
 		//-------------------------------------------------------------------------------//

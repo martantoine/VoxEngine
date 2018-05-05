@@ -4,6 +4,7 @@
 #include "../../../Graphics/Buffers/Buffers.h"
 #include "../../../Materials/Material.h"
 #include "../EntityComponent.h"
+#include "Models\Mesh.h"
 
 namespace VoxEngine
 {
@@ -28,8 +29,12 @@ namespace VoxEngine
 			//Buffers
 			Graphics::VAO* GetVAO() const;
 			Graphics::EBO* GetEBO() const;
-
-			Graphics::Texture* GetTexture() const {}
+			virtual Graphics::Texture GetTexture(int mesh, int texture)
+			{ return Graphics::Texture(); }
+			virtual Mesh GetMesh(int i) 
+			{
+				return Mesh();
+			}
 			bool isTextured() const;
 
 			//Miscs

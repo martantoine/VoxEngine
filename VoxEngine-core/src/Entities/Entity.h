@@ -21,6 +21,8 @@ namespace VoxEngine
 		public:
 			//Constructors
 			Entity();
+			Entity(glm::vec3 position);
+			Entity(glm::vec3 position, float angle, glm::vec3 axis);
 
 			//Miscs
 			void AddComponent(std::string name, EntityComponent& component);

@@ -26,7 +26,7 @@ namespace VoxEngine
 			//Transformations
 			glm::mat4 GetTransformation() const;
 			///Translation
-			glm::mat4 GetPosition() const;
+			glm::vec3 GetPosition();
 			void SetPosition(glm::vec3 position);
 			void Move(glm::vec3 offset);
 			///Rotation
