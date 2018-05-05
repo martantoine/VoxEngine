@@ -19,7 +19,7 @@ namespace VoxEngine
 			
 			bool Load(const char* path)
 			{
-				data = stbi_load(path, &width, &height, nullptr, 0);
+				data = stbi_load(path, &width, &height, &componentsNbr, 0);
 				if (!data)
 				{
 					std::cout << "ERROR::ASSIMP::Failed to load a texture at " << path << " !\n";
@@ -30,7 +30,7 @@ namespace VoxEngine
 		
 			
 			GLubyte* data;
-			int width, height;
+			int width, height, componentsNbr;
 		};
 
 	}

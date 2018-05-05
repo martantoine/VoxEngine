@@ -24,34 +24,35 @@ namespace VoxEngine
 				VEEntity::Entity* entity = m_EntityQueue.front();
 				std::vector<std::string> listName = entity->GetEntityComponentsList(VEEntity::EntityComponentType::GRAPHIC);
 
-				for (int i(0); i < listName.size(); i++)
+				for (int ECOffset(0); ECOffset < listName.size(); ECOffset++)
 				{
-					VEEntity::Renderable* renderable = entity->GetComponent(listName[i]);
+					VEEntity::Renderable* renderable = entity->GetComponent(listName[ECOffset]);
 
-					for (int j(0); j < renderable->GetMeshesNumber(); j++)
+					for (int MeshOffset(0); MeshOffset < renderable->GetMeshesNumber(); MeshOffset++)
 					{
-						m_Shader->SetUniformMat4("model", entity->GetTransformation() * renderable->GetTransformation());
-
-						for (int x(0); x < renderable->GetMesh(j).m_Textures.size(); x++)
+						for (int TextureOffset(0); TextureOffset < renderable->GetMesh(MeshOffset).m_Textures.size(); TextureOffset++)
 						{
-							glActiveTexture(GL_TEXTURE0 + x);
-							std::string a = renderable->GetMesh(j).m_Textures[x].GetType().c_str();
-							a += '1';
-							const char* b = a.c_str();
-							renderable->GetTexture(j, x).Bind();
-							m_Shader->SetUniformTexture(b, renderable->GetMesh(j).m_Textures[x].GetTextureID());
+							std::string typeStr = renderable->GetMesh(MeshOffset).m_Textures[TextureOffset].GetType().c_str();
+							typeStr += std::to_string(TextureOffset + 1);
+							const char* typeChar = typeStr.c_str();
+
+							glActiveTexture(GL_TEXTURE0 + TextureOffset);
+							m_Shader->SetUniformTexture("texture_diffuse1", TextureOffset);
+							renderable->GetMesh(MeshOffset).m_Textures[TextureOffset].Bind();
+							//renderable->GetTexture(MeshOffset, TextureOffset).Bind();
 						}
 
+						m_Shader->SetUniformMat4("model", entity->GetTransformation() * renderable->GetTransformation());
 						VAO* tmpVAO = renderable->GetVAO();
 						EBO* tmpEBO = renderable->GetEBO();
 
-						tmpVAO[j].Bind();	
-						tmpEBO[j].Bind();
+						tmpVAO[MeshOffset].Bind();	
+						tmpEBO[MeshOffset].Bind();
 
-						glDrawElements(GL_TRIANGLES, tmpEBO[j].GetCount(), GL_UNSIGNED_INT, nullptr);
+						glDrawElements(GL_TRIANGLES, tmpEBO[MeshOffset].GetCount(), GL_UNSIGNED_INT, nullptr);
 
-						tmpEBO[j].Unbind();
-						tmpVAO[j].Unbind();
+						tmpEBO[MeshOffset].Unbind();
+						tmpVAO[MeshOffset].Unbind();
 						glActiveTexture(GL_TEXTURE0);
 					}
 				}

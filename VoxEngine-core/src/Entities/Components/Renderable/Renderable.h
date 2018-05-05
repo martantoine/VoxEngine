@@ -45,6 +45,7 @@ namespace VoxEngine
 			Graphics::EBO* m_EBO;
 			VertexData* m_Vertices;
 
+			std::vector<Graphics::Texture> textures_loaded;
 			Graphics::Material* m_Material;
 			bool m_Textured;
 		};

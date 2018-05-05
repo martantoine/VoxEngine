@@ -89,9 +89,10 @@ namespace VoxEngine
 			m_VAO = new Graphics::VAO[meshesNbr];
 			m_EBO = new Graphics::EBO[meshesNbr];
 
+			///Creating VAO and VBOs for each meshes
 			for (GLuint i(0); i < meshesNbr; i++)
 			{
-				Graphics::VBO* vbo = new Graphics::VBO(&m_Meshes[i].m_Vertices[0].vertice, m_Meshes[i].m_Vertices.size(), 4);
+				Graphics::VBO* vbo = new Graphics::VBO(&m_Meshes[i].m_Vertices.data()->vertice, m_Meshes[i].m_Vertices.size(), 4);
 
 				m_VAO[i].ClearVBO();
 				m_VAO[i].AddVBO(vbo, 0, VERTEX);
@@ -101,7 +102,6 @@ namespace VoxEngine
 
 				m_EBO[i].CreateEBO(m_Meshes[i].m_Indices.data(), m_Meshes[i].m_Indices.size());
 			}
-			std::cout << "size textures : " << m_Textures.size() << std::endl;
 		}
 
 
@@ -120,10 +120,13 @@ namespace VoxEngine
 
 		Mesh Model::processMesh(aiMesh *mesh, const aiScene *scene)
 		{
+			//Variables
 			std::vector<VertexData> vertices;
+			std::vector<GLuint> indices;
+			std::vector<Graphics::Texture> textures;
 
 			//VertexData processing
-			for (unsigned int i = 0; i < mesh->mNumVertices; i++)
+			for (unsigned int i(0); i < mesh->mNumVertices; i++)
 			{
 				VertexData vertex;
 				glm::vec3 vector;
@@ -153,7 +156,6 @@ namespace VoxEngine
 			}
 			
 			//Indices processing
-			std::vector<GLuint> indices;
 			for (GLuint i(0); i < mesh->mNumFaces; i++)
 			{
 				aiFace face = mesh->mFaces[i];
@@ -161,35 +163,36 @@ namespace VoxEngine
 					indices.push_back(face.mIndices[j]);
 			}
 
-
 			//Materials processing
-			std::vector<Graphics::Texture> tex;
-			if (mesh->mMaterialIndex >= 0)
+			if (mesh->mMaterialIndex >= 0) //Check if the mesh has material(s)
 			{
 				aiMaterial *material = scene->mMaterials[mesh->mMaterialIndex];
-				std::vector<Graphics::Texture> diffuseMaps = loadMaterialTextures(material,
-					aiTextureType_DIFFUSE, "texture_diffuse");
-				tex.insert(tex.end(), diffuseMaps.begin(), diffuseMaps.end());
-				std::vector<Graphics::Texture> specularMaps = loadMaterialTextures(material,
-					aiTextureType_SPECULAR, "texture_specular");
-				tex.insert(tex.end(), specularMaps.begin(), specularMaps.end());
+				std::vector<Graphics::Texture> diffuseMaps = loadMaterialTextures(material,	aiTextureType_DIFFUSE, "texture_diffuse");
+				textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
+
+				std::vector<Graphics::Texture> specularMaps = loadMaterialTextures(material, aiTextureType_SPECULAR, "texture_specular");
+				textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
 			}
-			m_Textures.insert(m_Textures.end(), tex.begin(), tex.end());
-			return Mesh(vertices, indices, tex);
+
+			return Mesh(vertices, indices, textures);
 		}
 
 		std::vector<Graphics::Texture> Model::loadMaterialTextures(aiMaterial *mat, aiTextureType type, std::string typeName)
 		{
 			std::vector<Graphics::Texture> textures;
+
 			for (unsigned int i(0); i < mat->GetTextureCount(type); i++)
 			{
-				aiString str;
-				mat->GetTexture(type, i, &str);
-				std::string name = str.C_Str();
-				Graphics::Image image(name.c_str());
+				aiString pathAi;
+				mat->GetTexture(type, i, &pathAi);
+
+				std::string path = pathAi.C_Str();
+
+				Graphics::Image image(path.c_str());
 				Graphics::Texture texture(image);
 				texture.SetType(typeName);
-				texture.SetPath(name);
+				texture.SetPath(path);
+
 				textures.push_back(texture);
 			}
 			return textures;

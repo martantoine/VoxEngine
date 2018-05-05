@@ -61,11 +61,9 @@ int main()
 	LightingShader.SetUniformLocation("model");
 	LightingShader.SetUniformLocation("view");
 	///Fragment uniforms 
-	LightingShader.SetUniformLocation("texture_diffuse1");
-	LightingShader.SetUniformLocation("texture_specular1");
-	//LightingShader.SetUniformLocation("material.diffuse");
-	//LightingShader.SetUniformLocation("material.specular");
-	//LightingShader.SetUniformLocation("material.shininess");
+	LightingShader.SetUniformLocation("diffuse");
+	LightingShader.SetUniformLocation("specular");
+	LightingShader.SetUniformLocation("shininess");
 	LightingShader.SetUniformLocation("light.position");
 	LightingShader.SetUniformLocation("light.ambient");
 	LightingShader.SetUniformLocation("light.diffuse");
@@ -78,7 +76,7 @@ int main()
 	LightingShader.SetUniformMat4("view", cam.GetView());
 
 	///Fragment uniforms assign
-	//LightingShader.SetUniform1("material.shininess", material.shininess);
+	LightingShader.SetUniform1("shininess", material.shininess);
 	LightingShader.SetUniform3("light.position", c_Light.GetPosition());
 	LightingShader.SetUniform3("light.ambient", c_Light.GetAmbient());
 	LightingShader.SetUniform3("light.diffuse", c_Light.GetDiffuse());
@@ -130,7 +128,7 @@ int main()
 			glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
 		else if(window.GetKey(GLFW_KEY_I))
 			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-		//LightingShader.SetUniform1("material.shininess", material.shininess);
+		LightingShader.SetUniform1("shininess", material.shininess);
 
 		///Window
 		if (window.GetKey(GLFW_KEY_ESCAPE))
