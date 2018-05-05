@@ -28,23 +28,15 @@ int main()
 
 	//Lighting
 	Entity e_Light;
-	PointLight c_Light(vec3(0.0f, -1.0f, 0.0f));
-	c_Light.SetParameters(vec3(2.0f, 0.7f, 0.7f), vec3(0.5f, 0.5f, 0.5f), vec3(0.0f, 0.0f, 0.0f));
+	PointLight c_Light(vec3(1.0f, 1.0f, 1.0f));
+	c_Light.SetParameters(vec3(0.0f, 0.0f, 0.0f), vec3(5.0f, 5.0f, 5.0f), vec3(0.5f, 0.5f, 0.5f));
 	e_Light.AddComponent("light 1", c_Light);
-	
-
-	//Materials
-	Image i_diffuse("diffuse.jpg");
-	Texture t_diffuse(i_diffuse);
-	Image i_specular("specular.jpg");
-	Texture t_specular(i_specular);
-	Material material(&t_diffuse, &t_specular, 32.0f);
 
 
 	//Objects
 	///Model
 	Entity e_model(vec3(0.0f, 0.0f, 5.0f), 90.0f, vec3(1.0f, 0.0f, 0.0f));
-	Model model("nanosuit.obj");
+	Model model("bouche.stl");
 	e_model.AddComponent("nanosuit", model);
 
 
@@ -61,8 +53,8 @@ int main()
 	LightingShader.SetUniformLocation("model");
 	LightingShader.SetUniformLocation("view");
 	///Fragment uniforms 
-	LightingShader.SetUniformLocation("diffuse");
-	LightingShader.SetUniformLocation("specular");
+	LightingShader.SetUniformLocation("texture_diffuse1");
+	LightingShader.SetUniformLocation("texture_specular1");
 	LightingShader.SetUniformLocation("shininess");
 	LightingShader.SetUniformLocation("light.position");
 	LightingShader.SetUniformLocation("light.ambient");
@@ -76,8 +68,8 @@ int main()
 	LightingShader.SetUniformMat4("view", cam.GetView());
 
 	///Fragment uniforms assign
-	LightingShader.SetUniform1("shininess", material.shininess);
-	LightingShader.SetUniform3("light.position", c_Light.GetPosition());
+	LightingShader.SetUniform1("shininess", 32);
+	LightingShader.SetUniform3("light.position", vec3(0.0f, -50.0f, 50.0f));
 	LightingShader.SetUniform3("light.ambient", c_Light.GetAmbient());
 	LightingShader.SetUniform3("light.diffuse", c_Light.GetDiffuse());
 	LightingShader.SetUniform3("light.specular", c_Light.GetSpecular());
@@ -120,15 +112,15 @@ int main()
 		else if (window.GetKey(GLFW_KEY_LEFT))
 			e_model.Move(vec3(-0.05f, 0.0f, 0.0f));
 		///Shader
-		if (window.GetKey(GLFW_KEY_KP_SUBTRACT))
+		/*if (window.GetKey(GLFW_KEY_KP_SUBTRACT))
 			material.shininess -= material.shininess / 10.0f;
 		else if (window.GetKey(GLFW_KEY_KP_ADD))
-			material.shininess += material.shininess / 10.0f;
+			material.shininess += material.shininess / 10.0f;*/
 		else if(window.GetKey(GLFW_KEY_U))
-			glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
+			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		else if(window.GetKey(GLFW_KEY_I))
 			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-		LightingShader.SetUniform1("shininess", material.shininess);
+		//LightingShader.SetUniform1("shininess", material.shininess);
 
 		///Window
 		if (window.GetKey(GLFW_KEY_ESCAPE))

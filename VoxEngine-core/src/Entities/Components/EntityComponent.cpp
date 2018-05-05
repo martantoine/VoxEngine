@@ -51,7 +51,7 @@ namespace VoxEngine
 		///Translatio
 		glm::vec3 EntityComponent::GetPosition()
 		{
-			return glm::vec3(m_lTranslation[3][0], m_lTranslation[3][1], m_lTranslation[3][1]);
+			return glm::vec3(m_lTranslation[0][3], m_lTranslation[1][3], m_lTranslation[2][3]);
 		}
 
 		void EntityComponent::SetPosition(glm::vec3 position)

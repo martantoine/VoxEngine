@@ -185,15 +185,28 @@ namespace VoxEngine
 			{
 				aiString pathAi;
 				mat->GetTexture(type, i, &pathAi);
-
 				std::string path = pathAi.C_Str();
+				bool skip(false);
 
-				Graphics::Image image(path.c_str());
-				Graphics::Texture texture(image);
-				texture.SetType(typeName);
-				texture.SetPath(path);
+				for (int TLOffset(0); TLOffset < textures_loaded.size(); TLOffset++)
+				{
+					if (std::strcmp(textures_loaded[TLOffset].GetPath().data(), pathAi.C_Str()) == 0)
+					{
+						textures.push_back(textures_loaded[TLOffset]);
+						skip = true;
+						break;
+					}
+				}
+				if (!skip)
+				{
+					Graphics::Image image(path.c_str());
+					Graphics::Texture texture(image);
+					texture.SetType(typeName);
+					texture.SetPath(path);
 
-				textures.push_back(texture);
+					textures_loaded.push_back(texture);
+					textures.push_back(texture);
+				}
 			}
 			return textures;
 		}

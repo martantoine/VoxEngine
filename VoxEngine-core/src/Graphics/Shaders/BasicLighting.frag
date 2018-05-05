@@ -12,9 +12,7 @@ struct Light
 uniform int shininess;
 
 uniform sampler2D texture_diffuse1;
-uniform sampler2D texture_diffuse2;
 uniform sampler2D texture_specular1;
-uniform sampler2D texture_specular2;
 
 uniform Light light;
 uniform vec3 viewPosition;
@@ -37,19 +35,18 @@ void main()
 	vec3 lightDir = normalize(light.position - fs_in.position);
 
 	//Ambient lighting
-	vec3 AmbientLighting = light.ambient * vec3(mix(texture(texture_diffuse1, fs_in.textureCoord), texture(texture_diffuse2, fs_in.textureCoord), 0.5));
+	vec3 AmbientLighting = light.ambient * vec3(texture(texture_diffuse1, fs_in.textureCoord));
 
 	//Diffuse lighting
 	float diffuseStrenght = max(dot(normal, lightDir), 0.0);
-	vec3 DiffuseLighting = diffuseStrenght * vec3(mix(texture(texture_diffuse1, fs_in.textureCoord), texture(texture_diffuse2, fs_in.textureCoord), 0.5));
-
+	vec3 DiffuseLighting = diffuseStrenght * vec3(texture(texture_diffuse1, fs_in.textureCoord));
 	//Specular lighting
 	vec3 viewDir = normalize(viewPosition - fs_in.position);
 	vec3 reflectDir = reflect(-lightDir, normal);
-	float spec = pow(max(dot(viewDir, reflectDir), 0.0), shininess);
-	vec3 SpecularLighting = spec * light.specular * vec3(mix(texture(texture_specular1, fs_in.textureCoord), texture(texture_specular2, fs_in.textureCoord), 0.5));
-
+	float spec = pow(max(dot(viewDir, reflectDir), 0.0), 128);
+	vec3 SpecularLighting = spec * light.specular * vec3(texture(texture_specular1, fs_in.textureCoord));
 	
-	Result = vec4(SpecularLighting + AmbientLighting + DiffuseLighting, 1.0f) * fs_in.color;
-	//Result = texture(texture_specular, fs_in.textureCoord);
+	
+	Result = vec4(DiffuseLighting + AmbientLighting + SpecularLighting, 1.0f) * fs_in.color;
+	//Result = texture(texture_specular1, fs_in.textureCoord) * fs_in.color;
 }
