@@ -1,5 +1,6 @@
 #pragma once
 
+#include <GL/glew.h>
 #include <vector>
 #include "../../../../Graphics/Buffers/Vertex.h"
 #include "../../../../Graphics/Buffers/Texture.h"
@@ -12,15 +13,16 @@ namespace VoxEngine
 		struct Mesh
 		{
 			Mesh() {}
-			Mesh(std::vector<VertexData> vertices, std::vector<unsigned int> indices, std::vector<Graphics::Texture> textures)
+			Mesh(std::vector<VertexData> vertices, std::vector<GLuint> indices, std::vector<Graphics::Texture> textures)
 			{
 				m_Vertices = vertices;
 				m_Indices = indices;
 				m_Textures = textures;
 			}
 
+
 			std::vector<VertexData> m_Vertices;
-			std::vector<unsigned int> m_Indices;
+			std::vector<GLuint> m_Indices;
 			std::vector<Graphics::Texture> m_Textures;
 		};
 

@@ -39,7 +39,7 @@ namespace VoxEngine
 							a += '1';
 							const char* b = a.c_str();
 							renderable->GetTexture(j, x).Bind();
-							m_Shader->SetUniformTexture(b, renderable->GetMesh(j).m_Textures[x].GetID());
+							m_Shader->SetUniformTexture(b, renderable->GetMesh(j).m_Textures[x].GetTextureID());
 						}
 
 						VAO* tmpVAO = renderable->GetVAO();

@@ -79,8 +79,9 @@ namespace VoxEngine
 				std::cout << "ERROR::ASSIMP::" << import.GetErrorString() << std::endl;
 				return;
 			}
+
 			std::string path(modelPath);
-			m_Directory = path;
+			m_Directory = path.substr(0, path.find_last_of('/'));
 			processNode(scene->mRootNode, scene);
 
 

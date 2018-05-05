@@ -1,8 +1,8 @@
 #pragma once
 
-#include <GL\glew.h>
-#include "../Buffers/Image.h"
+#include <GL/glew.h>
 #include <string>
+#include "../Buffers/Image.h"
 
 namespace VoxEngine
 {
@@ -12,29 +12,34 @@ namespace VoxEngine
 		class Texture
 		{
 		public:
-			Texture() {}
+			//Constructors
+			Texture();
 			Texture(Image& image);
-			void SetID(Image& image);
+			
+			//Initializer
+			void SetImage(Image& image);
 
-			unsigned int GetID() { return *m_Texture; }
-			void SetType(std::string type) { m_Type = type; }
-			void SetPath(std::string path) { m_Path = path; }
-
-			std::string GetName() { return m_Path; }
-			std::string GetType() { return m_Type; }
-
+			//Binding functions
 			void Bind();
 			void Unbind();
-			
-			int GetWidth() { return m_Image->width; }
-			int GetHeight() { return m_Image->height; }
+
+			//Set functions
+			void SetType(std::string type);
+			void SetPath(std::string path);
+			void SetName(std::string name);
+
+			//Get functions
+			GLuint GetWidth() const;
+			GLuint GetHeight() const;
+			std::string GetType() const;
+			std::string GetPath() const;
+			std::string GetName() const;
+			GLuint& GetTextureID() const;
 
 		private:
 			GLuint* m_Texture;
-			Image* m_Image;
-
-			std::string m_Type;
-			std::string m_Path;
+			GLuint m_Width, m_Height;
+			std::string m_Type, m_Path, m_Name;
 		};
 
 	}

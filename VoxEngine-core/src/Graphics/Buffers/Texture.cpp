@@ -1,16 +1,32 @@
 #include "Texture.h"
 
-namespace VoxEngine {
-	namespace Graphics {
+namespace VoxEngine
+{
+	namespace Graphics
+	{
 
+		//--------------------------------------------------------------------------------//
+		//**********************************Constructors**********************************//
+		//--------------------------------------------------------------------------------//	
+		Texture::Texture()
+		{
+		}
+		
 		Texture::Texture(Image& image)
 		{
-			SetID(image);
+			SetImage(image);
 		}
 
-		void Texture::SetID(Image& image)
+
+
+		//--------------------------------------------------------------------------------//
+		//***********************************Initializer**********************************//
+		//--------------------------------------------------------------------------------//	
+		void Texture::SetImage(Image& image)
 		{
-			m_Image = &image;
+			m_Width = image.width;
+			m_Height = image.height;
+
 			m_Texture = new GLuint;
 			glGenTextures(1, m_Texture);
 			Bind();
@@ -19,13 +35,19 @@ namespace VoxEngine {
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
 			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, image.width, image.height, 0, GL_RGB, GL_UNSIGNED_BYTE, image.data);
 			glGenerateMipmap(GL_TEXTURE_2D);
+
 			Unbind();
+			
 			stbi_image_free(image.data);
 		}
 
+
+
+		//--------------------------------------------------------------------------------//
+		//*******************************Binding functionns*******************************//
+		//--------------------------------------------------------------------------------//
 		void Texture::Bind()
 		{
 			glBindTexture(GL_TEXTURE_2D, *m_Texture);
@@ -34,6 +56,61 @@ namespace VoxEngine {
 		void Texture::Unbind()
 		{
 			glBindTexture(GL_TEXTURE_2D, 0);
+		}
+
+
+
+		//--------------------------------------------------------------------------------//
+		//**********************************Set functions*********************************//
+		//--------------------------------------------------------------------------------//
+		void Texture::SetType(std::string type)
+		{ 
+			m_Type = type; 
+		}
+
+		void Texture::SetPath(std::string path)
+		{ 
+			m_Path = path; 
+		}
+
+		void Texture::SetName(std::string name)
+		{
+			m_Name = name;
+		}
+
+
+
+		//--------------------------------------------------------------------------------//
+		//**********************************Get functions*********************************//
+		//--------------------------------------------------------------------------------//
+		GLuint Texture::GetWidth() const
+		{
+			return m_Width;
+		}
+
+		GLuint Texture::GetHeight() const
+		{
+			return m_Height;
+		}
+
+		std::string Texture::GetType() const
+		{ 
+			return m_Type; 
+		}
+
+		std::string Texture::GetPath() const
+		{ 
+			return m_Path; 
+		}
+
+		std::string Texture::GetName() const
+		{
+			return m_Name;
+		}
+
+		GLuint& Texture::GetTextureID() const
+		{
+			return *m_Texture;
 		}
 
 	}
