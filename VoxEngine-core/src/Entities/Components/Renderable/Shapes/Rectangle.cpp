@@ -23,6 +23,7 @@ namespace VoxEngine
 			m_lTranslation = glm::mat4(1.0f);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 			m_VAO = new VEGraphics::VAO();
 			InitGeometry();
 			m_EBO = new VEGraphics::EBO(m_Indices, 6);
@@ -31,6 +32,11 @@ namespace VoxEngine
 			InitGeometry();
 			m_EBO = new Graphics::EBO(m_Indices, 6);
 >>>>>>> parent of aa0b869... Save before renderable update
+=======
+			m_VAO = new Graphics::VAO();
+			Init();
+			m_EBO = new Graphics::EBO(m_Indices, 6);
+>>>>>>> parent of cb7fd7a... Test
 		}
 
 		Rectangle::Rectangle(glm::vec3 position, glm::vec2 size, float angle, glm::vec3 axis, glm::vec3 color)
@@ -48,6 +54,7 @@ namespace VoxEngine
 			m_lRotation = glm::rotate(glm::mat4(1.0f), glm::radians(-angle), axis);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 			m_VAO = new VEGraphics::VAO();
 			InitGeometry();
 			m_EBO = new VEGraphics::EBO(m_Indices, 6);
@@ -56,6 +63,11 @@ namespace VoxEngine
 			InitGeometry();
 			m_EBO = new Graphics::EBO(m_Indices, 6);
 >>>>>>> parent of aa0b869... Save before renderable update
+=======
+			m_VAO = new Graphics::VAO();
+			Init();
+			m_EBO = new Graphics::EBO(m_Indices, 6);
+>>>>>>> parent of cb7fd7a... Test
 		}
 		
 
@@ -63,7 +75,7 @@ namespace VoxEngine
 		//-------------------------------------------------------------------------------//
 		//**************************EntityComponent's function***************************//
 		//-------------------------------------------------------------------------------//
-		void Rectangle::InitGeometry()
+		void Rectangle::Init()
 		{
 			///Initial vertex's position
 			m_Vertices[0].vertice = glm::vec3(0.0f, m_Size.y, 0.0f);
@@ -92,7 +104,7 @@ namespace VoxEngine
 			m_Indices[5] = 0;
 
 			///Send data to buffers
-			VEGraphics::VBO* vbo = new VEGraphics::VBO(&m_Vertices->vertice, 4, 4);
+			Graphics::VBO* vbo = new Graphics::VBO(&m_Vertices->vertice, 4, 4);
 			m_VAO->ClearVBO();
 			m_VAO->AddVBO(vbo, 0, VERTEX);
 			m_VAO->AddVBO(vbo, 1, NORMAL);
@@ -101,14 +113,14 @@ namespace VoxEngine
 				m_VAO->AddVBO(vbo, 3, TEXTURE);
 		}
 		
-		void Rectangle::AddTexture(VEGraphics::MATERIAL_TEXTURE type)
+		void Rectangle::AddTexture(Graphics::MATERIAL_TEXTURE type)
 		{
 			m_Textured = true;
 			glm::vec2 positionFloat;
 
-			if (type == VEGraphics::MATERIAL_TEXTURE::DIFFUSE)
+			if (type == Graphics::MATERIAL_TEXTURE::DIFFUSE)
 				positionFloat = glm::vec2(0.0f / m_Material->diffuse->GetWidth(), 0.0f / m_Material->diffuse->GetHeight());
-			else if (type == VEGraphics::MATERIAL_TEXTURE::SPECULAR)
+			else if (type == Graphics::MATERIAL_TEXTURE::SPECULAR)
 				positionFloat = glm::vec2(0.0f / m_Material->specular->GetWidth(), 0.0f / m_Material->specular->GetHeight());
 
 			m_Vertices[0].texCoord = positionFloat;
@@ -116,15 +128,15 @@ namespace VoxEngine
 			m_Vertices[2].texCoord = positionFloat + glm::vec2(1.0f, 1.0f);
 			m_Vertices[3].texCoord = positionFloat + glm::vec2(0.0f, 1.0f);
 
-			InitGeometry();
+			Init();
 		}
 
-		void Rectangle::AddTexture(VEGraphics::MATERIAL_TEXTURE type, glm::vec2 position, glm::vec2 size)
+		void Rectangle::AddTexture(Graphics::MATERIAL_TEXTURE type, glm::vec2 position, glm::vec2 size)
 		{
 			m_Textured = true;
 			glm::vec2 positionFloat;
 			
-			if (type == VEGraphics::MATERIAL_TEXTURE::DIFFUSE)
+			if (type == Graphics::MATERIAL_TEXTURE::DIFFUSE)
 			{
 				positionFloat = glm::vec2(position.x / m_Material->diffuse->GetWidth(), position.y / m_Material->diffuse->GetHeight());
 				m_Vertices[0].texCoord = positionFloat;
@@ -132,7 +144,7 @@ namespace VoxEngine
 				m_Vertices[2].texCoord = positionFloat + glm::vec2(size.x / m_Material->diffuse->GetWidth(), size.y / m_Material->diffuse->GetHeight());
 				m_Vertices[3].texCoord = positionFloat + glm::vec2(0.0f, size.y / m_Material->diffuse->GetHeight());
 			}
-			else if (type == VEGraphics::MATERIAL_TEXTURE::SPECULAR)
+			else if (type == Graphics::MATERIAL_TEXTURE::SPECULAR)
 			{
 				positionFloat = glm::vec2(position.x / m_Material->specular->GetWidth(), position.y / m_Material->specular->GetHeight());
 				m_Vertices[0].texCoord = positionFloat;
@@ -142,10 +154,14 @@ namespace VoxEngine
 			}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> parent of aa0b869... Save before renderable update
 			InitGeometry();
+=======
+			Init();
+>>>>>>> parent of cb7fd7a... Test
 		}
 
 	}

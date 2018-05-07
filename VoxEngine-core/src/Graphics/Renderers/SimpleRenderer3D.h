@@ -7,15 +7,19 @@
 #include "../Shaders/Shader.h"
 #include "../../Entities/Entity.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include "../../Entities/Components/Renderable/Models/Model.h"
 =======
 #include "../../Entities/Components/Renderable/Renderable.h"
 #include <iostream>
 >>>>>>> parent of aa0b869... Save before renderable update
+=======
+#include "../../Entities/Components/Renderable/Renderable.h"
+>>>>>>> parent of cb7fd7a... Test
 
 namespace VoxEngine
 {
-	namespace VEGraphics
+	namespace Graphics
 	{
 
 		class SimpleRenderer3D

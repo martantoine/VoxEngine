@@ -20,13 +20,14 @@ namespace VoxEngine
 			Renderable(glm::vec3 position, float angle, glm::vec3 axis);
 
 			//Geometry initialize
-			virtual void InitGeometry(const char* modelPath) = 0;
+			virtual void Init(const char* modelPath) = 0;
 
-			//Materials 2D
-			void AddMaterial(VEGraphics::Material& material);
-			VEGraphics::Material& GetMaterial() const;
+			//Materials
+			void AddMaterial(Graphics::Material& material);
+			Graphics::Material& GetMaterial() const;
 
 			//Buffers
+<<<<<<< HEAD
 <<<<<<< HEAD
 			VEGraphics::VAO* GetVAO() const;
 			VEGraphics::EBO* GetEBO() const;
@@ -40,12 +41,19 @@ namespace VoxEngine
 				return Mesh();
 			}
 >>>>>>> parent of aa0b869... Save before renderable update
+=======
+			Graphics::VAO* GetVAO() const;
+			Graphics::EBO* GetEBO() const;
+			virtual Mesh& GetMesh(int i) = 0;
+			virtual int GetMeshesNbr() = 0;
+>>>>>>> parent of cb7fd7a... Test
 			bool isTextured() const;
 
 			//Miscs
 			virtual unsigned int GetMeshesNumber() { return 0; }
 
 		protected:
+<<<<<<< HEAD
 <<<<<<< HEAD
 			VEGraphics::VAO* m_VAO;
 			VEGraphics::EBO* m_EBO;
@@ -54,9 +62,13 @@ namespace VoxEngine
 			Graphics::EBO* m_EBO;
 			VertexData* m_Vertices;
 >>>>>>> parent of aa0b869... Save before renderable update
+=======
+			Graphics::VAO* m_VAO;
+			Graphics::EBO* m_EBO;
+>>>>>>> parent of cb7fd7a... Test
 
-			std::vector<VEGraphics::Texture> textures_loaded;
-			VEGraphics::Material* m_Material;
+			std::vector<Graphics::Texture> textures_loaded;
+			Graphics::Material* m_Material;
 			bool m_Textured;
 		};
 

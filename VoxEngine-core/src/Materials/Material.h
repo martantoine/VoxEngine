@@ -5,7 +5,7 @@
 
 namespace VoxEngine
 {
-	namespace VEGraphics
+	namespace Graphics
 	{
 
 		enum MATERIAL_TEXTURE { DIFFUSE, SPECULAR };
@@ -15,11 +15,11 @@ namespace VoxEngine
 			//Functions
 			///Constructors
 			Material() {}
-			Material(VEGraphics::Texture* diffuse, VEGraphics::Texture* specular, float shininess)
+			Material(Graphics::Texture* diffuse, Graphics::Texture* specular, float shininess)
 				: diffuse(diffuse), specular(specular), shininess(shininess) {}
 
 			///Miscs
-			void SetParameters(VEGraphics::Texture* Diffuse, VEGraphics::Texture* Specular, float Shininess)
+			void SetParameters(Graphics::Texture* Diffuse, Graphics::Texture* Specular, float Shininess)
 			{
 				diffuse = Diffuse;
 				specular = Specular;
@@ -28,8 +28,8 @@ namespace VoxEngine
 
 
 			//Variables
-			VEGraphics::Texture* diffuse;
-			VEGraphics::Texture* specular;
+			Graphics::Texture* diffuse;
+			Graphics::Texture* specular;
 			float shininess;
 		};
 

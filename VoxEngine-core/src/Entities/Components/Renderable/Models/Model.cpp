@@ -20,7 +20,7 @@ namespace VoxEngine
 			m_lTranslation = glm::mat4(1.0f);
 			
 			///Load the model
-			InitGeometry(modelPath);
+			Init(modelPath);
 		}
 
 		Model::Model(const char* modelPath, glm::vec3 position)
@@ -35,7 +35,7 @@ namespace VoxEngine
 			m_lTranslation = glm::translate(glm::mat4(1.0f), position);
 
 			///Load the model
-			InitGeometry(modelPath);
+			Init(modelPath);
 		}
 
 		Model::Model(const char* modelPath, glm::vec3 position, float angle, glm::vec3 axis)
@@ -50,7 +50,7 @@ namespace VoxEngine
 			m_lTranslation = glm::translate(glm::mat4(1.0f), position);
 
 			///Load the model
-			InitGeometry(modelPath);
+			Init(modelPath);
 		}
 
 
@@ -68,7 +68,7 @@ namespace VoxEngine
 		//-------------------------------------------------------------------------------//
 		//*****************************Geometry initialize*******************************//
 		//-------------------------------------------------------------------------------//
-		void Model::InitGeometry(const char* modelPath)
+		void Model::Init(const char* modelPath)
 		{
 			///Loading scene
 			Assimp::Importer import;
@@ -86,13 +86,13 @@ namespace VoxEngine
 
 
 			const GLuint meshesNbr = m_Meshes.size();
-			m_VAO = new VEGraphics::VAO[meshesNbr];
-			m_EBO = new VEGraphics::EBO[meshesNbr];
+			m_VAO = new Graphics::VAO[meshesNbr];
+			m_EBO = new Graphics::EBO[meshesNbr];
 
 			///Creating VAO and VBOs for each meshes
 			for (GLuint i(0); i < meshesNbr; i++)
 			{
-				VEGraphics::VBO* vbo = new VEGraphics::VBO(&m_Meshes[i].m_Vertices.data()->vertice, m_Meshes[i].m_Vertices.size(), 4);
+				Graphics::VBO* vbo = new Graphics::VBO(&m_Meshes[i].m_Vertices.data()->vertice, m_Meshes[i].m_Vertices.size(), 4);
 
 				m_VAO[i].ClearVBO();
 				m_VAO[i].AddVBO(vbo, 0, VERTEX);
@@ -123,7 +123,7 @@ namespace VoxEngine
 			//Variables
 			std::vector<VertexData> vertices;
 			std::vector<GLuint> indices;
-			std::vector<VEGraphics::Texture> textures;
+			std::vector<Graphics::Texture> textures;
 
 			//VertexData processing
 			for (unsigned int i(0); i < mesh->mNumVertices; i++)
@@ -167,19 +167,19 @@ namespace VoxEngine
 			if (mesh->mMaterialIndex >= 0) //Check if the mesh has material(s)
 			{
 				aiMaterial *material = scene->mMaterials[mesh->mMaterialIndex];
-				std::vector<VEGraphics::Texture> diffuseMaps = loadMaterialTextures(material,	aiTextureType_DIFFUSE, "texture_diffuse");
+				std::vector<Graphics::Texture> diffuseMaps = loadMaterialTextures(material,	aiTextureType_DIFFUSE, "texture_diffuse");
 				textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
 
-				std::vector<VEGraphics::Texture> specularMaps = loadMaterialTextures(material, aiTextureType_SPECULAR, "texture_specular");
+				std::vector<Graphics::Texture> specularMaps = loadMaterialTextures(material, aiTextureType_SPECULAR, "texture_specular");
 				textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
 			}
 
 			return Mesh(vertices, indices, textures);
 		}
 
-		std::vector<VEGraphics::Texture> Model::loadMaterialTextures(aiMaterial *mat, aiTextureType type, std::string typeName)
+		std::vector<Graphics::Texture> Model::loadMaterialTextures(aiMaterial *mat, aiTextureType type, std::string typeName)
 		{
-			std::vector<VEGraphics::Texture> textures;
+			std::vector<Graphics::Texture> textures;
 
 			for (unsigned int i(0); i < mat->GetTextureCount(type); i++)
 			{
@@ -199,8 +199,8 @@ namespace VoxEngine
 				}
 				if (!skip)
 				{
-					VEGraphics::Image image(path.c_str());
-					VEGraphics::Texture texture(image);
+					Graphics::Image image(path.c_str());
+					Graphics::Texture texture(image);
 					texture.SetType(typeName);
 					texture.SetPath(path);
 

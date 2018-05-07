@@ -13,7 +13,7 @@ namespace VoxEngine
 		struct Mesh
 		{
 			Mesh() {}
-			Mesh(std::vector<VertexData> vertices, std::vector<GLuint> indices, std::vector<VEGraphics::Texture> textures)
+			Mesh(std::vector<VertexData> vertices, std::vector<GLuint> indices, std::vector<Graphics::Texture> textures)
 			{
 				m_Vertices = vertices;
 				m_Indices = indices;
@@ -23,7 +23,7 @@ namespace VoxEngine
 
 			std::vector<VertexData> m_Vertices;
 			std::vector<GLuint> m_Indices;
-			std::vector<VEGraphics::Texture> m_Textures;
+			std::vector<Graphics::Texture> m_Textures;
 		};
 
 	}

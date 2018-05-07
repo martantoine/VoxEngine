@@ -14,7 +14,7 @@
 
 using namespace VoxEngine;
 using namespace VEEntity;
-using namespace VEGraphics;
+using namespace Graphics;
 using namespace glm;
 using namespace std;
 
@@ -47,7 +47,11 @@ int main()
 
 	//Shader
 <<<<<<< HEAD
+<<<<<<< HEAD
 	LightingShader shader("src/VEGraphics/Shaders/BasicLighting.vert", "src/VEGraphics/Shaders/BasicLighting.frag");
+=======
+	LightingShader shader("src/Graphics/Shaders/BasicLighting.vert", "src/Graphics/Shaders/BasicLighting.frag");
+>>>>>>> parent of cb7fd7a... Test
 	shader.SetUniformMat4("projection", cam.GetProjection());
 	shader.SetUniform3("light.position", c_Light.GetPosition());
 	shader.SetUniform3("light.ambient", c_Light.GetAmbient());

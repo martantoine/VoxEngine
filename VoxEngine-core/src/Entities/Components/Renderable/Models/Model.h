@@ -35,19 +35,24 @@ namespace VoxEngine
 
 			//Geometry initialize
 <<<<<<< HEAD
+<<<<<<< HEAD
 			void InitGeometry(const char* modelPath);
 =======
 			void Init(const char* modelPath);
 >>>>>>> parent of aa0b869... Save before renderable update
+=======
+			void Init(const char* modelPath = 0);
+>>>>>>> parent of cb7fd7a... Test
 			
 		private:
 			//Geometry initialize
 			void processNode(aiNode *node, const aiScene *scene);
 			Mesh processMesh(aiMesh *mesh, const aiScene *scene);
-			std::vector<VEGraphics::Texture> loadMaterialTextures(aiMaterial *mat, aiTextureType type, std::string typeName);
+			std::vector<Graphics::Texture> loadMaterialTextures(aiMaterial *mat, aiTextureType type, std::string typeName);
 
 		private:
 			std::vector<Mesh> m_Meshes;
+			std::vector<Graphics::Texture> m_Textures;
 			std::string m_Directory;
 		};
 

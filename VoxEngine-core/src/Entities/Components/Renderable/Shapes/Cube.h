@@ -15,7 +15,7 @@ namespace VoxEngine
 			Cube(glm::vec3 position, glm::vec3 size, float angle, glm::vec3 axis, glm::vec3 colors);
 
 			//EntityComponent's functions
-			void AddTexture(VEGraphics::MATERIAL_TEXTURE type);
+			void AddTexture(Graphics::MATERIAL_TEXTURE type);
 			void InitGeometry();
 
 		private:

@@ -2,7 +2,7 @@
 
 namespace VoxEngine
 {
-	namespace VEGraphics
+	namespace Graphics
 	{
 		//--------------------------------------------------------------------------------//
 		//**************************************Mics**************************************//
@@ -26,20 +26,24 @@ namespace VoxEngine
 
 				for (int ECOffset(0); ECOffset < listName.size(); ECOffset++)
 				{
-					VEEntity::Model* model = entity->GetComponent(listName[ECOffset]);
+					VEEntity::Renderable* renderable = entity->GetComponent(listName[ECOffset]);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 					for (int MeshOffset(0); MeshOffset < model->GetMeshesNbr(); MeshOffset++)
+=======
+					for (int MeshOffset(0); MeshOffset < renderable->GetMeshesNbr(); MeshOffset++)
+>>>>>>> parent of cb7fd7a... Test
 					{
 						///Bind Textures
 						GLuint diffuseNbr(1);
 						GLuint specularNbr(1);
-						if (model->GetMesh(MeshOffset).m_Textures.size() > 0)
+						if (renderable->GetMesh(MeshOffset).m_Textures.size() > 0)
 						{
-							for (GLuint TextureOffset(0); TextureOffset < model->GetMesh(MeshOffset).m_Textures.size(); TextureOffset++)
+							for (GLuint TextureOffset(0); TextureOffset < renderable->GetMesh(MeshOffset).m_Textures.size(); TextureOffset++)
 							{
 								GLuint number(0);
-								std::string typeStr = model->GetMesh(MeshOffset).m_Textures[TextureOffset].GetType().c_str();
+								std::string typeStr = renderable->GetMesh(MeshOffset).m_Textures[TextureOffset].GetType().c_str();
 								if (typeStr == "texture_diffuse")
 									number = (diffuseNbr++);
 								else if (typeStr == "texture_specular")
@@ -48,7 +52,7 @@ namespace VoxEngine
 
 								glActiveTexture(GL_TEXTURE0 + TextureOffset);
 								glUniform1i(glGetUniformLocation(m_Shader->GetShader(), typeStr.c_str()), TextureOffset);
-								model->GetMesh(MeshOffset).m_Textures[TextureOffset].Bind();
+								renderable->GetMesh(MeshOffset).m_Textures[TextureOffset].Bind();
 								m_Shader->SetUniform1("textured", true);
 							}
 =======
@@ -78,6 +82,7 @@ namespace VoxEngine
 						}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 						VAO* tmpVAO = model->GetVAO();
 						EBO* tmpEBO = model->GetEBO();
 =======
@@ -85,12 +90,20 @@ namespace VoxEngine
 						VAO* tmpVAO = renderable->GetVAO();
 						EBO* tmpEBO = renderable->GetEBO();
 >>>>>>> parent of aa0b869... Save before renderable update
+=======
+						VAO* tmpVAO = renderable->GetVAO();
+						EBO* tmpEBO = renderable->GetEBO();
+>>>>>>> parent of cb7fd7a... Test
 
 						tmpVAO[MeshOffset].Bind();	
 						tmpEBO[MeshOffset].Bind();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 						m_Shader->SetUniformMat4("model", entity->GetTransformation() * model->GetTransformation());
+=======
+						m_Shader->SetUniformMat4("model", entity->GetTransformation() * renderable->GetTransformation());
+>>>>>>> parent of cb7fd7a... Test
 						m_Shader->Bind();
 =======
 >>>>>>> parent of aa0b869... Save before renderable update

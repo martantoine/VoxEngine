@@ -38,19 +38,14 @@ namespace VoxEngine
 			m_EntityComponents[name] = component;
 		}
 
-		void Entity::AddComponent(std::string name, Renderable2D& component)
+		void Entity::AddComponent(std::string name, Renderable& component)
 		{
-			m_Renderable2DComponents[name] = &component;
+			m_RenderableComponents[name] = &component;
 		}
 
-		void Entity::AddComponent(std::string name, Model& component)
+		Renderable* Entity::GetComponent(std::string name)
 		{
-			m_Renderable3DComponents[name] = &component;
-		}
-
-		Model* Entity::GetComponent(std::string name)
-		{
-			return m_Renderable3DComponents[name];
+			return m_RenderableComponents[name];
 		}
 
 		std::vector<std::string> Entity::GetEntityComponentsList(EntityComponentType type)
@@ -58,7 +53,7 @@ namespace VoxEngine
 			std::vector<std::string> list;
 
 			if(type == EntityComponentType::GRAPHIC)
-				for (auto& component : m_Renderable3DComponents)
+				for (auto& component : m_RenderableComponents)
 					list.push_back(component.first);
 
 			return list;
