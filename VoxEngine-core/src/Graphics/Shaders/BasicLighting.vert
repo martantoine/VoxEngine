@@ -5,6 +5,7 @@ layout (location = 1) in vec3 normal;
 layout (location = 2) in vec3 color;
 layout (location = 3) in vec2 textureCoord;
 
+uniform float explosion;
 uniform mat4 model; 
 uniform mat4 view;
 uniform mat4 projection;
@@ -19,10 +20,9 @@ out DATA
 
 void main()
 {
-	gl_Position = projection * view * model * vec4(position, 1.0f);
-
-	vs_out.position = vec3(model * vec4(position, 1.0));
+	gl_Position = projection * view * model * vec4(position +  normal * (explosion - 1.0), 1.0f);
 	vs_out.normal = mat3(inverse(transpose(model))) * normal;
+	vs_out.position = vec3(model * vec4(position + normal * explosion, 1.0));
 	vs_out.color = vec4(color, 1.0f);
 	vs_out.textureCoord = textureCoord;
 }

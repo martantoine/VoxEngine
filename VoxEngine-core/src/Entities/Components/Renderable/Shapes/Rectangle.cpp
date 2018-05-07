@@ -9,12 +9,10 @@ namespace VoxEngine
 		//--------------------------------------------------------------------------------//
 		Rectangle::Rectangle()
 		{
-			m_EntityComponentType = EntityComponentType::Graphic;
-
-			m_Size = glm::vec2(1.0f, 1.0f);
-			m_Color = glm::vec3(0.4f, 0.4f, 0.4f);
+			m_EntityComponentType = EntityComponentType::GRAPHIC;
 
 			m_Textured = false;
+			m_Size = glm::vec2(1.0f, 1.0f);
 			m_Vertices = new VertexData[4];
 			m_Indices = new GLushort[6];
 
@@ -23,17 +21,16 @@ namespace VoxEngine
 			m_lTranslation = glm::mat4(1.0f);
 
 			m_VAO = new Graphics::VAO();
-			InitGeometry();
+			Init();
 			m_EBO = new Graphics::EBO(m_Indices, 6);
 		}
 
 		Rectangle::Rectangle(glm::vec3 position, glm::vec2 size, float angle, glm::vec3 axis, glm::vec3 color)
 		{
-			m_EntityComponentType = EntityComponentType::Graphic;
+			m_EntityComponentType = EntityComponentType::GRAPHIC;
 
-			m_Size = size;
-			m_Color = color;
 			m_Textured = false;
+			m_Size = size;
 			m_Vertices = new VertexData[4];
 			m_Indices = new GLushort[6];
 
@@ -42,7 +39,7 @@ namespace VoxEngine
 			m_lRotation = glm::rotate(glm::mat4(1.0f), glm::radians(-angle), axis);
 
 			m_VAO = new Graphics::VAO();
-			InitGeometry();
+			Init();
 			m_EBO = new Graphics::EBO(m_Indices, 6);
 		}
 		
@@ -51,7 +48,7 @@ namespace VoxEngine
 		//-------------------------------------------------------------------------------//
 		//**************************EntityComponent's function***************************//
 		//-------------------------------------------------------------------------------//
-		void Rectangle::InitGeometry()
+		void Rectangle::Init()
 		{
 			///Initial vertex's position
 			m_Vertices[0].vertice = glm::vec3(0.0f, m_Size.y, 0.0f);
@@ -66,10 +63,10 @@ namespace VoxEngine
 			m_Vertices[3].normal = glm::vec4(0.0f, 0.0f, 1.0f, 1.0f);
 
 			///Set vertex's color
-			m_Vertices[0].color = m_Color;
-			m_Vertices[1].color = m_Color;
-			m_Vertices[2].color = m_Color;
-			m_Vertices[3].color = m_Color;
+			m_Vertices[0].color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
+			m_Vertices[1].color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
+			m_Vertices[2].color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
+			m_Vertices[3].color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
 
 			///Set indices
 			m_Indices[0] = 0;
@@ -104,7 +101,7 @@ namespace VoxEngine
 			m_Vertices[2].texCoord = positionFloat + glm::vec2(1.0f, 1.0f);
 			m_Vertices[3].texCoord = positionFloat + glm::vec2(0.0f, 1.0f);
 
-			InitGeometry();
+			Init();
 		}
 
 		void Rectangle::AddTexture(Graphics::MATERIAL_TEXTURE type, glm::vec2 position, glm::vec2 size)
@@ -129,8 +126,7 @@ namespace VoxEngine
 				m_Vertices[3].texCoord = positionFloat + glm::vec2(0.0f, size.y / m_Material->specular->GetHeight());
 			}
 
-
-			InitGeometry();
+			Init();
 		}
 
 	}

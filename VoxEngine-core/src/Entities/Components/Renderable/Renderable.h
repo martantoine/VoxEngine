@@ -1,6 +1,7 @@
 #pragma once
 
-#include <GLM\glm.hpp>
+#include <GLM/glm.hpp>
+#include <vector>
 #include "../../../Graphics/Buffers/Buffers.h"
 #include "../../../Materials/Material.h"
 #include "../EntityComponent.h"
@@ -29,21 +30,13 @@ namespace VoxEngine
 			//Buffers
 			Graphics::VAO* GetVAO() const;
 			Graphics::EBO* GetEBO() const;
-			virtual Graphics::Texture GetTexture(int mesh, int texture)
-			{ return Graphics::Texture(); }
-			virtual Mesh GetMesh(int i) 
-			{
-				return Mesh();
-			}
+			virtual Mesh& GetMesh(int i) = 0;
+			virtual int GetMeshesNbr() = 0;
 			bool isTextured() const;
-
-			//Miscs
-			virtual unsigned int GetMeshesNumber() { return 0; }
 
 		protected:
 			Graphics::VAO* m_VAO;
 			Graphics::EBO* m_EBO;
-			VertexData* m_Vertices;
 
 			std::vector<Graphics::Texture> textures_loaded;
 			Graphics::Material* m_Material;

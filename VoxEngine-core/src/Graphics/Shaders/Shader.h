@@ -21,11 +21,14 @@ namespace VoxEngine
 			Shader(const char* vertexShaderPath, const char* FragmentShaderPath);
 
 			//Miscs
+			virtual void Init() = 0;
 			GLuint CreateShader(const char* vertexShaderPath, const char* FragmentShaderPath);
+			GLuint GetShader() { return m_Shader; }
+
+			//Binding
 			void Reload();
 			void Bind();
 			void Unbind();
-			GLuint GetShader() { return m_Shader; }
 
 			//Uniforms
 			void SetUniformLocation(const char* name);
@@ -39,7 +42,7 @@ namespace VoxEngine
 			void Destroy();
 			~Shader();
 
-		private:
+		protected:
 			GLuint m_Shader;
 			std::map<const char*, GLuint> m_Locations;
 			const char *vertexPath, *fragmentPath;

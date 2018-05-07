@@ -26,15 +26,11 @@ namespace VoxEngine
 			Model(const char* modelPath, glm::vec3 position, float angle, glm::vec3 axis);
 
 			//Miscs
-			GLuint GetMeshesNumber();
-			Graphics::Texture GetTexture(int mesh, int texture);
-			Mesh GetMesh(int i)
-			{
-				return m_Meshes[i];
-			}
+			Mesh& GetMesh(int i);
+			int GetMeshesNbr();
 
 			//Geometry initialize
-			void Init(const char* modelPath);
+			void Init(const char* modelPath = 0);
 			
 		private:
 			//Geometry initialize

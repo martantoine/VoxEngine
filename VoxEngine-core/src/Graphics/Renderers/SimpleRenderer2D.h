@@ -1,13 +1,13 @@
 #pragma once
 
-#include <GL\glew.h>
+#include <GL/glew.h>
+#include <GLM/gtc/matrix_transform.hpp>
+#include <GLM/mat4x4.hpp>
 #include <deque>
+#include <vector>
 #include "../../Entities/Components/Renderable/Renderable.h"
 #include "../../Entities/Entity.h"
 #include "../Shaders/Shader.h"
-#include <GLM\gtc\matrix_transform.hpp>
-#include <GLM\mat4x4.hpp>
-#include "../../Entities/Components/Renderable/Models/Mesh.h"
 
 namespace VoxEngine
 {
