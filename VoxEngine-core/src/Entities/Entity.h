@@ -2,6 +2,8 @@
 
 #include "Components\EntityComponent.h"
 #include "Components\Renderable\Renderable.h"
+#include "Components\Renderable\Shapes\Renderable2D.h"
+#include "Components\Renderable\Models\Model.h"
 #include "Components\Lights\PointLight.h"
 
 #include <GLM\vec3.hpp>
@@ -26,8 +28,9 @@ namespace VoxEngine
 
 			//Miscs
 			void AddComponent(std::string name, EntityComponent& component);
-			void AddComponent(std::string name, Renderable& component);
-			Renderable* GetComponent(std::string name);
+			void AddComponent(std::string name, Renderable2D& component);
+			void AddComponent(std::string name, Model& component);
+			Model* GetComponent(std::string name);
 
 			std::vector<std::string> GetEntityComponentsList(EntityComponentType type);
 
@@ -40,7 +43,8 @@ namespace VoxEngine
 			int count;
 			glm::mat4 m_gScale, m_gRotation, m_gTranslation;
 			std::map<std::string, EntityComponent> m_EntityComponents;
-			std::map<std::string, Renderable*> m_RenderableComponents;
+			std::map<std::string, Renderable2D*> m_Renderable2DComponents;
+			std::map<std::string, Model*> m_Renderable3DComponents;
 		};
 
 	}

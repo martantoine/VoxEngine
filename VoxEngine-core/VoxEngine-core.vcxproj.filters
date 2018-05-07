@@ -63,7 +63,10 @@
     <ClCompile Include="src\Graphics\Renderers\SimpleRenderer2D.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="src\Entities\Components\Renderable\Models\Renderable3D.cpp">
+    <ClCompile Include="src\Entities\Components\Renderable\Shapes\Rectangle.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entities\Components\Renderable\Shapes\Renderable2D.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
@@ -140,7 +143,10 @@
     <ClInclude Include="src\Graphics\Renderers\SimpleRenderer2D.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="src\Entities\Components\Renderable\Models\Renderable3D.h">
+    <ClInclude Include="src\Entities\Components\Renderable\Shapes\Renderable2D.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entities\Components\Renderable\Shapes\Rectangle.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>

@@ -14,7 +14,7 @@
 
 using namespace VoxEngine;
 using namespace VEEntity;
-using namespace Graphics;
+using namespace VEGraphics;
 using namespace glm;
 using namespace std;
 
@@ -45,7 +45,7 @@ int main()
 	cam.SetProjection(90.0f, window.GetSize().x / window.GetSize().y);
 
 	//Shader
-	LightingShader shader("src/Graphics/Shaders/BasicLighting.vert", "src/Graphics/Shaders/BasicLighting.frag");
+	LightingShader shader("src/VEGraphics/Shaders/BasicLighting.vert", "src/VEGraphics/Shaders/BasicLighting.frag");
 	shader.SetUniformMat4("projection", cam.GetProjection());
 	shader.SetUniform3("light.position", c_Light.GetPosition());
 	shader.SetUniform3("light.ambient", c_Light.GetAmbient());

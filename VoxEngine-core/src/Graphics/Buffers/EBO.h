@@ -4,7 +4,7 @@
 #include <vector>
 
 namespace VoxEngine {
-	namespace Graphics {
+	namespace VEGraphics {
 
 		class EBO
 		{

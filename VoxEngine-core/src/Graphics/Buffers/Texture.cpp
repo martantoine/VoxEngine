@@ -2,7 +2,7 @@
 
 namespace VoxEngine
 {
-	namespace Graphics
+	namespace VEGraphics
 	{
 
 		//--------------------------------------------------------------------------------//

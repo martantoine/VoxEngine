@@ -7,7 +7,7 @@
 
 namespace VoxEngine
 {
-	namespace Graphics
+	namespace VEGraphics
 	{
 
 		struct Image

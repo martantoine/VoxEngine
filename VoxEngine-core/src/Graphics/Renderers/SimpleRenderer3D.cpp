@@ -2,7 +2,7 @@
 
 namespace VoxEngine
 {
-	namespace Graphics
+	namespace VEGraphics
 	{
 
 		//--------------------------------------------------------------------------------//
@@ -27,19 +27,19 @@ namespace VoxEngine
 
 				for (int ECOffset(0); ECOffset < listName.size(); ECOffset++)
 				{
-					VEEntity::Renderable* renderable = entity->GetComponent(listName[ECOffset]);
+					VEEntity::Model* model = entity->GetComponent(listName[ECOffset]);
 
-					for (int MeshOffset(0); MeshOffset < renderable->GetMeshesNbr(); MeshOffset++)
+					for (int MeshOffset(0); MeshOffset < model->GetMeshesNbr(); MeshOffset++)
 					{
 						///Bind Textures
 						GLuint diffuseNbr(1);
 						GLuint specularNbr(1);
-						if (renderable->GetMesh(MeshOffset).m_Textures.size() > 0)
+						if (model->GetMesh(MeshOffset).m_Textures.size() > 0)
 						{
-							for (GLuint TextureOffset(0); TextureOffset < renderable->GetMesh(MeshOffset).m_Textures.size(); TextureOffset++)
+							for (GLuint TextureOffset(0); TextureOffset < model->GetMesh(MeshOffset).m_Textures.size(); TextureOffset++)
 							{
 								GLuint number(0);
-								std::string typeStr = renderable->GetMesh(MeshOffset).m_Textures[TextureOffset].GetType().c_str();
+								std::string typeStr = model->GetMesh(MeshOffset).m_Textures[TextureOffset].GetType().c_str();
 								if (typeStr == "texture_diffuse")
 									number = (diffuseNbr++);
 								else if (typeStr == "texture_specular")
@@ -48,21 +48,21 @@ namespace VoxEngine
 
 								glActiveTexture(GL_TEXTURE0 + TextureOffset);
 								glUniform1i(glGetUniformLocation(m_Shader->GetShader(), typeStr.c_str()), TextureOffset);
-								renderable->GetMesh(MeshOffset).m_Textures[TextureOffset].Bind();
+								model->GetMesh(MeshOffset).m_Textures[TextureOffset].Bind();
 								m_Shader->SetUniform1("textured", true);
 							}
 						}
 						else
 							m_Shader->SetUniform1("textured", false);
 
-						VAO* tmpVAO = renderable->GetVAO();
-						EBO* tmpEBO = renderable->GetEBO();
+						VAO* tmpVAO = model->GetVAO();
+						EBO* tmpEBO = model->GetEBO();
 
 						///Bind Buffers
 						tmpVAO[MeshOffset].Bind();	
 						tmpEBO[MeshOffset].Bind();
 
-						m_Shader->SetUniformMat4("model", entity->GetTransformation() * renderable->GetTransformation());
+						m_Shader->SetUniformMat4("model", entity->GetTransformation() * model->GetTransformation());
 						m_Shader->Bind();
 						glDrawElements(GL_TRIANGLES, tmpEBO[MeshOffset].GetCount(), GL_UNSIGNED_INT, nullptr);
 

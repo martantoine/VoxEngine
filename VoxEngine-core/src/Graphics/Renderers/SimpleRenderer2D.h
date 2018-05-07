@@ -11,7 +11,7 @@
 
 namespace VoxEngine
 {
-	namespace Graphics 
+	namespace VEGraphics 
 	{
 		
 		class SimpleRenderer2D

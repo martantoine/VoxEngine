@@ -2,7 +2,7 @@
 
 namespace VoxEngine
 {
-	namespace Graphics
+	namespace VEGraphics
 	{
 
 		void window_size_callback(GLFWwindow* window, int width, int height);

@@ -7,11 +7,11 @@
 #include <vector>
 #include "../Shaders/Shader.h"
 #include "../../Entities/Entity.h"
-#include "../../Entities/Components/Renderable/Renderable.h"
+#include "../../Entities/Components/Renderable/Models/Model.h"
 
 namespace VoxEngine
 {
-	namespace Graphics
+	namespace VEGraphics
 	{
 
 		class SimpleRenderer3D

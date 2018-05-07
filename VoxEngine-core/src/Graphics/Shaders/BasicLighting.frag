@@ -73,6 +73,5 @@ void main()
 	Result = vec4(DiffuseLighting + AmbientLighting + SpecularLighting, 1.0f) * fs_in.color;
 	
 	float depth = LinearizeDepth(gl_FragCoord.z);
-
     //Result = Result * vec4(vec3(depth), 1.0);
 }

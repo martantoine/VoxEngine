@@ -39,12 +39,12 @@ namespace VoxEngine
 		//-------------------------------------------------------------------------------//
 		//***********************************Materials***********************************//
 		//-------------------------------------------------------------------------------//
-		void Renderable::AddMaterial(Graphics::Material& material)
+		void Renderable::AddMaterial(VEGraphics::Material& material)
 		{
 			m_Material = &material;
 		}
 
-		Graphics::Material& Renderable::GetMaterial() const
+		VEGraphics::Material& Renderable::GetMaterial() const
 		{
 			return *m_Material;
 		}
@@ -54,12 +54,12 @@ namespace VoxEngine
 		//-------------------------------------------------------------------------------//
 		//***********************************Buffers***********************************//
 		//-------------------------------------------------------------------------------//
-		Graphics::VAO* Renderable::GetVAO() const
+		VEGraphics::VAO* Renderable::GetVAO() const
 		{
 			return m_VAO;
 		}
 
-		Graphics::EBO* Renderable::GetEBO() const
+		VEGraphics::EBO* Renderable::GetEBO() const
 		{
 			return m_EBO;
 		}

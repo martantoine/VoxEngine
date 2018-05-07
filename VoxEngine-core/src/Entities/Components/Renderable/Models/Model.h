@@ -30,17 +30,16 @@ namespace VoxEngine
 			int GetMeshesNbr();
 
 			//Geometry initialize
-			void Init(const char* modelPath = 0);
+			void InitGeometry(const char* modelPath);
 			
 		private:
 			//Geometry initialize
 			void processNode(aiNode *node, const aiScene *scene);
 			Mesh processMesh(aiMesh *mesh, const aiScene *scene);
-			std::vector<Graphics::Texture> loadMaterialTextures(aiMaterial *mat, aiTextureType type, std::string typeName);
+			std::vector<VEGraphics::Texture> loadMaterialTextures(aiMaterial *mat, aiTextureType type, std::string typeName);
 
 		private:
 			std::vector<Mesh> m_Meshes;
-			std::vector<Graphics::Texture> m_Textures;
 			std::string m_Directory;
 		};
 

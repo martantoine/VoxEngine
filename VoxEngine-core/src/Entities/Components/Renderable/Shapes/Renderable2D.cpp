@@ -1,12 +1,9 @@
 #include "Renderable2D.h"
 
-
-
-Renderable2D::Renderable2D()
+namespace VoxEngine
 {
-}
+	namespace VEEntity
+	{
 
-
-Renderable2D::~Renderable2D()
-{
+	}
 }
