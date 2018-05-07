@@ -83,7 +83,6 @@ namespace VoxEngine
 		void Camera::SetFOV(float fov)
 		{
 			FOV = fov;
-			//Projection = glm::ortho(-1.0f, 1.0f, -1.0f, 1.0f, 0.005f, 100.0f);
 			Projection = glm::perspective(glm::radians(fov), Ratio, 0.1f, 100.0f);
 		}
 
@@ -91,8 +90,7 @@ namespace VoxEngine
 		{
 			FOV = fov;
 			Ratio = ratio;
-			//Projection = glm::ortho(-1.0f, 1.0f, -1.0f, 1.0f, 0.005f, 100.0f);
-			Projection = glm::perspective(glm::radians(fov), Ratio, 0.005f, 100.0f);
+			Projection = glm::perspective(glm::radians(fov), Ratio, 0.1f, 100.0f);
 		}
 
 		void Camera::SetMousePos(glm::vec2 mousePosition)
@@ -133,7 +131,6 @@ namespace VoxEngine
 		void Camera::Zoom(float zoomValue)
 		{
 			Radius += Radius * zoomValue * ZoomSpeed;
-			//Center += Forward * 1.0f;
 		}
 
 		void Camera::UpdateView()

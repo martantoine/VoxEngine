@@ -4,21 +4,20 @@ namespace VoxEngine
 {
 	namespace VEGraphics
 	{
-
 		//--------------------------------------------------------------------------------//
 		//**********************************Constructors**********************************//
 		//--------------------------------------------------------------------------------//
-		Shader::Shader()
-		{
-
-		}
-	
 		Shader::Shader(const char* vertexShaderPath, const char* fragmentShaderPath)
 			: vertexPath(vertexShaderPath), fragmentPath(fragmentShaderPath)
 		{
 			m_Shader = CreateShader(vertexPath, fragmentPath);
 		}
-		
+
+		Shader::Shader()
+		{
+
+		}
+
 
 
 		//--------------------------------------------------------------------------------//
@@ -65,7 +64,6 @@ namespace VoxEngine
 			m_Shader = CreateShader(vertexPath, fragmentPath);
 			Bind();
 			m_Locations = tmp_Locations;
-			Init();
 		}
 
 		void Shader::Bind()
@@ -94,51 +92,37 @@ namespace VoxEngine
 		//--------------------------------------------------------------------------------//
 		void Shader::SetUniformLocation(const char* name)
 		{
-			Bind();
 			m_Locations[name] = glGetUniformLocation(m_Shader, name); 
-			Unbind();
 		}
 
 		void Shader::SetUniformTexture(const char* name, int id)
 		{
-			Bind();
 			glUniform1i(m_Locations[name], id);
-			Unbind();
 		}
 
 		void Shader::SetUniform1(const char* name, const float& value)
 		{
-			Bind();
 			glUniform1f(m_Locations[name], value);
-			Unbind();
 		}
 
 		void Shader::SetUniform2(const char* name, const glm::vec2& vec)
 		{
-			Bind();
 			glUniform2f(m_Locations[name], vec.x, vec.y);
-			Unbind();
 		}
 
 		void Shader::SetUniform3(const char* name, const glm::vec3& vec)
 		{
-			Bind();
 			glUniform3f(m_Locations[name], vec.x, vec.y, vec.z);
-			Unbind();
 		}
 
 		void Shader::SetUniform4(const char* name, const glm::vec4& vec)
 		{
-			Bind();
 			glUniform4f(m_Locations[name], vec.x, vec.y, vec.z, vec.w);
-			Unbind();
 		}
 
 		void Shader::SetUniformMat4(const char* name, const glm::mat4& mat4)
 		{
-			Bind();
 			glUniformMatrix4fv(m_Locations[name], 1, GL_FALSE, glm::value_ptr(mat4));
-			Unbind();
 		}
 		
 	}

@@ -44,11 +44,7 @@ namespace VoxEngine
 			glfwSetScrollCallback(m_Window, mouse_scroll_callback);
 			glfwSwapInterval(1);
 			glewInit();
-
-			///Depth
 			glEnable(GL_DEPTH_TEST);
-			glDepthFunc(GL_LESS);
-
 			glClearColor(0.0f, 0.0f, 0.1f, 1.0f);
 			glfwSetCursorPos(m_Window, 0.0f, 0.0f);
 
@@ -71,7 +67,7 @@ namespace VoxEngine
 
 		void Window::Clear()
 		{
-			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT );
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		}
 
 		void Window::Update()

@@ -58,15 +58,11 @@ namespace VoxEngine
 		//-------------------------------------------------------------------------------//
 		//************************************Miscs**************************************//
 		//-------------------------------------------------------------------------------//
-		Mesh& Model::GetMesh(int i)
-		{
-			return m_Meshes[i];
-		}
-
-		int Model::GetMeshesNbr()
+		GLuint Model::GetMeshesNumber()
 		{
 			return m_Meshes.size();
 		}
+
 
 
 		//-------------------------------------------------------------------------------//
@@ -215,5 +211,9 @@ namespace VoxEngine
 			return textures;
 		}
 
+		Graphics::Texture Model::GetTexture(int mesh, int texture)
+		{
+			return m_Meshes[mesh].m_Textures[texture];
+		}
 	}
 }

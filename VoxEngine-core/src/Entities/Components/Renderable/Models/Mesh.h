@@ -20,6 +20,7 @@ namespace VoxEngine
 				m_Textures = textures;
 			}
 
+
 			std::vector<VertexData> m_Vertices;
 			std::vector<GLuint> m_Indices;
 			std::vector<VEGraphics::Texture> m_Textures;

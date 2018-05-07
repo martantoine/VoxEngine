@@ -140,9 +140,7 @@
     <ClCompile Include="src\Graphics\Buffers\Texture.cpp" />
     <ClCompile Include="src\Graphics\Buffers\VAO.cpp" />
     <ClCompile Include="src\Graphics\Buffers\VBO.cpp" />
-    <ClCompile Include="src\Graphics\Renderers\SimpleRenderer2D.cpp" />
     <ClCompile Include="src\Graphics\Renderers\SimpleRenderer3D.cpp" />
-    <ClCompile Include="src\Graphics\Shaders\LightingShader.cpp" />
     <ClCompile Include="src\Graphics\Shaders\Shader.cpp" />
     <ClCompile Include="src\Graphics\Window.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -165,9 +163,7 @@
     <ClInclude Include="src\Graphics\Buffers\VAO.h" />
     <ClInclude Include="src\Graphics\Buffers\VBO.h" />
     <ClInclude Include="src\Graphics\Buffers\Vertex.h" />
-    <ClInclude Include="src\Graphics\Renderers\SimpleRenderer2D.h" />
     <ClInclude Include="src\Graphics\Renderers\SimpleRenderer3D.h" />
-    <ClInclude Include="src\Graphics\Shaders\LightingShader.h" />
     <ClInclude Include="src\Graphics\Shaders\Shader.h" />
     <ClInclude Include="src\Graphics\Window.h" />
     <ClInclude Include="src\Materials\Material.h" />

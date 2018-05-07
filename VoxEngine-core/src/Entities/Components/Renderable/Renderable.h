@@ -1,7 +1,6 @@
 #pragma once
 
-#include <GLM/glm.hpp>
-#include <vector>
+#include <GLM\glm.hpp>
 #include "../../../Graphics/Buffers/Buffers.h"
 #include "../../../Materials/Material.h"
 #include "../EntityComponent.h"
@@ -28,13 +27,33 @@ namespace VoxEngine
 			VEGraphics::Material& GetMaterial() const;
 
 			//Buffers
+<<<<<<< HEAD
 			VEGraphics::VAO* GetVAO() const;
 			VEGraphics::EBO* GetEBO() const;
+=======
+			Graphics::VAO* GetVAO() const;
+			Graphics::EBO* GetEBO() const;
+			virtual Graphics::Texture GetTexture(int mesh, int texture)
+			{ return Graphics::Texture(); }
+			virtual Mesh GetMesh(int i) 
+			{
+				return Mesh();
+			}
+>>>>>>> parent of aa0b869... Save before renderable update
 			bool isTextured() const;
 
+			//Miscs
+			virtual unsigned int GetMeshesNumber() { return 0; }
+
 		protected:
+<<<<<<< HEAD
 			VEGraphics::VAO* m_VAO;
 			VEGraphics::EBO* m_EBO;
+=======
+			Graphics::VAO* m_VAO;
+			Graphics::EBO* m_EBO;
+			VertexData* m_Vertices;
+>>>>>>> parent of aa0b869... Save before renderable update
 
 			std::vector<VEGraphics::Texture> textures_loaded;
 			VEGraphics::Material* m_Material;

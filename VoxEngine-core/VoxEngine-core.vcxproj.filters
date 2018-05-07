@@ -57,6 +57,7 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="src\Graphics\Shaders\LightingShader.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
@@ -69,6 +70,8 @@
     <ClCompile Include="src\Entities\Components\Renderable\Shapes\Renderable2D.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+=======
+>>>>>>> parent of aa0b869... Save before renderable update
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Entities\Components\Lights\PointLight.h">
@@ -137,6 +140,7 @@
     <ClInclude Include="src\Entities\Components\Renderable\Models\Mesh.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="src\Graphics\Shaders\LightingShader.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
@@ -149,6 +153,8 @@
     <ClInclude Include="src\Entities\Components\Renderable\Shapes\Rectangle.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+=======
+>>>>>>> parent of aa0b869... Save before renderable update
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\TODO.txt" />
