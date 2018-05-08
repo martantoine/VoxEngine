@@ -15,6 +15,9 @@ VoxEngine-core/VoxEngine-core.vcxproj
 VoxEngine-core/VoxEngine-core.vcxproj.filters
 VoxEngine-core/VoxEngine-core.vcxproj.user
 
+#Assets
+VoxEngine-core/Assets/
+
 
 # Build results
 [Dd]ebug/

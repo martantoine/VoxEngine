@@ -3,17 +3,21 @@
 #include <GL\glew.h>
 #include <vector>
 
-namespace VoxEngine {
-	namespace Graphics {
+namespace UE
+{
+	namespace UEGraphics
+	{
 
 		class EBO
 		{
 		public:
 			//Constructors
 			EBO();
+			EBO(GLushort* data, int count);
 			EBO(GLuint* data, int count);
 
 			//Initializer
+			void CreateEBO(GLushort* data, int count);
 			void CreateEBO(GLuint* data, int count);
 
 			//Miscs

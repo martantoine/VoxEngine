@@ -6,9 +6,9 @@
 #include <iostream>
 #include <GLM\vec2.hpp>
 
-namespace VoxEngine
+namespace UE
 {
-	namespace Graphics
+	namespace UEGraphics
 	{
 
 		class Window

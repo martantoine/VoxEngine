@@ -3,7 +3,7 @@
 #include <GLM\vec2.hpp>
 #include <GLM\vec3.hpp>
 
-namespace VoxEngine
+namespace UE
 {
 
 	enum vertexDataVar {VERTEX, COLOR, TEXTURE, NORMAL};

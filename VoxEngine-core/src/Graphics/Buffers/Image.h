@@ -5,9 +5,9 @@
 #include <GL/glew.h>
 #include "../../Utils/ImageLoader.h"
 
-namespace VoxEngine
+namespace UE
 {
-	namespace Graphics
+	namespace UEGraphics
 	{
 
 		struct Image

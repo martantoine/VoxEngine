@@ -4,9 +4,9 @@
 #include <string>
 #include "../Buffers/Image.h"
 
-namespace VoxEngine
+namespace UE
 {
-	namespace Graphics
+	namespace UEGraphics
 	{
 
 		class Texture

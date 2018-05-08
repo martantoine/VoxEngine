@@ -6,9 +6,9 @@
 #include <GLM\gtc\quaternion.hpp>
 #include <GLM\glm.hpp>
 
-namespace VoxEngine
+namespace UE
 {
-	namespace VEEntity
+	namespace UEntity
 	{
 
 		class Camera : public EntityComponent

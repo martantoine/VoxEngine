@@ -5,12 +5,12 @@
 #include <GLM\mat4x4.hpp>
 #include <GLM\gtc\matrix_transform.hpp>
 
-namespace VoxEngine
+namespace UE
 {
-	namespace VEEntity
+	namespace UEntity
 	{
 
-		enum EntityComponentType { GRAPHIC, LIGHT, MISC };
+		enum EntityComponentType { GRAPHIC2D, GRAPHIC3D, LIGHT, MISC };
 
 		class EntityComponent
 		{

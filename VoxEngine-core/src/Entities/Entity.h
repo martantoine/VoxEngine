@@ -1,19 +1,18 @@
 #pragma once
 
-#include "Components\EntityComponent.h"
-#include "Components\Renderable\Renderable.h"
-#include "Components\Lights\PointLight.h"
-
 #include <GLM\vec3.hpp>
 #include <GLM\mat4x4.hpp>
-#include <GLM\gtc\matrix_transform.hpp>
 #include <vector>
 #include <string>
 #include <map>
+#include <GLM\gtc\matrix_transform.hpp>
+#include "Components\EntityComponent.h"
+#include "Components\Renderable\Shapes\Renderable2D.h"
+#include "Components\Renderable\Models\Model.h"
 
-namespace VoxEngine
+namespace UE
 {
-	namespace VEEntity
+	namespace UEntity
 	{
 
 		class Entity
@@ -24,10 +23,12 @@ namespace VoxEngine
 			Entity(glm::vec3 position);
 			Entity(glm::vec3 position, float angle, glm::vec3 axis);
 
-			//Miscs
+			//Components
 			void AddComponent(std::string name, EntityComponent& component);
-			void AddComponent(std::string name, Renderable& component);
-			Renderable* GetComponent(std::string name);
+			void AddComponent(std::string name, Renderable2D& component);
+			void AddComponent(std::string name, Model& component);
+			Renderable2D* Get2DComponents(std::string name);
+			Model* Get3DComponent(std::string name);
 
 			std::vector<std::string> GetEntityComponentsList(EntityComponentType type);
 
@@ -40,7 +41,8 @@ namespace VoxEngine
 			int count;
 			glm::mat4 m_gScale, m_gRotation, m_gTranslation;
 			std::map<std::string, EntityComponent> m_EntityComponents;
-			std::map<std::string, Renderable*> m_RenderableComponents;
+			std::map<std::string, Renderable2D*> m_Renderable2DComponents;
+			std::map<std::string, Model*> m_Renderable3DComponents;
 		};
 
 	}

@@ -1,8 +1,8 @@
 #include "LightingShader.h"
 
-namespace VoxEngine
+namespace UE
 {
-	namespace Graphics
+	namespace UEGraphics
 	{
 
 		//--------------------------------------------------------------------------------//
@@ -27,11 +27,13 @@ namespace VoxEngine
 			SetUniformLocation("projection");
 			SetUniformLocation("model");
 			SetUniformLocation("view");
-			SetUniformLocation("explosion");
+			SetUniformLocation("UI");
 
 			///Fragment shader uniforms
 			SetUniformLocation("texture_diffuse1");
 			SetUniformLocation("texture_specular1");
+			SetUniformTexture("texture_diffuse1", 0);
+			SetUniformTexture("texture_specular1", 1);
 			SetUniformLocation("textured");
 			SetUniformLocation("light.position");
 			SetUniformLocation("light.ambient");

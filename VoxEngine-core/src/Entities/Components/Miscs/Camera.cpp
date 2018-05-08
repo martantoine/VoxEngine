@@ -1,8 +1,8 @@
 #include "Camera.h"
 
-namespace VoxEngine
+namespace UE
 {
-	namespace VEEntity
+	namespace UEntity
 	{
 
 		//--------------------------------------------------------------------------------//
@@ -83,14 +83,14 @@ namespace VoxEngine
 		void Camera::SetFOV(float fov)
 		{
 			FOV = fov;
-			Projection = glm::perspective(glm::radians(fov), Ratio, 0.1f, 100.0f);
+			Projection = glm::perspective(glm::radians(fov), Ratio, 0.005f, 100.0f);
 		}
 
 		void Camera::SetProjection(float fov, float ratio)
 		{
 			FOV = fov;
 			Ratio = ratio;
-			Projection = glm::perspective(glm::radians(fov), Ratio, 0.1f, 100.0f);
+			Projection = glm::perspective(glm::radians(fov), Ratio, 0.005f, 100.0f);
 		}
 
 		void Camera::SetMousePos(glm::vec2 mousePosition)

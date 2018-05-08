@@ -2,15 +2,18 @@
 
 #include "../Renderable.h"
 
-namespace VoxEngine
+namespace UE
 {
-	namespace VEEntity
+	namespace UEntity
 	{
 
 		class Renderable2D : public Renderable
 		{
 		public:
-			Renderable2D();
+
+		protected:
+			VertexData* m_Vertices;
+			GLushort* m_Indices;
 		};
 
 	}

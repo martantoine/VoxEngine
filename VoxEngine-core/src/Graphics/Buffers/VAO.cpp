@@ -1,8 +1,8 @@
 #include "VAO.h"
 
-namespace VoxEngine
+namespace UE
 {
-	namespace Graphics
+	namespace UEGraphics
 	{
 
 		//--------------------------------------------------------------------------------//

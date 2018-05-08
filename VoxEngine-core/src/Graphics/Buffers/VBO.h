@@ -5,9 +5,9 @@
 #include <vector>
 #include "Vertex.h"
 
-namespace VoxEngine
+namespace UE
 {
-	namespace Graphics
+	namespace UEGraphics
 	{
 
 		class VBO

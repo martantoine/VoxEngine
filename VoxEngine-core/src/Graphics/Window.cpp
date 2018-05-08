@@ -1,8 +1,8 @@
 #include "Window.h"
 
-namespace VoxEngine
+namespace UE
 {
-	namespace Graphics
+	namespace UEGraphics
 	{
 
 		void window_size_callback(GLFWwindow* window, int width, int height);
@@ -44,12 +44,12 @@ namespace VoxEngine
 			glfwSetScrollCallback(m_Window, mouse_scroll_callback);
 			glfwSwapInterval(1);
 			glewInit();
-			glEnable(GL_DEPTH_TEST);
 			glClearColor(0.0f, 0.0f, 0.1f, 1.0f);
 			glfwSetCursorPos(m_Window, 0.0f, 0.0f);
 
 			glCullFace(GL_BACK);
 			glEnable(GL_CULL_FACE);
+			glEnable(GL_DEPTH_TEST);
 
 			m_LastTime = glfwGetTime();
 			m_Frame = 0;

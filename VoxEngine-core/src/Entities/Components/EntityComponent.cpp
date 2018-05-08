@@ -1,8 +1,8 @@
 #include "EntityComponent.h"
 
-namespace VoxEngine
+namespace UE
 {
-	namespace VEEntity
+	namespace UEntity
 	{
 		//--------------------------------------------------------------------------------//
 		//**********************************Constructors**********************************//

@@ -1,17 +1,29 @@
 #include "Model.h"
 
-namespace VoxEngine
+namespace UE
 {
-	namespace VEEntity
+	namespace UEntity
 	{
 
 		//--------------------------------------------------------------------------------//
 		//**********************************Constructors**********************************//
 		//--------------------------------------------------------------------------------//		
+		Model::Model()
+		{
+			///Miscs var
+			m_EntityComponentType = EntityComponentType::GRAPHIC3D;
+			m_Textured = false;
+
+			///Transformations var
+			m_lScale = glm::mat4(1.0f);
+			m_lRotation = glm::mat4(1.0f);
+			m_lTranslation = glm::mat4(1.0f);
+		}
+		
 		Model::Model(const char* modelPath)
 		{
 			///Miscs var
-			m_EntityComponentType = EntityComponentType::GRAPHIC;
+			m_EntityComponentType = EntityComponentType::GRAPHIC3D;
 			m_Textured = false;
 
 			///Transformations var
@@ -20,13 +32,13 @@ namespace VoxEngine
 			m_lTranslation = glm::mat4(1.0f);
 			
 			///Load the model
-			Init(modelPath);
+			InitGeometry(modelPath);
 		}
 
 		Model::Model(const char* modelPath, glm::vec3 position)
 		{
 			///Miscs var
-			m_EntityComponentType = EntityComponentType::GRAPHIC;
+			m_EntityComponentType = EntityComponentType::GRAPHIC3D;
 			m_Textured = false;
 
 			///Transformations var
@@ -35,13 +47,13 @@ namespace VoxEngine
 			m_lTranslation = glm::translate(glm::mat4(1.0f), position);
 
 			///Load the model
-			Init(modelPath);
+			InitGeometry(modelPath);
 		}
 
 		Model::Model(const char* modelPath, glm::vec3 position, float angle, glm::vec3 axis)
 		{
 			///Miscs var
-			m_EntityComponentType = EntityComponentType::GRAPHIC;
+			m_EntityComponentType = EntityComponentType::GRAPHIC3D;
 			m_Textured = false;
 
 			///Transformations var
@@ -50,7 +62,7 @@ namespace VoxEngine
 			m_lTranslation = glm::translate(glm::mat4(1.0f), position);
 
 			///Load the model
-			Init(modelPath);
+			InitGeometry(modelPath);
 		}
 
 
@@ -58,9 +70,14 @@ namespace VoxEngine
 		//-------------------------------------------------------------------------------//
 		//************************************Miscs**************************************//
 		//-------------------------------------------------------------------------------//
-		GLuint Model::GetMeshesNumber()
+		int Model::GetMeshesNbr()
 		{
 			return m_Meshes.size();
+		}
+
+		Mesh& Model::GetMesh(int i)
+		{
+			return m_Meshes[i];
 		}
 
 
@@ -68,7 +85,7 @@ namespace VoxEngine
 		//-------------------------------------------------------------------------------//
 		//*****************************Geometry initialize*******************************//
 		//-------------------------------------------------------------------------------//
-		void Model::Init(const char* modelPath)
+		void Model::InitGeometry(const char* modelPath)
 		{
 			///Loading scene
 			Assimp::Importer import;
@@ -86,13 +103,13 @@ namespace VoxEngine
 
 
 			const GLuint meshesNbr = m_Meshes.size();
-			m_VAO = new Graphics::VAO[meshesNbr];
-			m_EBO = new Graphics::EBO[meshesNbr];
+			m_VAO = new UEGraphics::VAO[meshesNbr];
+			m_EBO = new UEGraphics::EBO[meshesNbr];
 
 			///Creating VAO and VBOs for each meshes
 			for (GLuint i(0); i < meshesNbr; i++)
 			{
-				Graphics::VBO* vbo = new Graphics::VBO(&m_Meshes[i].m_Vertices.data()->vertice, m_Meshes[i].m_Vertices.size(), 4);
+				UEGraphics::VBO* vbo = new UEGraphics::VBO(&m_Meshes[i].m_Vertices.data()->vertice, m_Meshes[i].m_Vertices.size(), 4);
 
 				m_VAO[i].ClearVBO();
 				m_VAO[i].AddVBO(vbo, 0, VERTEX);
@@ -123,7 +140,7 @@ namespace VoxEngine
 			//Variables
 			std::vector<VertexData> vertices;
 			std::vector<GLuint> indices;
-			std::vector<Graphics::Texture> textures;
+			std::vector<UEGraphics::Texture> textures;
 
 			//VertexData processing
 			for (unsigned int i(0); i < mesh->mNumVertices; i++)
@@ -144,7 +161,7 @@ namespace VoxEngine
 				///Color
 				vertex.color = glm::vec3(1.0f, 1.0f, 1.0f);
 				///Texture coords
-				if (mesh->mTextureCoords[0]) // does the mesh contain texture coordinates?
+				if (mesh->mTextureCoords[0])
 				{
 					vertex.texCoord.x = mesh->mTextureCoords[0][i].x;
 					vertex.texCoord.y = mesh->mTextureCoords[0][i].y;
@@ -167,25 +184,25 @@ namespace VoxEngine
 			if (mesh->mMaterialIndex >= 0) //Check if the mesh has material(s)
 			{
 				aiMaterial *material = scene->mMaterials[mesh->mMaterialIndex];
-				std::vector<Graphics::Texture> diffuseMaps = loadMaterialTextures(material,	aiTextureType_DIFFUSE, "texture_diffuse");
+				std::vector<UEGraphics::Texture> diffuseMaps = loadMaterialTextures(material,	aiTextureType_DIFFUSE, "texture_diffuse");
 				textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
 
-				std::vector<Graphics::Texture> specularMaps = loadMaterialTextures(material, aiTextureType_SPECULAR, "texture_specular");
+				std::vector<UEGraphics::Texture> specularMaps = loadMaterialTextures(material, aiTextureType_SPECULAR, "texture_specular");
 				textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
 			}
 
 			return Mesh(vertices, indices, textures);
 		}
 
-		std::vector<Graphics::Texture> Model::loadMaterialTextures(aiMaterial *mat, aiTextureType type, std::string typeName)
+		std::vector<UEGraphics::Texture> Model::loadMaterialTextures(aiMaterial *mat, aiTextureType type, std::string typeName)
 		{
-			std::vector<Graphics::Texture> textures;
+			std::vector<UEGraphics::Texture> textures;
 
 			for (unsigned int i(0); i < mat->GetTextureCount(type); i++)
 			{
 				aiString pathAi;
 				mat->GetTexture(type, i, &pathAi);
-				std::string path = pathAi.C_Str();
+				std::string path = m_Directory + '/' + pathAi.C_Str();
 				bool skip(false);
 
 				for (int TLOffset(0); TLOffset < textures_loaded.size(); TLOffset++)
@@ -199,8 +216,8 @@ namespace VoxEngine
 				}
 				if (!skip)
 				{
-					Graphics::Image image(path.c_str());
-					Graphics::Texture texture(image);
+					UEGraphics::Image image(path.c_str());
+					UEGraphics::Texture texture(image);
 					texture.SetType(typeName);
 					texture.SetPath(path);
 
@@ -211,9 +228,5 @@ namespace VoxEngine
 			return textures;
 		}
 
-		Graphics::Texture Model::GetTexture(int mesh, int texture)
-		{
-			return m_Meshes[mesh].m_Textures[texture];
-		}
 	}
 }

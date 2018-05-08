@@ -8,9 +8,9 @@
 #include <GLM\gtc\type_ptr.hpp>
 #include "../../Utils/FileReader.h"
 
-namespace VoxEngine
+namespace UE
 {
-	namespace Graphics
+	namespace UEGraphics
 	{
 		
 		class Shader
@@ -30,7 +30,8 @@ namespace VoxEngine
 			//Uniforms
 			void SetUniformLocation(const char* name);
 			void SetUniformTexture(const char* name, int id);
-			void SetUniform1(const char* name, const float &value);
+			void SetUniform1i(const char* name, const int &value);
+			void SetUniform1f(const char* name, const float &value);
 			void SetUniform2(const char* name, const glm::vec2 &vec);
 			void SetUniform3(const char* name, const glm::vec3 &vec);
 			void SetUniform4(const char* name, const glm::vec4 &vec);
@@ -39,7 +40,7 @@ namespace VoxEngine
 			void Destroy();
 			~Shader();
 
-		private:
+		protected:
 			GLuint m_Shader;
 			std::map<const char*, GLuint> m_Locations;
 			const char *vertexPath, *fragmentPath;

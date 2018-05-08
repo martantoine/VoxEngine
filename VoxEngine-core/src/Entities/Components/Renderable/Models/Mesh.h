@@ -5,15 +5,15 @@
 #include "../../../../Graphics/Buffers/Vertex.h"
 #include "../../../../Graphics/Buffers/Texture.h"
 
-namespace VoxEngine
+namespace UE
 {
-	namespace VEEntity
+	namespace UEntity
 	{
 
 		struct Mesh
 		{
 			Mesh() {}
-			Mesh(std::vector<VertexData> vertices, std::vector<GLuint> indices, std::vector<Graphics::Texture> textures)
+			Mesh(std::vector<VertexData> vertices, std::vector<GLuint> indices, std::vector<UEGraphics::Texture> textures)
 			{
 				m_Vertices = vertices;
 				m_Indices = indices;
@@ -23,7 +23,7 @@ namespace VoxEngine
 
 			std::vector<VertexData> m_Vertices;
 			std::vector<GLuint> m_Indices;
-			std::vector<Graphics::Texture> m_Textures;
+			std::vector<UEGraphics::Texture> m_Textures;
 		};
 
 	}

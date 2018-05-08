@@ -1,9 +1,10 @@
 #include "Shader.h"
 
-namespace VoxEngine
+namespace UE
 {
-	namespace Graphics
+	namespace UEGraphics
 	{
+
 		//--------------------------------------------------------------------------------//
 		//**********************************Constructors**********************************//
 		//--------------------------------------------------------------------------------//
@@ -97,32 +98,51 @@ namespace VoxEngine
 
 		void Shader::SetUniformTexture(const char* name, int id)
 		{
+			Bind();
 			glUniform1i(m_Locations[name], id);
+			Unbind();
 		}
 
-		void Shader::SetUniform1(const char* name, const float& value)
+		void Shader::SetUniform1i(const char* name, const int& value)
 		{
+			Bind();
+			glUniform1i(m_Locations[name], value);
+			Unbind();
+		}
+
+		void Shader::SetUniform1f(const char* name, const float& value)
+		{
+			Bind();
 			glUniform1f(m_Locations[name], value);
+			Unbind();
 		}
 
 		void Shader::SetUniform2(const char* name, const glm::vec2& vec)
 		{
+			Bind();
 			glUniform2f(m_Locations[name], vec.x, vec.y);
+			Unbind();
 		}
 
 		void Shader::SetUniform3(const char* name, const glm::vec3& vec)
 		{
+			Bind();
 			glUniform3f(m_Locations[name], vec.x, vec.y, vec.z);
+			Unbind();
 		}
 
 		void Shader::SetUniform4(const char* name, const glm::vec4& vec)
 		{
+			Bind();
 			glUniform4f(m_Locations[name], vec.x, vec.y, vec.z, vec.w);
+			Unbind();
 		}
 
 		void Shader::SetUniformMat4(const char* name, const glm::mat4& mat4)
 		{
+			Bind();
 			glUniformMatrix4fv(m_Locations[name], 1, GL_FALSE, glm::value_ptr(mat4));
+			Unbind();
 		}
 		
 	}

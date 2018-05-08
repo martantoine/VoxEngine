@@ -1,41 +1,25 @@
 #pragma once
 
-#include "../Renderable.h"
+#include "Renderable2D.h"
 
-namespace VoxEngine
+namespace UE
 {
-	namespace VEEntity
+	namespace UEntity
 	{
 
-		class Rectangle : public Renderable
+		class Rectangle : public Renderable2D
 		{
 		public:
 			//Constructors
 			Rectangle();
 			Rectangle(glm::vec3 position, glm::vec2 size, float angle, glm::vec3 axis, glm::vec3 color);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 			//Geometry initialize
-			void InitGeometry();
+			void InitGeometry(const char* modelPath = 0);
 
-=======
->>>>>>> parent of cb7fd7a... Test
 			//Textures
-			void AddTexture(Graphics::MATERIAL_TEXTURE type);
-			void AddTexture(Graphics::MATERIAL_TEXTURE type, glm::vec2 position, glm::vec2 size);
-
-<<<<<<< HEAD
-=======
-			//EntityComponent's functions
-			void AddTexture(Graphics::MATERIAL_TEXTURE type);
-			void AddTexture(Graphics::MATERIAL_TEXTURE type, glm::vec2 position, glm::vec2 size);
-			void InitGeometry();
->>>>>>> parent of aa0b869... Save before renderable update
-=======
-			//Geometry initialize
-			void Init();
->>>>>>> parent of cb7fd7a... Test
+			void AddTexture(UEGraphics::MATERIAL_TEXTURE type);
+			void AddTexture(UEGraphics::MATERIAL_TEXTURE type, glm::vec2 position, glm::vec2 size);
 
 		private:
 			glm::vec2 m_Size;

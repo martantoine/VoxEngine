@@ -5,9 +5,9 @@
 #include "VBO.h"
 #include "Vertex.h"
 
-namespace VoxEngine
+namespace UE
 {
-	namespace Graphics
+	namespace UEGraphics
 	{
 		
 		class VAO

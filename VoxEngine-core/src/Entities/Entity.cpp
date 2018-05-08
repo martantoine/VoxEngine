@@ -1,9 +1,10 @@
 #include "Entity.h"
 
-namespace VoxEngine
+namespace UE
 {
-	namespace VEEntity
+	namespace UEntity
 	{
+
 		//--------------------------------------------------------------------------------//
 		//**********************************Constructors**********************************//
 		//--------------------------------------------------------------------------------//
@@ -31,32 +32,47 @@ namespace VoxEngine
 
 
 		//-------------------------------------------------------------------------------//
-		//*************************************Miscs*************************************//
+		//**********************************Components***********************************//
 		//-------------------------------------------------------------------------------//
+		///Add
 		void Entity::AddComponent(std::string name, EntityComponent& component)
 		{
 			m_EntityComponents[name] = component;
 		}
 
-		void Entity::AddComponent(std::string name, Renderable& component)
+		void Entity::AddComponent(std::string name, Renderable2D& component)
 		{
-			m_RenderableComponents[name] = &component;
+			m_Renderable2DComponents[name] = &component;
 		}
 
-		Renderable* Entity::GetComponent(std::string name)
+		void Entity::AddComponent(std::string name, Model& component)
 		{
-			return m_RenderableComponents[name];
+			m_Renderable3DComponents[name] = &component;
 		}
 
+		///Get
 		std::vector<std::string> Entity::GetEntityComponentsList(EntityComponentType type)
 		{
 			std::vector<std::string> list;
 
-			if(type == EntityComponentType::GRAPHIC)
-				for (auto& component : m_RenderableComponents)
+			if(type == EntityComponentType::GRAPHIC2D)
+				for (auto& component : m_Renderable2DComponents)
+					list.push_back(component.first);
+			else if (type == EntityComponentType::GRAPHIC3D)
+				for (auto& component : m_Renderable3DComponents)
 					list.push_back(component.first);
 
 			return list;
+		}
+
+		Renderable2D* Entity::Get2DComponents(std::string name)
+		{
+			return m_Renderable2DComponents[name];
+		}
+
+		Model* Entity::Get3DComponent(std::string name)
+		{
+			return m_Renderable3DComponents[name];
 		}
 
 
@@ -78,5 +94,6 @@ namespace VoxEngine
 		{
 			return m_gScale * m_gRotation * m_gTranslation;
 		}
+
 	}
 }

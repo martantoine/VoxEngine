@@ -3,9 +3,9 @@
 #include <GLM\vec3.hpp>
 #include "../Graphics/Buffers/Texture.h"
 
-namespace VoxEngine
+namespace UE
 {
-	namespace Graphics
+	namespace UEGraphics
 	{
 
 		enum MATERIAL_TEXTURE { DIFFUSE, SPECULAR };
@@ -14,12 +14,11 @@ namespace VoxEngine
 		{
 			//Functions
 			///Constructors
-			Material() {}
-			Material(Graphics::Texture* diffuse, Graphics::Texture* specular, float shininess)
+			Material(UEGraphics::Texture& diffuse, UEGraphics::Texture& specular, float shininess)
 				: diffuse(diffuse), specular(specular), shininess(shininess) {}
 
 			///Miscs
-			void SetParameters(Graphics::Texture* Diffuse, Graphics::Texture* Specular, float Shininess)
+			void SetParameters(UEGraphics::Texture& Diffuse, UEGraphics::Texture& Specular, float Shininess)
 			{
 				diffuse = Diffuse;
 				specular = Specular;
@@ -28,8 +27,8 @@ namespace VoxEngine
 
 
 			//Variables
-			Graphics::Texture* diffuse;
-			Graphics::Texture* specular;
+			UEGraphics::Texture& diffuse;
+			UEGraphics::Texture& specular;
 			float shininess;
 		};
 

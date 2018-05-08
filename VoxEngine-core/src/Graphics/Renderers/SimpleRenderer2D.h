@@ -1,17 +1,16 @@
 #pragma once
 
 #include <GL\glew.h>
-#include <deque>
-#include "../../Entities/Components/Renderable/Renderable.h"
-#include "../../Entities/Entity.h"
-#include "../Shaders/Shader.h"
 #include <GLM\gtc\matrix_transform.hpp>
 #include <GLM\mat4x4.hpp>
-#include "../../Entities/Components/Renderable/Models/Mesh.h"
+#include <deque>
+#include "../../Entities/Components/Renderable/Shapes/Renderable2D.h"
+#include "../../Entities/Entity.h"
+#include "../Shaders/Shader.h"
 
-namespace VoxEngine
+namespace UE
 {
-	namespace Graphics 
+	namespace UEGraphics 
 	{
 		
 		class SimpleRenderer2D
@@ -19,11 +18,11 @@ namespace VoxEngine
 		public:
 			//Miscs
 			void LinkShader(Shader& shader);
-			void AddToQueue(VEEntity::Entity& entity);
+			void AddToQueue(UEntity::Entity& entity);
 			void Render();
 
 		private:
-			std::deque<VEEntity::Entity*> m_EntityQueue;
+			std::deque<UEntity::Entity*> m_EntityQueue;
 			Shader* m_Shader;
 		};
 

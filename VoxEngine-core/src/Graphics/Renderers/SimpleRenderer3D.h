@@ -1,25 +1,14 @@
 #pragma once
 
 #include <GL/glew.h>
-#include <GLM/gtc/matrix_transform.hpp>
-#include <GLM/mat4x4.hpp>
 #include <deque>
-#include "../Shaders/Shader.h"
-#include "../../Entities/Entity.h"
-<<<<<<< HEAD
-<<<<<<< HEAD
 #include "../../Entities/Components/Renderable/Models/Model.h"
-=======
-#include "../../Entities/Components/Renderable/Renderable.h"
-#include <iostream>
->>>>>>> parent of aa0b869... Save before renderable update
-=======
-#include "../../Entities/Components/Renderable/Renderable.h"
->>>>>>> parent of cb7fd7a... Test
+#include "../../Entities/Entities.h"
+#include "../Shaders/Shader.h"
 
-namespace VoxEngine
+namespace UE
 {
-	namespace Graphics
+	namespace UEGraphics
 	{
 
 		class SimpleRenderer3D
@@ -27,11 +16,11 @@ namespace VoxEngine
 		public:
 			//Miscs
 			void LinkShader(Shader& shader);
-			void AddToQueue(VEEntity::Entity& entity);
+			void AddToQueue(UEntity::Entity& entity);
 			void Render();
 
 		private:
-			std::deque<VEEntity::Entity*> m_EntityQueue;
+			std::deque<UEntity::Entity*> m_EntityQueue;
 			Shader* m_Shader;
 		};
 

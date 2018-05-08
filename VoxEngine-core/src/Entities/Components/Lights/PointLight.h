@@ -2,9 +2,9 @@
 
 #include "../EntityComponent.h"
 
-namespace VoxEngine
+namespace UE
 {
-	namespace VEEntity
+	namespace UEntity
 	{
 
 		class PointLight : public EntityComponent

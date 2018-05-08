@@ -1,8 +1,8 @@
 #include "Shader.h"
 
-namespace VoxEngine
+namespace UE
 {
-	namespace Graphics
+	namespace UEGraphics
 	{
 
 		class LightingShader : public Shader

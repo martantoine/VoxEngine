@@ -8,6 +8,7 @@ layout (location = 3) in vec2 textureCoord;
 uniform mat4 model; 
 uniform mat4 view;
 uniform mat4 projection;
+uniform int UI;
 
 out DATA
 {
@@ -19,10 +20,13 @@ out DATA
 
 void main()
 {
-	gl_Position = projection * view * model * vec4(position, 1.0f);
+	if(UI)
+		gl_Position = model * vec4(position, 1.0f);
+	else
+		gl_Position = projection * view * model * vec4(position, 1.0f);
 
 	vs_out.position = vec3(model * vec4(position, 1.0));
-	vs_out.normal = mat3(inverse(transpose(model))) * normal;
+	vs_out.normal = mat3(transpose(inverse(model))) * normal;
 	vs_out.color = vec4(color, 1.0f);
 	vs_out.textureCoord = textureCoord;
 }
