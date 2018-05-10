@@ -13,11 +13,14 @@
     <ClCompile Include="src\Graphics\Buffers\VBO.cpp" />
     <ClCompile Include="src\Graphics\Shaders\Shader.cpp" />
     <ClCompile Include="src\Graphics\Window.cpp" />
-    <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Graphics\Shaders\LightingShader.cpp" />
     <ClCompile Include="src\Graphics\Renderers\SimpleRenderer3D.cpp" />
     <ClCompile Include="src\Entities\Components\Renderable\Shapes\Rectangle.cpp" />
     <ClCompile Include="src\Graphics\Renderers\SimpleRenderer2D.cpp" />
+    <ClCompile Include="src\Entities\Components\Renderable\Shapes\Character.h" />
+    <ClCompile Include="src\Entities\Components\Renderable\Shapes\Font.cpp" />
+    <ClCompile Include="src\Entities\Components\Renderable\Shapes\Text.cpp" />
+    <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Entities\Components\EntityComponent.h" />
@@ -46,6 +49,8 @@
     <ClInclude Include="src\Entities\Components\Renderable\Shapes\Renderable2D.h" />
     <ClInclude Include="src\Entities\Components\Renderable\Shapes\Rectangle.h" />
     <ClInclude Include="src\Graphics\Renderers\SimpleRenderer2D.h" />
+    <ClInclude Include="src\Entities\Components\Renderable\Shapes\Font.h" />
+    <ClInclude Include="src\Entities\Components\Renderable\Shapes\Text.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Graphics\Shaders\BasicLighting.frag" />

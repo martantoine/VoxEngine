@@ -13,6 +13,7 @@ namespace UE
 			//Constructors
 			Rectangle();
 			Rectangle(glm::vec3 position, glm::vec2 size, float angle, glm::vec3 axis, glm::vec3 color);
+			void SetParameters(glm::vec3 position, glm::vec2 size, float angle, glm::vec3 axis, glm::vec3 color);
 
 			//Geometry initialize
 			void InitGeometry(const char* modelPath = 0);

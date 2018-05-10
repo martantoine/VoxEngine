@@ -10,9 +10,14 @@
 #include "Graphics\Renderers\SimpleRenderer3D.h"
 #include "Graphics\Buffers\Texture.h"
 
+#include "Entities\Components\Renderable\Shapes\Text.h"
 #include "Graphics\Shaders\LightingShader.h"
 #include "Entities\Entities.h"
 #include "Materials\Material.h"
+
+#include "Entities\Components\Renderable\Shapes\Font.h"
+#include "Entities\Components\Renderable\Shapes\Text.h"
+
 
 using namespace UE;
 using namespace UEntity;
@@ -22,18 +27,16 @@ using namespace std;
 
 int main()
 {
-
-
 	//Window
 	Window window(800, 800, "UE");
-
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	//Lighting
 	Entity e_Light;
 	PointLight c_Light(vec3(0.0f, 0.0f, 0.0f));
 	c_Light.SetParameters(vec3(0.02f, 0.01f, 0.01f), vec3(0.5f, 0.5f, 0.5f), vec3(0.5f, 0.5f, 0.5f));
 	e_Light.AddComponent("light 1", c_Light);
-
 
 	//Objects
 	///Texture
@@ -43,12 +46,14 @@ int main()
 	Texture t_s(i_s);
 	///Materials
 	Material m(t_d, t_s, 32);
-
 	///Model
 	Entity e_model(vec3(0.0f, 0.0f, 0.0f), 90.0f, vec3(1.0f, 0.0f, 0.0f));
 	Model model("Assets/nanosuit.obj");
 	model.SetScale(vec3(0.1f, 0.1f, 0.1f));
 	e_model.AddComponent("nanosuit", model);
+	///Text
+	Font font("fonts/arial.ttf", 32);
+	Text text(font, "Text rendered with opengl", vec3(-0.5f, -0.5f, 0.0f), 0.003f);
 
 	///Plane
 	Entity e_plane;
@@ -59,12 +64,12 @@ int main()
 	e_plane.AddComponent("plane", c_plane);
 
 	//Camera
-	Camera cam(1.5f, 0.0f, 0.0f, 0.0f);
-	cam.SetProjection(90.0f, window.GetSize().x / window.GetSize().y);
+	Camera cam(1.5f, 0.0f, 0.0f, 0.0f, glm::vec3(0.0f, 0.0f, 1.0f));
+	cam.SetProjection(70.0f, window.GetSize().x / window.GetSize().y);
 
 	//Shader
 	LightingShader shader("src/Graphics/Shaders/BasicLighting.vert", "src/Graphics/Shaders/BasicLighting.frag");
-
+	shader.Bind();
 	shader.SetUniformMat4("projection", cam.GetProjection());
 	shader.SetUniform3("light.position", c_Light.GetPosition());
 	shader.SetUniform3("light.ambient", c_Light.GetAmbient());
@@ -94,6 +99,7 @@ int main()
 		else if (window.GetButton(GLFW_MOUSE_BUTTON_MIDDLE))
 		{
 			cam.Move();
+			shader.SetUniformMat4("projection", cam.GetProjection());
 			glfwSetInputMode(window.GetWindow(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 		}
 		else
@@ -121,13 +127,12 @@ int main()
 		//RENDERING
 		shader.SetUniformMat4("view", cam.GetView());
 		shader.SetUniform3("viewPosition", cam.GetPosition());
-		shader.SetUniform1i("UI", 0);
+
 		renderer1.AddToQueue(e_model);
 		renderer1.Render();
-		shader.SetUniform1i("UI", 1);
 		renderer2.AddToQueue(e_plane);
 		renderer2.Render();
-
+		text.Draw(shader);
 		window.Update();
 	}
 	

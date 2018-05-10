@@ -1,0 +1,5 @@
+F:/Documents/VoxEngine/Dependencies/freetype-2.9.1/build/CMakeFiles/freetype.dir
+F:/Documents/VoxEngine/Dependencies/freetype-2.9.1/build/CMakeFiles/PACKAGE.dir
+F:/Documents/VoxEngine/Dependencies/freetype-2.9.1/build/CMakeFiles/INSTALL.dir
+F:/Documents/VoxEngine/Dependencies/freetype-2.9.1/build/CMakeFiles/ALL_BUILD.dir
+F:/Documents/VoxEngine/Dependencies/freetype-2.9.1/build/CMakeFiles/ZERO_CHECK.dir

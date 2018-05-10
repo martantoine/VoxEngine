@@ -1,0 +1,385 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|Win32">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|Win32">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{983363BC-4BF5-3111-8644-9F0ED75728EF}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>Win32</Platform>
+    <ProjectName>freetype</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\build\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">freetype.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">freetyped</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\build\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">freetype.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">freetype</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\build\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">freetype.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">freetype</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\build\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">freetype.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">freetype</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\build\include;F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsC</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;FT2_BUILD_LIBRARY;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;FT2_BUILD_LIBRARY;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\build\include;F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\build\include;F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\build\include;F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Release/</AssemblerListingLocation>
+      <CompileAs>CompileAsC</CompileAs>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;FT2_BUILD_LIBRARY;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat></DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;FT2_BUILD_LIBRARY;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\build\include;F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\build\include;F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\build\include;F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>MinSizeRel/</AssemblerListingLocation>
+      <CompileAs>CompileAsC</CompileAs>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;FT2_BUILD_LIBRARY;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat></DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;FT2_BUILD_LIBRARY;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\build\include;F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\build\include;F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\build\include;F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>
+      <CompileAs>CompileAsC</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;FT2_BUILD_LIBRARY;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;FT2_BUILD_LIBRARY;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\build\include;F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\build\include;F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule F:/Documents/VoxEngine/Dependencies/freetype-2.9.1/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+F:\Documents\Programmation\Cmake\bin\cmake.exe -HF:/Documents/VoxEngine/Dependencies/freetype-2.9.1 -BF:/Documents/VoxEngine/Dependencies/freetype-2.9.1/build --check-stamp-file F:/Documents/VoxEngine/Dependencies/freetype-2.9.1/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">F:/Documents/VoxEngine/Dependencies/freetype-2.9.1/CMakeLists.txt;F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\CMakeLists.txt;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\CheckIncludeFile.cmake;F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\build\CMakeFiles\3.9.0\CMakeSystem.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\CMakeSystemSpecificInitialize.cmake;F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\build\CMakeFiles\3.9.0\CMakeCCompiler.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\CMakeSystemSpecificInformation.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\CMakeGenericSystem.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\Platform\Windows.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\Platform\WindowsPaths.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\CMakeCInformation.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\CMakeLanguageInformation.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\Platform\Windows-MSVC-C.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\Platform\Windows-MSVC.cmake;F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\build\CMakeFiles\3.9.0\CMakeRCCompiler.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\CMakeRCInformation.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\CMakeCommonLanguageInclude.cmake;F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\builds\cmake\FindHarfBuzz.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPkgConfig.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageHandleStandardArgs.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageMessage.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageHandleStandardArgs.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageMessage.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPNG.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindZLIB.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\SelectLibraryConfigurations.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageHandleStandardArgs.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageMessage.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageHandleStandardArgs.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageMessage.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindZLIB.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\SelectLibraryConfigurations.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageHandleStandardArgs.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageMessage.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindBZip2.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\SelectLibraryConfigurations.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageHandleStandardArgs.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageMessage.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\GNUInstallDirs.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\CPack.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\CPackComponent.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Templates\CPackConfig.cmake.in;F:\Documents\Programmation\Cmake\share\cmake-3.9\Templates\CPackConfig.cmake.in;F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule F:/Documents/VoxEngine/Dependencies/freetype-2.9.1/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+F:\Documents\Programmation\Cmake\bin\cmake.exe -HF:/Documents/VoxEngine/Dependencies/freetype-2.9.1 -BF:/Documents/VoxEngine/Dependencies/freetype-2.9.1/build --check-stamp-file F:/Documents/VoxEngine/Dependencies/freetype-2.9.1/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">F:/Documents/VoxEngine/Dependencies/freetype-2.9.1/CMakeLists.txt;F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\CMakeLists.txt;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\CheckIncludeFile.cmake;F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\build\CMakeFiles\3.9.0\CMakeSystem.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\CMakeSystemSpecificInitialize.cmake;F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\build\CMakeFiles\3.9.0\CMakeCCompiler.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\CMakeSystemSpecificInformation.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\CMakeGenericSystem.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\Platform\Windows.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\Platform\WindowsPaths.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\CMakeCInformation.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\CMakeLanguageInformation.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\Platform\Windows-MSVC-C.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\Platform\Windows-MSVC.cmake;F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\build\CMakeFiles\3.9.0\CMakeRCCompiler.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\CMakeRCInformation.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\CMakeCommonLanguageInclude.cmake;F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\builds\cmake\FindHarfBuzz.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPkgConfig.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageHandleStandardArgs.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageMessage.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageHandleStandardArgs.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageMessage.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPNG.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindZLIB.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\SelectLibraryConfigurations.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageHandleStandardArgs.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageMessage.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageHandleStandardArgs.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageMessage.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindZLIB.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\SelectLibraryConfigurations.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageHandleStandardArgs.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageMessage.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindBZip2.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\SelectLibraryConfigurations.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageHandleStandardArgs.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageMessage.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\GNUInstallDirs.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\CPack.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\CPackComponent.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Templates\CPackConfig.cmake.in;F:\Documents\Programmation\Cmake\share\cmake-3.9\Templates\CPackConfig.cmake.in;F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule F:/Documents/VoxEngine/Dependencies/freetype-2.9.1/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
+F:\Documents\Programmation\Cmake\bin\cmake.exe -HF:/Documents/VoxEngine/Dependencies/freetype-2.9.1 -BF:/Documents/VoxEngine/Dependencies/freetype-2.9.1/build --check-stamp-file F:/Documents/VoxEngine/Dependencies/freetype-2.9.1/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">F:/Documents/VoxEngine/Dependencies/freetype-2.9.1/CMakeLists.txt;F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\CMakeLists.txt;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\CheckIncludeFile.cmake;F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\build\CMakeFiles\3.9.0\CMakeSystem.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\CMakeSystemSpecificInitialize.cmake;F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\build\CMakeFiles\3.9.0\CMakeCCompiler.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\CMakeSystemSpecificInformation.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\CMakeGenericSystem.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\Platform\Windows.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\Platform\WindowsPaths.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\CMakeCInformation.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\CMakeLanguageInformation.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\Platform\Windows-MSVC-C.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\Platform\Windows-MSVC.cmake;F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\build\CMakeFiles\3.9.0\CMakeRCCompiler.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\CMakeRCInformation.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\CMakeCommonLanguageInclude.cmake;F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\builds\cmake\FindHarfBuzz.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPkgConfig.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageHandleStandardArgs.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageMessage.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageHandleStandardArgs.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageMessage.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPNG.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindZLIB.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\SelectLibraryConfigurations.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageHandleStandardArgs.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageMessage.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageHandleStandardArgs.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageMessage.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindZLIB.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\SelectLibraryConfigurations.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageHandleStandardArgs.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageMessage.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindBZip2.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\SelectLibraryConfigurations.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageHandleStandardArgs.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageMessage.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\GNUInstallDirs.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\CPack.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\CPackComponent.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Templates\CPackConfig.cmake.in;F:\Documents\Programmation\Cmake\share\cmake-3.9\Templates\CPackConfig.cmake.in;F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule F:/Documents/VoxEngine/Dependencies/freetype-2.9.1/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
+F:\Documents\Programmation\Cmake\bin\cmake.exe -HF:/Documents/VoxEngine/Dependencies/freetype-2.9.1 -BF:/Documents/VoxEngine/Dependencies/freetype-2.9.1/build --check-stamp-file F:/Documents/VoxEngine/Dependencies/freetype-2.9.1/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">F:/Documents/VoxEngine/Dependencies/freetype-2.9.1/CMakeLists.txt;F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\CMakeLists.txt;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\CheckIncludeFile.cmake;F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\build\CMakeFiles\3.9.0\CMakeSystem.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\CMakeSystemSpecificInitialize.cmake;F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\build\CMakeFiles\3.9.0\CMakeCCompiler.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\CMakeSystemSpecificInformation.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\CMakeGenericSystem.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\Platform\Windows.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\Platform\WindowsPaths.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\CMakeCInformation.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\CMakeLanguageInformation.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\Platform\Windows-MSVC-C.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\Platform\Windows-MSVC.cmake;F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\build\CMakeFiles\3.9.0\CMakeRCCompiler.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\CMakeRCInformation.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\CMakeCommonLanguageInclude.cmake;F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\builds\cmake\FindHarfBuzz.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPkgConfig.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageHandleStandardArgs.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageMessage.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageHandleStandardArgs.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageMessage.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPNG.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindZLIB.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\SelectLibraryConfigurations.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageHandleStandardArgs.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageMessage.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageHandleStandardArgs.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageMessage.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindZLIB.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\SelectLibraryConfigurations.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageHandleStandardArgs.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageMessage.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindBZip2.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\SelectLibraryConfigurations.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageHandleStandardArgs.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\FindPackageMessage.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\GNUInstallDirs.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\CPack.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Modules\CPackComponent.cmake;F:\Documents\Programmation\Cmake\share\cmake-3.9\Templates\CPackConfig.cmake.in;F:\Documents\Programmation\Cmake\share\cmake-3.9\Templates\CPackConfig.cmake.in;F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\ft2build.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\freetype.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\ftadvanc.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\ftbbox.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\ftbdf.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\ftbitmap.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\ftbzip2.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\ftcache.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\ftchapters.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\ftcid.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\ftdriver.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\fterrdef.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\fterrors.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\ftfntfmt.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\ftgasp.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\ftglyph.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\ftgxval.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\ftgzip.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\ftimage.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\ftincrem.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\ftlcdfil.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\ftlist.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\ftlzw.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\ftmac.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\ftmm.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\ftmodapi.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\ftmoderr.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\ftotval.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\ftoutln.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\ftparams.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\ftpfr.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\ftrender.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\ftsizes.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\ftsnames.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\ftstroke.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\ftsynth.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\ftsystem.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\fttrigon.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\fttypes.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\ftwinfnt.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\t1tables.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\ttnameid.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\tttables.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\tttags.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\config\ftconfig.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\config\ftheader.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\config\ftmodule.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\config\ftoption.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\config\ftstdlib.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\internal\autohint.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\internal\cffotypes.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\internal\cfftypes.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\internal\ftcalc.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\internal\ftdebug.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\internal\ftdrv.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\internal\ftgloadr.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\internal\fthash.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\internal\ftmemory.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\internal\ftobjs.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\internal\ftpic.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\internal\ftpsprop.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\internal\ftrfork.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\internal\ftserv.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\internal\ftstream.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\internal\fttrace.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\internal\ftvalid.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\internal\internal.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\internal\psaux.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\internal\pshints.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\internal\sfnt.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\internal\t1types.h" />
+    <ClInclude Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\include\freetype\internal\tttypes.h" />
+    <ClCompile Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\src\autofit\autofit.c"  />
+    <ClCompile Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\src\base\ftbase.c"  />
+    <ClCompile Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\src\base\ftbbox.c"  />
+    <ClCompile Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\src\base\ftbdf.c"  />
+    <ClCompile Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\src\base\ftbitmap.c"  />
+    <ClCompile Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\src\base\ftcid.c"  />
+    <ClCompile Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\src\base\ftfstype.c"  />
+    <ClCompile Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\src\base\ftgasp.c"  />
+    <ClCompile Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\src\base\ftglyph.c"  />
+    <ClCompile Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\src\base\ftgxval.c"  />
+    <ClCompile Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\src\base\ftinit.c"  />
+    <ClCompile Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\src\base\ftmm.c"  />
+    <ClCompile Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\src\base\ftotval.c"  />
+    <ClCompile Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\src\base\ftpatent.c"  />
+    <ClCompile Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\src\base\ftpfr.c"  />
+    <ClCompile Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\src\base\ftstroke.c"  />
+    <ClCompile Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\src\base\ftsynth.c"  />
+    <ClCompile Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\src\base\ftsystem.c"  />
+    <ClCompile Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\src\base\fttype1.c"  />
+    <ClCompile Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\src\base\ftwinfnt.c"  />
+    <ClCompile Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\src\bdf\bdf.c"  />
+    <ClCompile Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\src\bzip2\ftbzip2.c"  />
+    <ClCompile Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\src\cache\ftcache.c"  />
+    <ClCompile Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\src\cff\cff.c"  />
+    <ClCompile Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\src\cid\type1cid.c"  />
+    <ClCompile Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\src\gzip\ftgzip.c"  />
+    <ClCompile Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\src\lzw\ftlzw.c"  />
+    <ClCompile Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\src\pcf\pcf.c"  />
+    <ClCompile Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\src\pfr\pfr.c"  />
+    <ClCompile Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\src\psaux\psaux.c"  />
+    <ClCompile Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\src\pshinter\pshinter.c"  />
+    <ClCompile Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\src\psnames\psnames.c"  />
+    <ClCompile Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\src\raster\raster.c"  />
+    <ClCompile Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\src\sfnt\sfnt.c"  />
+    <ClCompile Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\src\smooth\smooth.c"  />
+    <ClCompile Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\src\truetype\truetype.c"  />
+    <ClCompile Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\src\type1\type1.c"  />
+    <ClCompile Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\src\type42\type42.c"  />
+    <ClCompile Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\src\winfonts\winfnt.c"  />
+    <ClCompile Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\builds\windows\ftdebug.c"  />
+    <ResourceCompile Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\src\base\ftver.rc"  />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="F:\Documents\VoxEngine\Dependencies\freetype-2.9.1\build\ZERO_CHECK.vcxproj">
+      <Project>{2784817C-D0F3-3661-861D-56BD398BEBD0}</Project>
+      <Name>ZERO_CHECK</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

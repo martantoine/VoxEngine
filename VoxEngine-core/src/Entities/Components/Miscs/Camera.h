@@ -19,7 +19,7 @@ namespace UE
 			Camera(glm::vec3 position);
 			Camera(float pitch, float yaw, float roll);
 			Camera(glm::vec3 position, float pitch, float yaw, float roll);
-			Camera(float radius, float pitch, float yaw, float roll);
+			Camera(float radius, float pitch, float yaw, float roll, glm::vec3 center);
 
 			//EntityComponent's functions
 			void InitVariables();
@@ -44,6 +44,7 @@ namespace UE
 			float Radius;
 			float FOV, Ratio;
 			float ZoomSpeed, RotationgSpeed, MovingSpeed;
+			glm::vec2 offsetProj;
 
 			glm::vec2 LastMousePosition, offset;
 			glm::vec3 Forward, Strafe, Center, Position;

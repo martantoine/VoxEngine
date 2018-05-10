@@ -51,6 +51,17 @@ namespace UE
 		//-------------------------------------------------------------------------------//
 		//**************************EntityComponent's function***************************//
 		//-------------------------------------------------------------------------------//
+		void Rectangle::SetParameters(glm::vec3 position, glm::vec2 size, float angle, glm::vec3 axis, glm::vec3 color)
+		{
+			m_lTranslation = glm::translate(glm::mat4(1.0f), position);
+			m_lScale = glm::mat4(1.0f);
+			m_lRotation = glm::rotate(glm::mat4(1.0f), glm::radians(-angle), axis);
+			m_Size = size;
+
+			InitGeometry();
+		}
+		
+		
 		void Rectangle::InitGeometry(const char* modelPath)
 		{
 			///Initial vertex's position
@@ -92,12 +103,12 @@ namespace UE
 		void Rectangle::AddTexture(UEGraphics::MATERIAL_TEXTURE type)
 		{
 			m_Textured = true;
-			glm::vec2 positionFloat;
+			glm::vec2 positionFloat(0.0f, 0.0f);
 
-			if (type == UEGraphics::MATERIAL_TEXTURE::DIFFUSE)
-				positionFloat = glm::vec2(0.0f / m_Material->diffuse.GetWidth(), 0.0f / m_Material->diffuse.GetHeight());
-			else if (type == UEGraphics::MATERIAL_TEXTURE::SPECULAR)
-				positionFloat = glm::vec2(0.0f / m_Material->specular.GetWidth(), 0.0f / m_Material->specular.GetHeight());
+			//if (type == UEGraphics::MATERIAL_TEXTURE::DIFFUSE)
+			//	positionFloat = glm::vec2(0.0f / m_Material->diffuse.GetWidth(), 0.0f / m_Material->diffuse.GetHeight());
+			//else if (type == UEGraphics::MATERIAL_TEXTURE::SPECULAR)
+			//	positionFloat = glm::vec2(0.0f / m_Material->specular.GetWidth(), 0.0f / m_Material->specular.GetHeight());
 
 			m_Vertices[0].texCoord = positionFloat;
 			m_Vertices[1].texCoord = positionFloat + glm::vec2(1.0f, 0.0f);

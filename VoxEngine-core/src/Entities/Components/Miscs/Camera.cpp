@@ -44,10 +44,10 @@ namespace UE
 			UpdateView();
 		}
 
-		Camera::Camera(float radius, float pitch, float yaw, float roll)
-			: Pitch(pitch), Yaw(yaw), Roll(roll), Radius(radius), GimbalLock(true)
+		Camera::Camera(float radius, float pitch, float yaw, float roll, glm::vec3 center)
+			: Pitch(pitch), Yaw(yaw), Roll(roll), Radius(radius), GimbalLock(true), Center(center)
 		{
-			m_lTranslation = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+			m_lTranslation = glm::translate(glm::mat4(1.0f), center);
 			InitVariables();
 			SetProjection(90.0f, 1.0f);
 			UpdateView();
@@ -66,7 +66,8 @@ namespace UE
 			RotationgSpeed = 0.005f;
 			ZoomSpeed = 0.1f;
 			LastMousePosition = glm::vec2(0.0f, 0.0f);
-			Center = glm::vec3(0.0f, 0.0f, 0.0f);
+			
+			offsetProj = glm::vec2(0.0f);
 		}
 		
 		void Camera::Reset()
@@ -83,14 +84,16 @@ namespace UE
 		void Camera::SetFOV(float fov)
 		{
 			FOV = fov;
-			Projection = glm::perspective(glm::radians(fov), Ratio, 0.005f, 100.0f);
+			//Projection = glm::perspective(glm::radians(fov), Ratio, 0.005f, 100.0f);
+			Projection = glm::ortho(-1.0f, 1.0f, -1.0f, 1.0f, 0.5f, 100.0f);
 		}
 
 		void Camera::SetProjection(float fov, float ratio)
 		{
 			FOV = fov;
 			Ratio = ratio;
-			Projection = glm::perspective(glm::radians(fov), Ratio, 0.005f, 100.0f);
+			//Projection = glm::perspective(glm::radians(fov), Ratio, 0.005f, 100.0f);
+			Projection = glm::ortho(-1.0f, 1.0f, -1.0f, 1.0f, 0.5f, 100.0f);
 		}
 
 		void Camera::SetMousePos(glm::vec2 mousePosition)
@@ -101,7 +104,11 @@ namespace UE
 
 		void Camera::Move()
 		{
-			Center += Radius * (offset.x * Strafe + offset.y * glm::normalize(glm::cross(Strafe, Forward)));
+			//Center += Radius * (offset.x * Strafe + offset.y * glm::normalize(glm::cross(Strafe, Forward)));
+
+			offsetProj += glm::vec2(offset.x, offset.y);
+			Projection = glm::ortho(-1.0f + offsetProj.x, 1.0f + offsetProj.x, -1.0f - offsetProj.y, 1.0f - offsetProj.y, 0.5f, 100.0f);
+
 		}
 
 		void Camera::Move(glm::vec3 axis)

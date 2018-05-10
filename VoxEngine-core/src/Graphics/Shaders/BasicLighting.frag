@@ -42,9 +42,9 @@ void main()
 	if(UI)
 	{
 		vec4 texColor = texture(texture_diffuse1, fs_in.textureCoord);
-		if(texColor.a < 0.1)
+		if(texColor.r < 0.1)
 			discard;
-			Result = texColor;
+		Result = texColor * fs_in.color;
 	}
 	else
 	{
@@ -68,7 +68,8 @@ void main()
 		//Specular lighting
 		vec3 viewDir = normalize(viewPosition - fs_in.position);
 		vec3 reflectDir = reflect(-lightDir, normal);
-		float spec = pow(max(dot(viewDir, reflectDir), 0.0), 128);
+		float spec = sqrt(tan(pow(max(dot(viewDir, reflectDir), 0.0), 128)));
+		
 		vec3 SpecularLighting;
 		if(textured == 1)
 			SpecularLighting = spec * light.specular * texture(texture_specular1, fs_in.textureCoord).rgb;
@@ -76,7 +77,6 @@ void main()
 			SpecularLighting = spec * light.specular;
 
 		float depth = 100 / LinearizeDepth(gl_FragCoord.z);
-		Result = vec4(AmbientLighting + DiffuseLighting + SpecularLighting, 1.0f) * fs_in.color * depth;
+		Result = vec4(AmbientLighting + DiffuseLighting + SpecularLighting, 1.0f) * fs_in.color;
 	}
-
 }

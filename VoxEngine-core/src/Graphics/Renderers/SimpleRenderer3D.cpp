@@ -21,6 +21,9 @@ namespace UE
 		{
 			while (!m_EntityQueue.empty())
 			{
+				m_Shader->Bind();
+				m_Shader->SetUniform1i("UI", 0);
+
 				UEntity::Entity* entity = m_EntityQueue.front();
 				std::vector<std::string> listName = entity->GetEntityComponentsList(UEntity::EntityComponentType::GRAPHIC3D);
 
@@ -30,6 +33,7 @@ namespace UE
 
 					for (int MeshOffset(0); MeshOffset < renderable->GetMeshesNbr(); MeshOffset++)
 					{
+
 						///Bind Textures
 						GLuint diffuseNbr(1);
 						GLuint specularNbr(1);
@@ -46,7 +50,6 @@ namespace UE
 								typeStr += std::to_string(number);
 
 								glActiveTexture(GL_TEXTURE0 + TextureOffset);
-								glUniform1i(glGetUniformLocation(m_Shader->GetShader(), typeStr.c_str()), TextureOffset);
 								renderable->GetMesh(MeshOffset).m_Textures[TextureOffset].Bind();
 								m_Shader->SetUniform1i("textured", 1);
 							}
@@ -61,8 +64,6 @@ namespace UE
 						tmpEBO[MeshOffset].Bind();
 
 						m_Shader->SetUniformMat4("model", entity->GetTransformation() * renderable->GetTransformation());
-						m_Shader->Bind();
-
 						glDrawElements(GL_TRIANGLES, tmpEBO[MeshOffset].GetCount(), GL_UNSIGNED_INT, nullptr);
 
 						tmpEBO[MeshOffset].Unbind();
