@@ -56,27 +56,6 @@ namespace UE
 			return program;
 		}
 
-		void Shader::Reload()
-		{
-			std::map<const char*, GLuint> tmp_Locations;
-			tmp_Locations = m_Locations;
-			Unbind();
-			Destroy();
-			m_Shader = CreateShader(vertexPath, fragmentPath);
-			Bind();
-			m_Locations = tmp_Locations;
-		}
-
-		void Shader::Bind()
-		{
-			glUseProgram(m_Shader);
-		}
-
-		void Shader::Unbind()
-		{
-			glUseProgram(0);
-		}
-
 		void Shader::Destroy()
 		{
 			glDeleteProgram(m_Shader);
@@ -85,6 +64,31 @@ namespace UE
 		Shader::~Shader()
 		{
 			Destroy();
+		}
+
+
+
+		//--------------------------------------------------------------------------------//
+		//*********************************Binding stuff**********************************//
+		//--------------------------------------------------------------------------------//
+		void Shader::Bind()
+		{
+			glUseProgram(m_Shader);
+			isBind = true;
+		}
+
+		void Shader::Unbind()
+		{
+			glUseProgram(0);
+			isBind = false;
+		}
+
+		void Shader::CheckBinding()
+		{
+			if (!isBind)
+				Bind();
+			else
+				return;
 		}
 
 
@@ -99,36 +103,43 @@ namespace UE
 
 		void Shader::SetUniformTexture(const char* name, int id)
 		{
+			CheckBinding();
 			glUniform1i(m_Locations[name], id);
 		}
 
 		void Shader::SetUniform1i(const char* name, const int& value)
 		{
+			CheckBinding();
 			glUniform1i(m_Locations[name], value);
 		}
 
 		void Shader::SetUniform1f(const char* name, const float& value)
 		{
+			CheckBinding();
 			glUniform1f(m_Locations[name], value);
 		}
 
 		void Shader::SetUniform2(const char* name, const glm::vec2& vec)
 		{
+			CheckBinding();
 			glUniform2f(m_Locations[name], vec.x, vec.y);
 		}
 
 		void Shader::SetUniform3(const char* name, const glm::vec3& vec)
 		{
+			CheckBinding();
 			glUniform3f(m_Locations[name], vec.x, vec.y, vec.z);
 		}
 
 		void Shader::SetUniform4(const char* name, const glm::vec4& vec)
 		{
+			CheckBinding();
 			glUniform4f(m_Locations[name], vec.x, vec.y, vec.z, vec.w);
 		}
 
 		void Shader::SetUniformMat4(const char* name, const glm::mat4& mat4)
 		{
+			CheckBinding();
 			glUniformMatrix4fv(m_Locations[name], 1, GL_FALSE, glm::value_ptr(mat4));
 		}
 		

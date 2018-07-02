@@ -100,15 +100,20 @@ namespace UE
 				m_VAO->AddVBO(vbo, 3, TEXTURE);
 		}
 		
+
+
+		//-------------------------------------------------------------------------------//
+		//************************************Texture************************************//
+		//-------------------------------------------------------------------------------//
+		void Rectangle::SetTextures()
+		{
+			AddTexture(UEGraphics::MATERIAL_TEXTURE::DIFFUSE);
+		}
+		
 		void Rectangle::AddTexture(UEGraphics::MATERIAL_TEXTURE type)
 		{
 			m_Textured = true;
 			glm::vec2 positionFloat(0.0f, 0.0f);
-
-			//if (type == UEGraphics::MATERIAL_TEXTURE::DIFFUSE)
-			//	positionFloat = glm::vec2(0.0f / m_Material->diffuse.GetWidth(), 0.0f / m_Material->diffuse.GetHeight());
-			//else if (type == UEGraphics::MATERIAL_TEXTURE::SPECULAR)
-			//	positionFloat = glm::vec2(0.0f / m_Material->specular.GetWidth(), 0.0f / m_Material->specular.GetHeight());
 
 			m_Vertices[0].texCoord = positionFloat;
 			m_Vertices[1].texCoord = positionFloat + glm::vec2(1.0f, 0.0f);

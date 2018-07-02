@@ -1,5 +1,5 @@
 #include "Shader.h"
-
+#include "../../Entities/Components/Lights/PointLight.h"
 namespace UE
 {
 	namespace UEGraphics
@@ -13,6 +13,7 @@ namespace UE
 
 			//Miscs
 			void Init();
+			void SetLight(UEntity::PointLight& light);
 		};
 
 	}

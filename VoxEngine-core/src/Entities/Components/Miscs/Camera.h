@@ -1,10 +1,10 @@
 #pragma once
 
 #include "../EntityComponent.h"
-#include <glm\gtx\transform.hpp>
-#include <GLM\gtx\quaternion.hpp>
-#include <GLM\gtc\quaternion.hpp>
-#include <GLM\glm.hpp>
+#include <GLM/gtx/transform.hpp>
+#include <GLM/gtx/quaternion.hpp>
+#include <GLM/gtc/quaternion.hpp>
+#include <GLM/glm.hpp>
 
 namespace UE
 {

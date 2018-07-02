@@ -33,7 +33,7 @@ namespace UE
 		//-------------------------------------------------------------------------------//
 		//**************************EntityComponent's functions**************************//
 		//-------------------------------------------------------------------------------//
-		void PointLight::SetParameters(glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular)
+		void PointLight::SetLightParameters(glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular)
 		{
 			m_Ambient = ambient;
 			m_Diffuse = diffuse;

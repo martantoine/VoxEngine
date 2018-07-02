@@ -11,6 +11,7 @@ namespace UE
 		void Renderable::AddMaterial(UEGraphics::Material& material)
 		{
 			m_Material = &material;
+			SetTextures();
 		}
 
 		UEGraphics::Material& Renderable::GetMaterial() const

@@ -15,6 +15,22 @@ namespace UE
 			m_gTranslation = glm::mat4(1.0f);
 		}
 
+		Entity::Entity(std::string name, EntityComponent& component)
+		{
+			m_gScale = glm::mat4(1.0f);
+			m_gRotation = glm::mat4(1.0f);
+			m_gTranslation = glm::mat4(1.0f);
+			AddComponent(name, component);
+		}
+
+		Entity::Entity(std::string name, Renderable2D& component)
+		{
+			m_gScale = glm::mat4(1.0f);
+			m_gRotation = glm::mat4(1.0f);
+			m_gTranslation = glm::mat4(1.0f);
+			AddComponent(name, component);
+		}
+
 		Entity::Entity(glm::vec3 position)
 		{
 			m_gScale = glm::mat4(1.0f);

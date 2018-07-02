@@ -1,6 +1,12 @@
 #pragma once
 
-#include <GL/glew.h>
+#ifdef UE_EMSCRIPTEN
+	#define GLFW_INCLUDE_ES3
+	#include <GLFW\glfw3.h>
+#else
+	#include <GL/glew.h>
+#endif
+
 #include <vector>
 #include "../../../../Graphics/Buffers/Vertex.h"
 #include "../../../../Graphics/Buffers/Texture.h"

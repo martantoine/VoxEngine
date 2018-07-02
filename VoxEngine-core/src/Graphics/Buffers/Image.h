@@ -1,8 +1,6 @@
 #pragma once
 
-
 #include <iostream>
-#include <GL/glew.h>
 #include "../../Utils/ImageLoader.h"
 
 namespace UE

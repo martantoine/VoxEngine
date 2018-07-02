@@ -1,14 +1,15 @@
 #pragma once
 
-#include <GLM\vec3.hpp>
-#include <GLM\mat4x4.hpp>
+#include <GLM/vec3.hpp>
+#include <GLM/mat4x4.hpp>
 #include <vector>
 #include <string>
 #include <map>
-#include <GLM\gtc\matrix_transform.hpp>
-#include "Components\EntityComponent.h"
-#include "Components\Renderable\Shapes\Renderable2D.h"
-#include "Components\Renderable\Models\Model.h"
+#include <GLM/gtc/matrix_transform.hpp>
+#include "Components/EntityComponent.h"
+#include "Components/Renderable/Shapes/Renderable2D.h"
+#include "Components/Renderable/Models/Model.h"
+#include <iostream>
 
 namespace UE
 {
@@ -20,6 +21,8 @@ namespace UE
 		public:
 			//Constructors
 			Entity();
+			Entity(std::string name, EntityComponent& component);
+			Entity(std::string name, Renderable2D& component);
 			Entity(glm::vec3 position);
 			Entity(glm::vec3 position, float angle, glm::vec3 axis);
 

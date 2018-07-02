@@ -43,7 +43,11 @@ namespace UE
 			glfwSetMouseButtonCallback(m_Window, mouse_button_callback);
 			glfwSetScrollCallback(m_Window, mouse_scroll_callback);
 			glfwSwapInterval(1);
+
+#ifndef UE_EMSCRIPTEN
 			glewInit();
+#endif
+
 			glClearColor(0.0f, 0.0f, 0.1f, 1.0f);
 			glfwSetCursorPos(m_Window, 0.0f, 0.0f);
 
@@ -86,11 +90,19 @@ namespace UE
 			mouseScrollOffsetY = 0.0;
 			glfwSwapBuffers(m_Window);
 			glfwPollEvents();
+
+			if (GetKey(GLFW_KEY_ESCAPE))
+				Close();
 		}
 
 		bool Window::GetKey(int key)
 		{
 			return keys[key];
+		}
+
+		bool* Window::GetKeys()
+		{
+			return &keys[0];
 		}
 
 		bool Window::GetButton(int button)
@@ -135,7 +147,6 @@ namespace UE
 			//action : GLFW_PRESS, GLFW_REPEAT, GLFW_RELEASE
 			Window* win = (Window*)glfwGetWindowUserPointer(window);
 			win->keys[key] = action != GLFW_RELEASE;
-
 		}
 
 		void mouse_cursorpos_callback(GLFWwindow* window, double xpos, double ypos)

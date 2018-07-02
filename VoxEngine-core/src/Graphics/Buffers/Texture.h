@@ -1,6 +1,13 @@
 #pragma once
 
-#include <GL/glew.h>
+#ifdef UE_EMSCRIPTEN
+	#define GLFW_INCLUDE_ES3
+	#include <GLFW\glfw3.h>
+#else
+	#include <GL/glew.h>
+	#include <GLFW\glfw3.h>
+#endif
+
 #include <string>
 #include "../Buffers/Image.h"
 
@@ -14,6 +21,7 @@ namespace UE
 		public:
 			//Constructors
 			Texture();
+			Texture(Image* image); //No image saved
 			Texture(Image& image);
 			
 			//Initializer

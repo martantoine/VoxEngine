@@ -15,7 +15,7 @@ namespace UE
 			PointLight(glm::vec3 position);
 			
 			//EntityComponent's functions
-			void SetParameters(glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular);
+			void SetLightParameters(glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular);
 			void SetColor(glm::vec3 color);
 
 			glm::vec3 GetAmbient() const;

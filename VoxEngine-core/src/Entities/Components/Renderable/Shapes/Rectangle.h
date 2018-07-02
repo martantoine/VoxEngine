@@ -19,6 +19,7 @@ namespace UE
 			void InitGeometry(const char* modelPath = 0);
 
 			//Textures
+			void SetTextures();
 			void AddTexture(UEGraphics::MATERIAL_TEXTURE type);
 			void AddTexture(UEGraphics::MATERIAL_TEXTURE type, glm::vec2 position, glm::vec2 size);
 

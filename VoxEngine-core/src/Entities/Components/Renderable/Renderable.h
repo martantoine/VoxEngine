@@ -25,6 +25,7 @@ namespace UE
 			//Materials
 			void AddMaterial(UEGraphics::Material& material);
 			UEGraphics::Material& GetMaterial() const;
+			virtual void SetTextures() {}
 
 			//Buffers
 			UEGraphics::VAO* GetVAO() const;

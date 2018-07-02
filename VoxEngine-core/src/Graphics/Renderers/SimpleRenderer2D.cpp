@@ -6,6 +6,21 @@ namespace UE
 	{
 
 		//--------------------------------------------------------------------------------//
+		//**********************************Constructors**********************************//
+		//--------------------------------------------------------------------------------//
+		SimpleRenderer2D::SimpleRenderer2D()
+			: m_Shader(nullptr)
+		{
+		}
+
+		SimpleRenderer2D::SimpleRenderer2D(Shader& shader)
+		{
+			LinkShader(shader);
+		}
+
+
+
+		//--------------------------------------------------------------------------------//
 		//**************************************Mics**************************************//
 		//--------------------------------------------------------------------------------//
 		void SimpleRenderer2D::LinkShader(Shader& shader)
@@ -13,9 +28,20 @@ namespace UE
 			m_Shader = &shader;
 		}
 
+
+
+		//--------------------------------------------------------------------------------//
+		//********************************Rendering stuff*********************************//
+		//--------------------------------------------------------------------------------//
 		void SimpleRenderer2D::AddToQueue(UEntity::Entity& entity)
 		{
 			m_EntityQueue.push_back(&entity);
+		}
+
+		void SimpleRenderer2D::Render(UEntity::Entity& entity)
+		{
+			m_EntityQueue.push_back(&entity);
+			Render();
 		}
 
 		void SimpleRenderer2D::Render()

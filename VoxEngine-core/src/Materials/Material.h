@@ -1,6 +1,6 @@
 #pragma once
 
-#include <GLM\vec3.hpp>
+#include <GLM/vec3.hpp>
 #include "../Graphics/Buffers/Texture.h"
 
 namespace UE

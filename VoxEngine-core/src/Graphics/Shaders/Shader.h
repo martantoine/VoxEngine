@@ -1,11 +1,18 @@
 #pragma once
 
-#include <GL/glew.h>
+#ifdef UE_EMSCRIPTEN
+	#define GLFW_INCLUDE_ES3
+	#include <GLFW\glfw3.h>
+#else
+	#include <GL/glew.h>
+	#include <GLFW\glfw3.h>
+#endif
+
 #include <string>
 #include <vector>
 #include <map>
-#include <GLM\glm.hpp>
-#include <GLM\gtc\type_ptr.hpp>
+#include <GLM/glm.hpp>
+#include <GLM/gtc/type_ptr.hpp>
 #include "../../Utils/FileReader.h"
 
 namespace UE
@@ -22,10 +29,14 @@ namespace UE
 
 			//Miscs
 			GLuint CreateShader(const char* vertexShaderPath, const char* FragmentShaderPath);
-			void Reload();
+			GLuint GetShader() { return m_Shader; }
+			void Destroy();
+			~Shader();
+
+			//Binding stuff
 			void Bind();
 			void Unbind();
-			GLuint GetShader() { return m_Shader; }
+			void CheckBinding();
 
 			//Uniforms
 			void SetUniformLocation(const char* name);
@@ -37,13 +48,11 @@ namespace UE
 			void SetUniform4(const char* name, const glm::vec4 &vec);
 			void SetUniformMat4(const char* name, const glm::mat4& mat4);
 
-			void Destroy();
-			~Shader();
-
 		protected:
 			GLuint m_Shader;
-			std::map<const char*, GLuint> m_Locations;
 			const char *vertexPath, *fragmentPath;
+			std::map<const char*, GLuint> m_Locations;
+			bool isBind;
 		};
 
 	}

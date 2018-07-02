@@ -11,6 +11,11 @@ namespace UE
 		Texture::Texture()
 		{
 		}
+
+		Texture::Texture(Image* image)
+		{
+			SetImage(*image);
+		}
 		
 		Texture::Texture(Image& image)
 		{

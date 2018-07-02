@@ -1,7 +1,14 @@
 #pragma once
 
-#include <GL\glew.h>
-#include <GLFW\glfw3.h>
+#ifdef UE_EMSCRIPTEN
+	#define GLFW_INCLUDE_ES3
+	#include <GLES3/gl3.h>
+	#include <GLFW/glfw3.h>
+#else
+	#include <GL/glew.h>
+	#include <GLFW/glfw3.h>
+#endif
+
 #include <stdio.h>
 #include <iostream>
 #include <GLM\vec2.hpp>
@@ -24,6 +31,7 @@ namespace UE
 			void Update();
 			
 			bool GetKey(int key);
+			bool* GetKeys();
 			bool GetButton(int button);
 			double GetScrollOffset();
 

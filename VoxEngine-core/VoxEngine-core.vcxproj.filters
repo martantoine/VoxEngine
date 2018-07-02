@@ -41,7 +41,6 @@
     <ClInclude Include="src\Graphics\Shaders\Shader.h" />
     <ClInclude Include="src\Graphics\Window.h" />
     <ClInclude Include="src\Materials\Material.h" />
-    <ClInclude Include="src\Utils\Debugging.h" />
     <ClInclude Include="src\Utils\FileReader.h" />
     <ClInclude Include="src\Utils\ImageLoader.h" />
     <ClInclude Include="src\Graphics\Shaders\LightingShader.h" />
@@ -51,12 +50,10 @@
     <ClInclude Include="src\Graphics\Renderers\SimpleRenderer2D.h" />
     <ClInclude Include="src\Entities\Components\Renderable\Shapes\Font.h" />
     <ClInclude Include="src\Entities\Components\Renderable\Shapes\Text.h" />
+    <ClInclude Include="src\UEinclude.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Graphics\Shaders\BasicLighting.frag" />
     <None Include="src\Graphics\Shaders\BasicLighting.vert" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="src\TODO.txt" />
   </ItemGroup>
 </Project>
